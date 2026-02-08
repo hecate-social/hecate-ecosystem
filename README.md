@@ -4,7 +4,7 @@
 [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-support-yellow.svg)](https://buymeacoffee.com/rlefever)
 
 <p align="center">
-  <img src="assets/logo.svg" width="120" height="120" alt="Hecate">
+  <img src="assets/avatar-terminal.jpg" width="200" alt="Hecate">
 </p>
 
 <p align="center">
