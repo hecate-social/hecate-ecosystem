@@ -1,15 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400">
   <defs>
     <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#1e1b4b;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#312e81;stop-opacity:1" />
+      <stop offset="0%" stop-color="#1e1b4b"/>
+      <stop offset="100%" stop-color="#312e81"/>
     </linearGradient>
     <linearGradient id="boxGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" style="stop-color:#4338ca;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#3730a3;stop-opacity:1" />
+      <stop offset="0%" stop-color="#4338ca"/>
+      <stop offset="100%" stop-color="#3730a3"/>
     </linearGradient>
-    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L0,6 L9,3 z" fill="#6366f1"/>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#6366f1"/>
     </marker>
   </defs>
 
@@ -75,12 +76,12 @@
   <!-- Agents Box -->
   <rect x="50" y="200" width="160" height="80" fill="url(#boxGrad)" rx="8" stroke="#6366f1" stroke-width="2"/>
   <text x="130" y="230" text-anchor="middle" fill="#fbbf24" font-family="sans-serif" font-size="14" font-weight="bold">Hecate Agents</text>
-  <text x="130" y="250" text-anchor="middle" fill="#c7d2fe" font-family="sans-serif" font-size="11">Personality & Roles</text>
+  <text x="130" y="250" text-anchor="middle" fill="#c7d2fe" font-family="sans-serif" font-size="11">Personality and Roles</text>
   <text x="130" y="270" text-anchor="middle" fill="#a5b4fc" font-family="sans-serif" font-size="10">DnA • AnP • TnI • DnO</text>
 
   <!-- Arrow Agents to TUI -->
   <line x1="130" y1="200" x2="130" y2="175" stroke="#6366f1" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arrow)"/>
-  <text x="145" y="188" fill="#a5b4fc" font-family="sans-serif" font-size="9">loads</text>
+  <text x="155" y="188" fill="#a5b4fc" font-family="sans-serif" font-size="9">loads</text>
 
   <!-- GitOps Box -->
   <rect x="50" y="310" width="160" height="60" fill="url(#boxGrad)" rx="8" stroke="#6366f1" stroke-width="2"/>
