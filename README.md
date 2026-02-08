@@ -34,12 +34,53 @@ All while connected to a decentralized mesh where your applications can discover
 
 ## The Ecosystem
 
-| Component | Description | Links |
-|-----------|-------------|-------|
+| Component | Description | |
+|-----------|-------------|---|
 | **hecate-tui** | Terminal developer studio (Go/Bubble Tea) | [GitHub](https://github.com/hecate-social/hecate-tui) |
-| **hecate-daemon** | Local runtime with LLM routing & mesh connectivity (Erlang/OTP) | [GitHub](https://github.com/hecate-social/hecate-daemon) ·  [Docker](https://ghcr.io/hecate-social/hecate-daemon) |
-| **hecate-agents** | Personality system & development philosophy | [GitHub](https://github.com/hecate-social/hecate-agents) |
-| **hecate-gitops** | Flux manifests for Kubernetes deployment | [GitHub](https://github.com/hecate-social/hecate-gitops) |
+| **hecate-daemon** | Local runtime with LLM routing & mesh connectivity (Erlang/OTP) | [Docker](https://ghcr.io/hecate-social/hecate-daemon) |
+| **hecate-agents** | Personality system & development philosophy | |
+| **hecate-gitops** | Flux manifests for Kubernetes deployment | |
+
+---
+
+## The Agentic Lifecycle (ALC)
+
+Hecate structures development into four phases. The AI assistant adapts its behavior to each phase.
+
+<p align="center">
+  <img src="assets/cartwheel-architecture.svg" alt="Cartwheel Architecture" width="100%">
+</p>
+
+| Phase | Name | Focus |
+|-------|------|-------|
+| **DnA** | Discovery & Analysis | Understand the problem before solving it |
+| **AnP** | Architecture & Planning | Design with event sourcing, vertical slices |
+| **TnI** | Testing & Implementation | Build incrementally, verify continuously |
+| **DnO** | Deployment & Operations | Ship via GitOps, monitor, iterate |
+
+**The wheel turns. Each phase feeds the next.**
+
+→ See [Overview](guides/overview.md) for the complete ALC workflow.
+
+---
+
+## Cartwheel Architecture
+
+Applications built with Hecate follow the **Cartwheel** pattern:
+
+<p align="center">
+  <img src="assets/cartwheel-complete-flow.svg" alt="Cartwheel Data Flow" width="100%">
+</p>
+
+| Sequence | Purpose |
+|----------|---------|
+| **CMD** | Commands enter, events are produced |
+| **PRJ** | Events become read models |
+| **QRY** | Queries are served from read models |
+
+**Spokes = Vertical Slices.** Each business capability is self-contained.
+
+→ See [Architecture](guides/architecture.md) for implementation details.
 
 ---
 
