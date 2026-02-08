@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366f1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background circle -->
+  <circle cx="60" cy="60" r="55" fill="url(#grad1)"/>
+
+  <!-- Torch/flame shape -->
+  <path d="M60 20
+           Q75 40 70 55
+           Q80 50 75 65
+           Q85 60 78 75
+           L68 75 L68 95 L52 95 L52 75 L42 75
+           Q35 60 45 65
+           Q40 50 50 55
+           Q45 40 60 20Z"
+        fill="#fbbf24" opacity="0.9"/>
+
+  <!-- Inner flame -->
+  <path d="M60 35
+           Q68 48 65 58
+           Q72 55 68 68
+           L62 68 L62 80 L58 80 L58 68 L52 68
+           Q48 55 55 58
+           Q52 48 60 35Z"
+        fill="#fef3c7"/>
+
+  <!-- Three dots (crossroads symbol) -->
+  <circle cx="40" cy="100" r="4" fill="#e0e7ff"/>
+  <circle cx="60" cy="100" r="4" fill="#e0e7ff"/>
+  <circle cx="80" cy="100" r="4" fill="#e0e7ff"/>
+</svg>
