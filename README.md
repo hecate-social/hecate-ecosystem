@@ -1,282 +1,125 @@
-# Hecate Ecosystem
+# Hecate
 
-[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
-[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-support-yellow.svg)](https://buymeacoffee.com/rlefever)
-
-<p align="center">
+<div align="center">
   <img src="assets/avatar-terminal.jpg" width="200" alt="Hecate">
-</p>
 
-<p align="center">
-  <strong>Documentation hub for the Hecate AI Agent Platform</strong>
-</p>
+  <h3>Developer Studio for Macula Mesh Applications</h3>
+
+  <p><em>Build distributed, event-sourced applications with AI assistance — entirely from your terminal.</em></p>
+
+  [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
+  [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-support-yellow.svg)](https://buymeacoffee.com/rlefever)
+</div>
 
 ---
 
 ## What is Hecate?
 
-Hecate is a **local-first AI agent platform** that connects your terminal to intelligent assistants running on your own hardware. The ecosystem combines:
+Hecate is **not just another AI chatbot**.
 
-- **Local LLM Routing** - Run models via Ollama or connect to commercial providers
-- **Mesh Networking** - Peer-to-peer communication between agents via Macula mesh
-- **Personality System** - Configurable agent personas with role-based behaviors
-- **Event Sourcing** - Full audit trail of agent interactions and decisions
+It's a complete development environment for building applications on the [Macula mesh network](https://github.com/macula-io/macula-ecosystem). The TUI provides an AI-assisted workspace where you:
 
-Named after the Greek goddess of crossroads and guidance, Hecate helps you navigate the intersection of human intent and AI capability.
+- **Discover & Analyze** codebases with intelligent exploration
+- **Architect & Plan** distributed systems with event sourcing patterns
+- **Implement & Test** with AI pair programming
+- **Deploy & Operate** via GitOps to edge infrastructure
 
-## Architecture Overview
+All while connected to a decentralized mesh where your applications can discover peers, share capabilities, and communicate through distributed events.
 
 <p align="center">
-  <img src="assets/ecosystem-overview.svg" alt="Hecate Ecosystem Architecture" width="100%">
+  <img src="assets/ecosystem-overview.svg" alt="Hecate Ecosystem" width="100%">
 </p>
+
+---
 
 ## The Ecosystem
 
-The platform comprises four core components:
-
----
-
-### Hecate Daemon — Local Agent Runtime
-
-An Erlang/OTP daemon that runs on your machine, providing LLM routing, mesh connectivity, and event-sourced state management.
-
 | Component | Description | Links |
 |-----------|-------------|-------|
-| **hecate-daemon** | Erlang daemon with REST API over Unix socket | [GitHub](https://github.com/hecate-social/hecate-daemon) \| [Docker](https://ghcr.io/hecate-social/hecate-daemon) |
-
-**Core capabilities:**
-- **Multi-Provider LLM** - Ollama, OpenAI, Anthropic, Google (auto-detected from env vars)
-- **Streaming Chat** - Server-sent events for real-time responses
-- **Unix Socket API** - Secure local-only communication
-- **Event Sourcing** - ReckonDB for state, SQLite for read models
-- **Mesh Integration** - Connect to Macula mesh for peer discovery
-
-**API Endpoints:**
-- `/api/llm/chat` - Chat with models (streaming or sync)
-- `/api/llm/models` - List available models
-- `/api/llm/health` - Provider health status
-- `/api/cartwheels` - Project/task management (ALC lifecycle)
+| **hecate-tui** | Terminal developer studio (Go/Bubble Tea) | [GitHub](https://github.com/hecate-social/hecate-tui) |
+| **hecate-daemon** | Local runtime with LLM routing & mesh connectivity (Erlang/OTP) | [GitHub](https://github.com/hecate-social/hecate-daemon) ·  [Docker](https://ghcr.io/hecate-social/hecate-daemon) |
+| **hecate-agents** | Personality system & development philosophy | [GitHub](https://github.com/hecate-social/hecate-agents) |
+| **hecate-gitops** | Flux manifests for Kubernetes deployment | [GitHub](https://github.com/hecate-social/hecate-gitops) |
 
 ---
-
-### Hecate TUI — Terminal Interface
-
-A Go terminal application built with Bubble Tea, providing a rich interactive experience for chatting with AI agents.
-
-| Component | Description | Links |
-|-----------|-------------|-------|
-| **hecate-tui** | Terminal UI with vim-style navigation | [GitHub](https://github.com/hecate-social/hecate-tui) |
-
-**Core capabilities:**
-- **Vim-style Modes** - Normal, Insert, Visual modes for efficient navigation
-- **Model Selection** - Browse and switch between available models
-- **Chat History** - Up/down arrows to recall previous messages
-- **Personality System** - Load custom personas and role-based behaviors
-- **Tool Calling** - Enable function calling for capable models (`/fn on`)
-- **Slash Commands** - `/models`, `/roles`, `/browse`, `/geo`, and more
-
-**Keyboard Shortcuts:**
-- `i` - Enter Insert mode
-- `Esc` - Return to Normal mode
-- `Tab` - Cycle through models
-- `/` - Enter command mode
-
----
-
-### Hecate Agents — Personality & Philosophy
-
-Shaping material that defines how Hecate agents think, communicate, and approach problems.
-
-| Component | Description | Links |
-|-----------|-------------|-------|
-| **hecate-agents** | Personality files and philosophy guides | [GitHub](https://github.com/hecate-social/hecate-agents) |
-
-**Contents:**
-- **PERSONALITY.md** - Core goddess traits (confident, witty, guiding, wise)
-- **SOUL.md** - Identity, values, and principles
-- **philosophy/** - DDD, vertical slicing, screaming architecture
-- **skills/** - Antipatterns, code generation templates
-
-**ALC Roles (Agentic Lifecycle):**
-
-| Role | Code | Focus |
-|------|------|-------|
-| Discovery & Analysis | `dna` | Understanding problems, exploring codebases |
-| Architecture & Planning | `anp` | Designing solutions, planning implementation |
-| Testing & Implementation | `tni` | Writing code, running tests |
-| Deployment & Operations | `dno` | Shipping, monitoring, maintaining |
-
-Switch roles with `/roles <code>` in the TUI.
-
----
-
-### Hecate GitOps — Deployment Manifests
-
-Flux-based GitOps configuration for deploying Hecate to Kubernetes clusters.
-
-| Component | Description | Links |
-|-----------|-------------|-------|
-| **hecate-gitops** | Kubernetes manifests for Flux | [GitHub](https://github.com/hecate-social/hecate-gitops) |
-
-**Deployment Model:**
-- DaemonSet deploys hecate-daemon to every node
-- Unix socket at `/run/hecate/daemon.sock`
-- ConfigMaps for configuration
-- Sealed Secrets for API keys
-
-**Environments:**
-- BEAM cluster (beam00-03.lab) - Integration testing
-- Edge devices - Production deployments
-
----
-
-## Data Flow
-
-<p align="center">
-  <img src="assets/data-flow.svg" alt="Hecate Data Flow" width="100%">
-</p>
-
-```
-User Input (TUI)
-    ↓
-Unix Socket API
-    ↓
-Hecate Daemon
-    ├── LLM Provider (Ollama/OpenAI/Anthropic/Google)
-    ├── Event Store (ReckonDB)
-    ├── Read Models (SQLite)
-    └── Mesh (Macula)
-    ↓
-Response Stream
-    ↓
-TUI Display
-```
 
 ## Documentation
 
-- [**Overview**](guides/overview.md) - Introduction to the ecosystem
-- [**Getting Started**](guides/getting-started.md) - Installation and first chat
-- [**Architecture**](guides/architecture.md) - How the pieces fit together
-- [**Daemon API**](guides/daemon-api.md) - REST API reference
-- [**TUI Usage**](guides/tui-usage.md) - Commands and keyboard shortcuts
-- [**Personality System**](guides/personality-system.md) - Configuring agent personas
-- [**Mesh Integration**](guides/mesh-integration.md) - Connecting to Macula mesh
-- [**Deployment**](guides/deployment.md) - GitOps deployment guide
+### Getting Started
+
+- [**Overview**](guides/overview.md) — What Hecate is and why it exists
+- [**Getting Started**](guides/getting-started.md) — Install and run your first session
+- [**Architecture**](guides/architecture.md) — How the components fit together
+
+### Using the Studio
+
+- [**TUI Usage**](guides/tui-usage.md) — Commands, shortcuts, and workflows
+- [**Personality System**](guides/personality-system.md) — Configure AI behavior and roles
+- [**Daemon API**](guides/daemon-api.md) — REST API reference
+
+### Building Mesh Applications
+
+- [**Mesh Integration**](guides/mesh-integration.md) — Connect to Macula, discover peers, share capabilities
+- [**Deployment**](guides/deployment.md) — GitOps deployment to Kubernetes
+
+---
 
 ## Why Hecate?
 
-### Own Your AI Stack
+### For Mesh Application Developers
 
-Cloud AI services collect your data, charge per token, and can change terms overnight. Hecate keeps everything local:
+The Macula mesh enables decentralized, peer-to-peer applications. Hecate gives you an AI-powered development environment that understands distributed systems, event sourcing, and mesh architecture patterns.
 
-- **Your hardware** - Run models on your own machines
-- **Your data** - Conversations never leave your network
-- **Your rules** - No usage limits, no content filtering you didn't choose
+### Local-First, Privacy-Respecting
 
-### Terminal-Native Experience
+Your code, your conversations, your data — all local. Use Ollama for completely offline development, or connect to commercial providers when you choose.
 
-GUIs are nice, but terminals are faster. Hecate's TUI provides:
+### Terminal-Native
 
-- **Vim-style efficiency** - Modal editing for power users
-- **No context switching** - Stay in your terminal workflow
-- **Scriptable** - Pipe inputs, capture outputs
-- **SSH-friendly** - Use from any machine
+No browser tabs. No Electron. Just your terminal, SSH-accessible from anywhere, with vim-style efficiency for developers who live in the command line.
 
-### Agent Personality
+### Opinionated Architecture
 
-Generic AI assistants lack character. Hecate's personality system lets you:
+Hecate embodies strong opinions about how distributed applications should be built:
+- **Event Sourcing** — Capture intent, not just state
+- **Vertical Slicing** — Features own their infrastructure
+- **Screaming Architecture** — Names reveal purpose
 
-- **Define personas** - Confident, witty, or strictly professional
-- **Switch roles** - Different behaviors for different tasks
-- **Evolve over time** - Agents that learn your preferences
+The AI assistant is trained on these patterns and guides you toward them.
 
-### Mesh-Ready
-
-When you need multiple agents working together:
-
-- **Peer discovery** - Find other Hecate instances on the mesh
-- **Capability sharing** - Advertise and discover agent capabilities
-- **Event propagation** - Coordinate through distributed events
+---
 
 ## Quick Start
 
-### 1. Install the Daemon
-
 ```bash
-# Using Docker
-docker run -d \
+# Install daemon
+docker run -d --network host \
   -v /run/hecate:/run/hecate \
-  -v ~/.hecate:/var/lib/hecate \
   ghcr.io/hecate-social/hecate-daemon:latest
 
-# Or build from source
-cd hecate-daemon
-rebar3 release
-_build/default/rel/hecate/bin/hecate foreground
-```
-
-### 2. Install the TUI
-
-```bash
-# Download release
-curl -LO https://github.com/hecate-social/hecate-tui/releases/latest/download/hecate-tui-linux-amd64.tar.gz
-tar xzf hecate-tui-linux-amd64.tar.gz
+# Install TUI
+curl -fsSL https://github.com/hecate-social/hecate-tui/releases/latest/download/hecate-tui-linux-amd64.tar.gz | tar xz
 sudo mv hecate-tui /usr/local/bin/
 
-# Or build from source
-cd hecate-tui
-go build -o hecate-tui ./cmd/hecate-tui
-```
-
-### 3. Start Chatting
-
-```bash
-# Ensure Ollama is running with a model
-ollama pull llama3.2
-
-# Launch the TUI
+# Launch
 hecate-tui
-
-# Press 'i' to enter Insert mode, type your message, press Enter
 ```
 
-## Configuration
+See [Getting Started](guides/getting-started.md) for detailed instructions.
 
-### TUI Config (`~/.config/hecate-tui/config.toml`)
-
-```toml
-[daemon]
-socket_path = "/run/hecate/daemon.sock"
-
-[personality]
-personality_file = "~/hecate-agents/PERSONALITY.md"
-roles_dir = "~/hecate-agents/philosophy"
-active_role = "dna"
-
-[ui]
-theme = "dark"
-```
-
-### Daemon Environment Variables
-
-| Variable | Description | Default |
-|----------|-------------|---------|
-| `OLLAMA_HOST` | Ollama API URL | `http://localhost:11434` |
-| `OPENAI_API_KEY` | OpenAI API key | (none) |
-| `ANTHROPIC_API_KEY` | Anthropic API key | (none) |
-| `GOOGLE_API_KEY` | Google AI API key | (none) |
+---
 
 ## Community
 
 - **GitHub**: [hecate-social](https://github.com/hecate-social)
-- **Issues**: Report bugs on the respective repositories
+- **Macula Ecosystem**: [macula-io](https://github.com/macula-io/macula-ecosystem)
 
 ## License
 
-Apache 2.0 - See [LICENSE](LICENSE) for details.
+Apache 2.0 — See [LICENSE](LICENSE)
 
 ---
 
 <p align="center">
-  <sub>Built with Erlang/OTP and Go</sub>
+  <sub>Named after the Greek goddess of crossroads and guidance.<br/>Built with Erlang/OTP and Go.</sub>
 </p>
