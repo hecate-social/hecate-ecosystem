@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200" width="800" height="200">
+  <defs>
+    <linearGradient id="alcBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e1b4b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#312e81;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="phaseGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#4338ca;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3730a3;stop-opacity:1" />
+    </linearGradient>
+    <marker id="alcArrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#6366f1"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="200" fill="url(#alcBg)" rx="8"/>
+
+  <!-- Title -->
+  <text x="400" y="30" text-anchor="middle" fill="#e0e7ff" font-family="sans-serif" font-size="16" font-weight="bold">Application Lifecycle (ALC)</text>
+
+  <!-- Phase boxes -->
+  <!-- DnA -->
+  <rect x="40" y="60" width="150" height="80" fill="url(#phaseGrad)" rx="8" stroke="#6366f1" stroke-width="2"/>
+  <text x="115" y="90" text-anchor="middle" fill="#fbbf24" font-family="sans-serif" font-size="14" font-weight="bold">DnA</text>
+  <text x="115" y="110" text-anchor="middle" fill="#c7d2fe" font-family="sans-serif" font-size="11">Discovery</text>
+  <text x="115" y="125" text-anchor="middle" fill="#c7d2fe" font-family="sans-serif" font-size="11">& Analysis</text>
+
+  <!-- Arrow DnA to AnP -->
+  <line x1="190" y1="100" x2="230" y2="100" stroke="#6366f1" stroke-width="2" marker-end="url(#alcArrow)"/>
+
+  <!-- AnP -->
+  <rect x="235" y="60" width="150" height="80" fill="url(#phaseGrad)" rx="8" stroke="#6366f1" stroke-width="2"/>
+  <text x="310" y="90" text-anchor="middle" fill="#fbbf24" font-family="sans-serif" font-size="14" font-weight="bold">AnP</text>
+  <text x="310" y="110" text-anchor="middle" fill="#c7d2fe" font-family="sans-serif" font-size="11">Architecture</text>
+  <text x="310" y="125" text-anchor="middle" fill="#c7d2fe" font-family="sans-serif" font-size="11">& Planning</text>
+
+  <!-- Arrow AnP to TnI -->
+  <line x1="385" y1="100" x2="425" y2="100" stroke="#6366f1" stroke-width="2" marker-end="url(#alcArrow)"/>
+
+  <!-- TnI -->
+  <rect x="430" y="60" width="150" height="80" fill="url(#phaseGrad)" rx="8" stroke="#6366f1" stroke-width="2"/>
+  <text x="505" y="90" text-anchor="middle" fill="#fbbf24" font-family="sans-serif" font-size="14" font-weight="bold">TnI</text>
+  <text x="505" y="110" text-anchor="middle" fill="#c7d2fe" font-family="sans-serif" font-size="11">Testing</text>
+  <text x="505" y="125" text-anchor="middle" fill="#c7d2fe" font-family="sans-serif" font-size="11">& Implementation</text>
+
+  <!-- Arrow TnI to DnO -->
+  <line x1="580" y1="100" x2="620" y2="100" stroke="#6366f1" stroke-width="2" marker-end="url(#alcArrow)"/>
+
+  <!-- DnO -->
+  <rect x="625" y="60" width="150" height="80" fill="url(#phaseGrad)" rx="8" stroke="#6366f1" stroke-width="2"/>
+  <text x="700" y="90" text-anchor="middle" fill="#fbbf24" font-family="sans-serif" font-size="14" font-weight="bold">DnO</text>
+  <text x="700" y="110" text-anchor="middle" fill="#c7d2fe" font-family="sans-serif" font-size="11">Deployment</text>
+  <text x="700" y="125" text-anchor="middle" fill="#c7d2fe" font-family="sans-serif" font-size="11">& Operations</text>
+
+  <!-- Feedback loop arrow (DnO back to DnA) -->
+  <path d="M700 140 L700 170 L115 170 L115 145"
+        stroke="#6366f1" stroke-width="2" fill="none" stroke-dasharray="5,3" marker-end="url(#alcArrow)"/>
+  <text x="400" y="185" text-anchor="middle" fill="#a5b4fc" font-family="sans-serif" font-size="10" font-style="italic">feedback → next cycle</text>
+</svg>

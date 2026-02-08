@@ -43,12 +43,12 @@ All while connected to a decentralized mesh where your applications can discover
 
 ---
 
-## The Agentic Lifecycle (ALC)
+## Application Lifecycle (ALC)
 
 Hecate structures development into four phases. The AI assistant adapts its behavior to each phase.
 
 <p align="center">
-  <img src="assets/cartwheel-architecture.svg" alt="Cartwheel Architecture" width="100%">
+  <img src="assets/alc-lifecycle.svg" alt="Application Lifecycle" width="100%">
 </p>
 
 | Phase | Name | Focus |
@@ -66,10 +66,10 @@ Hecate structures development into four phases. The AI assistant adapts its beha
 
 ## Cartwheel Architecture
 
-Applications built with Hecate follow the **Cartwheel** pattern:
+Applications built with Hecate follow the **Cartwheel** pattern — vertical slices organized around business capabilities.
 
 <p align="center">
-  <img src="assets/cartwheel-complete-flow.svg" alt="Cartwheel Data Flow" width="100%">
+  <img src="assets/cartwheel-architecture.svg" alt="Cartwheel Architecture" width="100%">
 </p>
 
 | Sequence | Purpose |
