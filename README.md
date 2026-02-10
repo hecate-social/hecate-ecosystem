@@ -64,23 +64,24 @@ Hecate structures development into four phases. The AI assistant adapts its beha
 
 ---
 
-## Cartwheel Architecture
+## Division Architecture
 
-Applications built with Hecate follow the **Cartwheel** pattern — vertical slices organized around business capabilities.
+Applications built with Hecate follow the **Division** pattern — vertical slices organized around business capabilities within departments.
 
 <p align="center">
-  <img src="assets/cartwheel-architecture.svg" alt="Cartwheel Architecture" width="100%">
+  <img src="assets/cartwheel-architecture.svg" alt="Division Architecture" width="100%">
 </p>
 
-| Sequence | Purpose |
-|----------|---------|
+| Department | Purpose |
+|------------|---------|
 | **CMD** | Commands enter, events are produced |
-| **PRJ** | Events become read models |
+| **PRJ** | Events become read models (projections) |
 | **QRY** | Queries are served from read models |
 
-**Spokes = Vertical Slices.** Each business capability is self-contained.
+**Desks = Vertical Slices.** Each business capability is self-contained.
 
-→ See [Architecture](guides/architecture.md) for implementation details.
+→ See [Architecture](guides/architecture.md) for component details.
+→ See [Venture Lifecycle](guides/venture-lifecycle.md) for the full process-centric model.
 
 ---
 

@@ -31,7 +31,7 @@ Check daemon health and status.
 {
   "ok": true,
   "status": "healthy",
-  "version": "0.7.2",
+  "version": "0.8.0",
   "uptime_seconds": 3600
 }
 ```
@@ -132,60 +132,43 @@ Reload provider configuration from environment variables.
 }
 ```
 
-## Cartwheel Endpoints
+## Venture Endpoints
 
-Cartwheels represent projects or work items in the Agentic Lifecycle (ALC).
+Ventures represent business endeavors that contain divisions.
 
-### GET /api/cartwheels
+### GET /api/ventures
 
-List all cartwheels.
+List all ventures.
 
 **Response:**
 ```json
 {
   "ok": true,
-  "cartwheels": [
+  "ventures": [
     {
-      "id": "cw-abc123",
-      "name": "Implement feature X",
-      "status": "in_progress",
-      "phase": "tni",
-      "created_at": "2026-02-08T10:00:00Z"
+      "id": "v-abc123",
+      "name": "my-saas-app",
+      "brief": "A multi-tenant SaaS platform",
+      "status": 1,
+      "setup_at": "2026-02-10T10:00:00Z"
     }
   ]
 }
 ```
 
-### GET /api/cartwheels/:id
+### GET /api/ventures/:id
 
-Get a specific cartwheel.
+Get a specific venture.
 
-**Response:**
-```json
-{
-  "ok": true,
-  "cartwheel": {
-    "id": "cw-abc123",
-    "name": "Implement feature X",
-    "brief": "Add the new feature to the API",
-    "status": "in_progress",
-    "phase": "tni",
-    "torch_id": "torch-xyz",
-    "created_at": "2026-02-08T10:00:00Z"
-  }
-}
-```
+### POST /api/ventures
 
-### POST /api/cartwheels
-
-Create a new cartwheel.
+Set up a new venture.
 
 **Request:**
 ```json
 {
-  "name": "Implement feature X",
-  "brief": "Add the new feature to the API",
-  "torch_id": "torch-xyz"
+  "name": "my-saas-app",
+  "brief": "A multi-tenant SaaS platform"
 }
 ```
 
@@ -193,40 +176,96 @@ Create a new cartwheel.
 ```json
 {
   "ok": true,
-  "id": "cw-abc123"
+  "id": "v-abc123"
 }
 ```
 
-## Torch Endpoints
+### GET /api/ventures/:id/status
 
-Torches represent broader initiatives or projects that contain cartwheels.
-
-### GET /api/torches
-
-List all torches.
+Get the full venture status from `guide_venture`, including the current process and health of each division.
 
 **Response:**
 ```json
 {
   "ok": true,
-  "torches": [
-    {
-      "id": "torch-xyz",
-      "name": "Q1 Platform Improvements",
-      "status": "active",
-      "cartwheel_count": 5
-    }
-  ]
+  "venture_id": "v-abc123",
+  "name": "my-saas-app",
+  "divisions": {
+    "auth": {"process": "generate_division", "state": "active", "health": "ok"},
+    "billing": {"process": "design_division", "state": "paused", "health": "unknown"}
+  }
 }
 ```
 
-### GET /api/torches/:id
+## Discovery Endpoints
 
-Get a specific torch.
+### POST /api/ventures/:venture_id/discovery/start
 
-### POST /api/torches
+Start the discovery process for a venture.
 
-Create a new torch.
+### POST /api/ventures/:venture_id/discovery/discover
+
+Discover a new division within the venture.
+
+**Request:**
+```json
+{
+  "division_name": "auth",
+  "description": "Authentication and authorization bounded context",
+  "rationale": "Separate identity concerns from billing and notifications"
+}
+```
+
+### POST /api/ventures/:venture_id/discovery/complete
+
+Complete the discovery phase.
+
+### GET /api/ventures/:venture_id/divisions
+
+List discovered divisions for a venture.
+
+## Division Process Endpoints
+
+Each division process (design, plan, generate, test, deploy, monitor, rescue) follows the same pattern:
+
+### Lifecycle Commands
+
+```
+POST /api/divisions/:division_id/{process}/start
+POST /api/divisions/:division_id/{process}/pause
+POST /api/divisions/:division_id/{process}/resume
+POST /api/divisions/:division_id/{process}/complete
+```
+
+Where `{process}` is one of: `design`, `plan`, `generate`, `test`, `deploy`, `monitor`, `rescue`.
+
+### Domain Commands (examples)
+
+```
+POST /api/divisions/:division_id/design/aggregate    — design an aggregate
+POST /api/divisions/:division_id/design/event         — design an event
+POST /api/divisions/:division_id/plan/desk            — inventory a desk
+POST /api/divisions/:division_id/plan/sequence        — sequence desks
+POST /api/divisions/:division_id/generate/skeleton    — generate skeleton
+POST /api/divisions/:division_id/generate/desk        — generate a desk
+POST /api/divisions/:division_id/test/suite           — run test suite
+POST /api/divisions/:division_id/deploy/release       — deploy a release
+POST /api/divisions/:division_id/monitor/incident     — raise an incident
+POST /api/divisions/:division_id/rescue/diagnose      — diagnose incident
+POST /api/divisions/:division_id/rescue/fix           — apply a fix
+```
+
+### Read Endpoints (examples)
+
+```
+GET /api/divisions/:division_id/designs               — list designs
+GET /api/divisions/:division_id/plans                  — list plans
+GET /api/divisions/:division_id/generations            — list generations
+GET /api/divisions/:division_id/tests                  — list test results
+GET /api/divisions/:division_id/deployments            — list deployments
+GET /api/divisions/:division_id/monitoring             — list health checks
+GET /api/divisions/:division_id/rescues                — list rescues
+```
 
 ## Geo Endpoints
 
