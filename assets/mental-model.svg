@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 855">
   <defs>
     <!-- Gradients -->
     <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -46,7 +46,7 @@
   </defs>
 
   <!-- Background -->
-  <rect width="1200" height="820" fill="url(#bgGrad)"/>
+  <rect width="1200" height="855" fill="url(#bgGrad)"/>
 
   <!-- Title -->
   <text x="600" y="32" text-anchor="middle" fill="#E0E7FF" font-family="system-ui, sans-serif" font-size="22" font-weight="bold">
@@ -59,7 +59,7 @@
   <!-- ═══════════════════════════════════════════════════════════ -->
   <!-- VENTURE (outermost container)                               -->
   <!-- ═══════════════════════════════════════════════════════════ -->
-  <rect x="15" y="65" width="1170" height="710" rx="12" fill="url(#ventureGrad)" stroke="#6366F1" stroke-width="2"/>
+  <rect x="15" y="65" width="1170" height="590" rx="12" fill="url(#ventureGrad)" stroke="#6366F1" stroke-width="2"/>
 
   <!-- Venture label -->
   <rect x="30" y="75" width="120" height="28" rx="14" fill="#4338CA" fill-opacity="0.6"/>
@@ -431,51 +431,51 @@
   <!-- ═══════════════════════════════════════════════════════════ -->
   <!-- MACULA MESH (external fact transport)                       -->
   <!-- ═══════════════════════════════════════════════════════════ -->
-  <rect x="35" y="660" width="1130" height="110" rx="10" fill="#0C4A6E" fill-opacity="0.3" stroke="#38BDF8" stroke-width="2"/>
+  <rect x="35" y="690" width="1130" height="110" rx="10" fill="#0C4A6E" fill-opacity="0.3" stroke="#38BDF8" stroke-width="2"/>
 
   <!-- Mesh label -->
-  <rect x="50" y="668" width="130" height="24" rx="12" fill="#0369A1" fill-opacity="0.7"/>
-  <text x="115" y="685" text-anchor="middle" fill="#BAE6FD" font-family="system-ui, sans-serif" font-size="12" font-weight="bold">
+  <rect x="50" y="698" width="130" height="24" rx="12" fill="#0369A1" fill-opacity="0.7"/>
+  <text x="115" y="715" text-anchor="middle" fill="#BAE6FD" font-family="system-ui, sans-serif" font-size="12" font-weight="bold">
     MACULA MESH
   </text>
-  <text x="195" y="685" fill="#7DD3FC" font-family="system-ui, sans-serif" font-size="10">
+  <text x="195" y="715" fill="#7DD3FC" font-family="system-ui, sans-serif" font-size="10">
     External fact transport — HTTP/3 over QUIC, DHT PubSub
   </text>
 
   <!-- Other agents on the mesh -->
-  <rect x="80" y="700" width="200" height="50" rx="6" fill="#0C4A6E" stroke="#0EA5E9" stroke-width="1"/>
-  <text x="180" y="722" text-anchor="middle" fill="#BAE6FD" font-family="system-ui, sans-serif" font-size="11" font-weight="500">
+  <rect x="80" y="730" width="200" height="50" rx="6" fill="#0C4A6E" stroke="#0EA5E9" stroke-width="1"/>
+  <text x="180" y="752" text-anchor="middle" fill="#BAE6FD" font-family="system-ui, sans-serif" font-size="11" font-weight="500">
     Agent A (beam00)
   </text>
-  <text x="180" y="738" text-anchor="middle" fill="#7DD3FC" font-family="system-ui, sans-serif" font-size="9">
+  <text x="180" y="768" text-anchor="middle" fill="#7DD3FC" font-family="system-ui, sans-serif" font-size="9">
     Publishes facts to mesh topics
   </text>
 
   <!-- Pulse ring around Agent A -->
-  <circle cx="180" cy="725" r="14" fill="none" stroke="#0EA5E9">
+  <circle cx="180" cy="755" r="14" fill="none" stroke="#0EA5E9">
     <animate attributeName="r" values="14;40;55" dur="3s" repeatCount="indefinite"/>
     <animate attributeName="opacity" values="0.6;0.2;0" dur="3s" repeatCount="indefinite"/>
   </circle>
 
-  <rect x="400" y="700" width="200" height="50" rx="6" fill="#0C4A6E" stroke="#0EA5E9" stroke-width="1"/>
-  <text x="500" y="722" text-anchor="middle" fill="#BAE6FD" font-family="system-ui, sans-serif" font-size="11" font-weight="500">
+  <rect x="400" y="730" width="200" height="50" rx="6" fill="#0C4A6E" stroke="#0EA5E9" stroke-width="1"/>
+  <text x="500" y="752" text-anchor="middle" fill="#BAE6FD" font-family="system-ui, sans-serif" font-size="11" font-weight="500">
     Agent B (beam01)
   </text>
-  <text x="500" y="738" text-anchor="middle" fill="#7DD3FC" font-family="system-ui, sans-serif" font-size="9">
+  <text x="500" y="768" text-anchor="middle" fill="#7DD3FC" font-family="system-ui, sans-serif" font-size="9">
     Subscribes to mesh topics
   </text>
 
-  <rect x="720" y="700" width="200" height="50" rx="6" fill="#0C4A6E" stroke="#0EA5E9" stroke-width="1"/>
-  <text x="820" y="722" text-anchor="middle" fill="#BAE6FD" font-family="system-ui, sans-serif" font-size="11" font-weight="500">
+  <rect x="720" y="730" width="200" height="50" rx="6" fill="#0C4A6E" stroke="#0EA5E9" stroke-width="1"/>
+  <text x="820" y="752" text-anchor="middle" fill="#BAE6FD" font-family="system-ui, sans-serif" font-size="11" font-weight="500">
     Agent C (edge)
   </text>
-  <text x="820" y="738" text-anchor="middle" fill="#7DD3FC" font-family="system-ui, sans-serif" font-size="9">
+  <text x="820" y="768" text-anchor="middle" fill="#7DD3FC" font-family="system-ui, sans-serif" font-size="9">
     Discovers peers via DHT
   </text>
 
   <!-- Animated mesh packets: A to B -->
-  <path id="meshPathAB" d="M 280,725 L 400,725" fill="none" stroke="none"/>
-  <line x1="280" y1="725" x2="400" y2="725" stroke="#0EA5E9" stroke-width="1" stroke-dasharray="4,3" stroke-opacity="0.4"/>
+  <path id="meshPathAB" d="M 280,755 L 400,755" fill="none" stroke="none"/>
+  <line x1="280" y1="755" x2="400" y2="755" stroke="#0EA5E9" stroke-width="1" stroke-dasharray="4,3" stroke-opacity="0.4"/>
   <circle r="4" fill="#38BDF8">
     <animateMotion dur="2s" repeatCount="indefinite" begin="0s">
       <mpath href="#meshPathAB"/>
@@ -490,8 +490,8 @@
   </circle>
 
   <!-- Animated mesh packets: B to C -->
-  <path id="meshPathBC" d="M 600,725 L 720,725" fill="none" stroke="none"/>
-  <line x1="600" y1="725" x2="720" y2="725" stroke="#0EA5E9" stroke-width="1" stroke-dasharray="4,3" stroke-opacity="0.4"/>
+  <path id="meshPathBC" d="M 600,755 L 720,755" fill="none" stroke="none"/>
+  <line x1="600" y1="755" x2="720" y2="755" stroke="#0EA5E9" stroke-width="1" stroke-dasharray="4,3" stroke-opacity="0.4"/>
   <circle r="4" fill="#38BDF8">
     <animateMotion dur="2s" repeatCount="indefinite" begin="0.3s">
       <mpath href="#meshPathBC"/>
@@ -510,12 +510,12 @@
   <!-- ═══════════════════════════════════════════════════════════ -->
 
   <!-- Fact Transport → Mesh (publish ↓) -->
-  <path id="factPublishDown" d="M 196,635 L 196,660" stroke="#38BDF8" stroke-width="1.5" fill="none" marker-end="url(#arrMesh)"/>
-  <text x="178" y="651" text-anchor="end" fill="#7DD3FC" font-family="system-ui, sans-serif" font-size="8">publish</text>
+  <path id="factPublishDown" d="M 196,635 L 196,690" stroke="#38BDF8" stroke-width="1.5" fill="none" marker-end="url(#arrMesh)"/>
+  <text x="178" y="666" text-anchor="end" fill="#7DD3FC" font-family="system-ui, sans-serif" font-size="8">publish</text>
 
   <!-- Mesh → Fact Transport (subscribe ↑) -->
-  <path id="factSubscribeUp" d="M 220,660 L 220,635" stroke="#38BDF8" stroke-width="1.5" fill="none" stroke-dasharray="5,3" marker-end="url(#arrMesh)"/>
-  <text x="238" y="651" fill="#7DD3FC" font-family="system-ui, sans-serif" font-size="8">subscribe</text>
+  <path id="factSubscribeUp" d="M 220,690 L 220,635" stroke="#38BDF8" stroke-width="1.5" fill="none" stroke-dasharray="5,3" marker-end="url(#arrMesh)"/>
+  <text x="238" y="666" fill="#7DD3FC" font-family="system-ui, sans-serif" font-size="8">subscribe</text>
 
   <!-- Animated dots: FT ↔ Mesh vertical -->
   <circle r="3" fill="#38BDF8">
@@ -534,37 +534,37 @@
   <!-- ═══════════════════════════════════════════════════════════ -->
   <!-- LEGEND                                                      -->
   <!-- ═══════════════════════════════════════════════════════════ -->
-  <rect x="15" y="780" width="1170" height="35" rx="6" fill="#1E293B"/>
+  <rect x="15" y="812" width="1170" height="35" rx="6" fill="#1E293B"/>
 
   <!-- Legend items -->
-  <circle cx="40" cy="797" r="5" fill="#8B5CF6"/>
-  <text x="50" y="801" fill="#A5B4FC" font-family="system-ui, sans-serif" font-size="9">CMD = Requests</text>
+  <circle cx="40" cy="829" r="5" fill="#8B5CF6"/>
+  <text x="50" y="833" fill="#A5B4FC" font-family="system-ui, sans-serif" font-size="9">CMD = Requests</text>
 
-  <circle cx="160" cy="797" r="5" fill="#10B981"/>
-  <text x="170" y="801" fill="#6EE7B7" font-family="system-ui, sans-serif" font-size="9">PRJ = Projections</text>
+  <circle cx="160" cy="829" r="5" fill="#10B981"/>
+  <text x="170" y="833" fill="#6EE7B7" font-family="system-ui, sans-serif" font-size="9">PRJ = Projections</text>
 
-  <circle cx="295" cy="797" r="5" fill="#F59E0B"/>
-  <text x="305" y="801" fill="#FCD34D" font-family="system-ui, sans-serif" font-size="9">QRY = Queries</text>
+  <circle cx="295" cy="829" r="5" fill="#F59E0B"/>
+  <text x="305" y="833" fill="#FCD34D" font-family="system-ui, sans-serif" font-size="9">QRY = Queries</text>
 
-  <circle cx="405" cy="797" r="5" fill="#F472B6"/>
-  <text x="415" y="801" fill="#F9A8D4" font-family="system-ui, sans-serif" font-size="9">Facts (pg groups)</text>
+  <circle cx="405" cy="829" r="5" fill="#F472B6"/>
+  <text x="415" y="833" fill="#F9A8D4" font-family="system-ui, sans-serif" font-size="9">Facts (pg groups)</text>
 
-  <circle cx="535" cy="797" r="5" fill="#38BDF8"/>
-  <text x="545" y="801" fill="#7DD3FC" font-family="system-ui, sans-serif" font-size="9">Mesh (QUIC)</text>
+  <circle cx="535" cy="829" r="5" fill="#38BDF8"/>
+  <text x="545" y="833" fill="#7DD3FC" font-family="system-ui, sans-serif" font-size="9">Mesh (QUIC)</text>
 
   <!-- ReckonDB legend -->
-  <rect x="640" y="791" width="16" height="12" rx="2" fill="#2D1B69" stroke="#A78BFA" stroke-width="1"/>
-  <text x="662" y="801" fill="#DDD6FE" font-family="system-ui, sans-serif" font-size="9">ReckonDB (events)</text>
+  <rect x="640" y="823" width="16" height="12" rx="2" fill="#2D1B69" stroke="#A78BFA" stroke-width="1"/>
+  <text x="662" y="833" fill="#DDD6FE" font-family="system-ui, sans-serif" font-size="9">ReckonDB (events)</text>
 
   <!-- SQLite legend -->
-  <rect x="785" y="791" width="16" height="12" rx="2" fill="#1E293B" stroke="#94A3B8" stroke-width="1"/>
-  <text x="807" y="801" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">SQLite (read model)</text>
+  <rect x="785" y="823" width="16" height="12" rx="2" fill="#1E293B" stroke="#94A3B8" stroke-width="1"/>
+  <text x="807" y="833" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">SQLite (read model)</text>
 
-  <line x1="930" y1="797" x2="955" y2="797" stroke="#94A3B8" stroke-width="1.5" stroke-dasharray="4,2"/>
-  <text x="963" y="801" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">= read-only flow</text>
+  <line x1="930" y1="829" x2="955" y2="829" stroke="#94A3B8" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <text x="963" y="833" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">= read-only flow</text>
 
-  <circle cx="1070" cy="797" r="4" fill="#A78BFA">
+  <circle cx="1070" cy="829" r="4" fill="#A78BFA">
     <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
   </circle>
-  <text x="1080" y="801" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">= animated</text>
+  <text x="1080" y="833" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">= animated</text>
 </svg>
