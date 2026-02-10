@@ -3,7 +3,7 @@
 Hecate uses a **company metaphor** to make distributed, event-sourced architecture intuitive. Every concept maps from an office you can picture to a technical structure you can build.
 
 <p align="center">
-  <img src="assets/mental-model.svg" alt="Hecate Mental Model: Venture, Division, Department, Desk" width="100%">
+  <img src="../assets/mental-model.svg" alt="Hecate Mental Model: Venture, Division, Department, Desk" width="100%">
 </p>
 
 ---

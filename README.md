@@ -87,24 +87,18 @@ Applications built with Hecate follow the **Division** pattern — vertical slic
 
 ## Documentation
 
-### Getting Started
-
-- [**Overview**](guides/overview.md) — What Hecate is and why it exists
-- [**Mental Model**](guides/mental-model.md) — Venture, Division, Department, Desk — the company metaphor explained
-- [**Getting Started**](guides/getting-started.md) — Install and run your first session
-- [**Architecture**](guides/architecture.md) — How the components fit together
-
-### Using the Studio
-
-- [**TUI Usage**](guides/tui-usage.md) — Commands, shortcuts, and workflows
-- [**Personality System**](guides/personality-system.md) — Configure AI behavior and roles
-- [**Daemon API**](guides/daemon-api.md) — REST API reference
-
-### Building Mesh Applications
-
-- [**Application Lifecycle**](guides/application-lifecycle.md) — ALC philosophy and building event-sourced applications for the mesh
-- [**Mesh Integration**](guides/mesh-integration.md) — Connect to Macula, discover peers, share capabilities
-- [**Deployment**](guides/deployment.md) — GitOps deployment to Kubernetes
+| # | Guide | Description |
+|---|-------|-------------|
+| 1 | [**Overview**](guides/overview.md) | What Hecate is and why it exists |
+| 2 | [**Mental Model**](guides/mental-model.md) | Venture, Division, Department, Desk — the company metaphor |
+| 3 | [**Application Lifecycle**](guides/application-lifecycle.md) | The ten processes, lifecycle protocol, and ALC philosophy |
+| 4 | [**Architecture**](guides/architecture.md) | System components, CQRS, event flow, deployment patterns |
+| 5 | [**Getting Started**](guides/getting-started.md) | Install and run your first session |
+| 6 | [**TUI Usage**](guides/tui-usage.md) | Commands, shortcuts, and workflows |
+| 7 | [**Personality System**](guides/personality-system.md) | Configure AI behavior and roles per ALC phase |
+| 8 | [**Daemon API**](guides/daemon-api.md) | REST API reference for the Erlang/OTP daemon |
+| 9 | [**Mesh Integration**](guides/mesh-integration.md) | Connect to Macula, discover peers, share capabilities |
+| 10 | [**Deployment**](guides/deployment.md) | GitOps deployment to Kubernetes |
 
 ---
 
