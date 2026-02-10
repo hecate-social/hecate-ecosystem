@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 820">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="ventureGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#6366F1" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#6366F1" stop-opacity="0.05"/>
+    </linearGradient>
+    <linearGradient id="divisionGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#818CF8" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#818CF8" stop-opacity="0.05"/>
+    </linearGradient>
+    <linearGradient id="cmdGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#8B5CF6" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#8B5CF6" stop-opacity="0.08"/>
+    </linearGradient>
+    <linearGradient id="prjGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#10B981" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#10B981" stop-opacity="0.08"/>
+    </linearGradient>
+    <linearGradient id="qryGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#F59E0B" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#F59E0B" stop-opacity="0.08"/>
+    </linearGradient>
+    <linearGradient id="reckonGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7C3AED" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#6D28D9" stop-opacity="0.1"/>
+    </linearGradient>
+
+    <!-- Arrow markers -->
+    <marker id="arrCmd" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#A78BFA"/>
+    </marker>
+    <marker id="arrPrj" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#34D399"/>
+    </marker>
+    <marker id="arrQry" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#FBBF24"/>
+    </marker>
+    <marker id="arrFact" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#F472B6"/>
+    </marker>
+    <marker id="arrMesh" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#38BDF8"/>
+    </marker>
+
+    <!-- Animated pulse for data flow -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <style>
+    /* Animated data flow dots */
+    @keyframes flowRight {
+      0% { transform: translateX(0); opacity: 0; }
+      15% { opacity: 1; }
+      85% { opacity: 1; }
+      100% { transform: translateX(120px); opacity: 0; }
+    }
+    @keyframes flowDown {
+      0% { transform: translateY(0); opacity: 0; }
+      15% { opacity: 1; }
+      85% { opacity: 1; }
+      100% { transform: translateY(80px); opacity: 0; }
+    }
+    @keyframes flowUp {
+      0% { transform: translateY(0); opacity: 0; }
+      15% { opacity: 1; }
+      85% { opacity: 1; }
+      100% { transform: translateY(-80px); opacity: 0; }
+    }
+    @keyframes flowLeft {
+      0% { transform: translateX(0); opacity: 0; }
+      15% { opacity: 1; }
+      85% { opacity: 1; }
+      100% { transform: translateX(-120px); opacity: 0; }
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+    @keyframes flowCmdToPrj {
+      0% { transform: translate(0, 0); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translate(260px, 0); opacity: 0; }
+    }
+    @keyframes flowPrjToQry {
+      0% { transform: translate(0, 0); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translate(260px, 0); opacity: 0; }
+    }
+    @keyframes flowFactDown {
+      0% { transform: translateY(0); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(100px); opacity: 0; }
+    }
+    .dot-cmd { animation: flowCmdToPrj 2.5s ease-in-out infinite; }
+    .dot-cmd-2 { animation: flowCmdToPrj 2.5s ease-in-out 1.2s infinite; }
+    .dot-prj { animation: flowPrjToQry 2s ease-in-out 0.8s infinite; }
+    .dot-prj-2 { animation: flowPrjToQry 2s ease-in-out 1.8s infinite; }
+    .dot-fact { animation: flowFactDown 3s ease-in-out infinite; }
+    .dot-fact-2 { animation: flowFactDown 3s ease-in-out 1.5s infinite; }
+    .pulse { animation: pulse 2s ease-in-out infinite; }
+    .pulse-slow { animation: pulse 3s ease-in-out infinite; }
+  </style>
+
+  <!-- Background -->
+  <rect width="1100" height="820" fill="url(#bgGrad)"/>
+
+  <!-- Title -->
+  <text x="550" y="32" text-anchor="middle" fill="#E0E7FF" font-family="system-ui, sans-serif" font-size="22" font-weight="bold">
+    The Hecate Mental Model
+  </text>
+  <text x="550" y="52" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="12">
+    Venture &gt; Division &gt; Department (Cartwheel) &gt; Desk (Spoke) &mdash; Event-driven data flow
+  </text>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- VENTURE (outermost container)                               -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <rect x="20" y="65" width="1060" height="710" rx="12" fill="url(#ventureGrad)" stroke="#6366F1" stroke-width="2"/>
+
+  <!-- Venture label -->
+  <rect x="35" y="75" width="120" height="28" rx="14" fill="#4338CA" fill-opacity="0.6"/>
+  <text x="95" y="94" text-anchor="middle" fill="#E0E7FF" font-family="system-ui, sans-serif" font-size="13" font-weight="bold">
+    VENTURE
+  </text>
+  <text x="170" y="94" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="11">
+    The overall business endeavor (conglomerate of divisions)
+  </text>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- DIVISION (bounded context within the venture)               -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <rect x="40" y="110" width="1020" height="400" rx="10" fill="url(#divisionGrad)" stroke="#818CF8" stroke-width="1.5"/>
+
+  <!-- Division label -->
+  <rect x="55" y="118" width="110" height="24" rx="12" fill="#4338CA" fill-opacity="0.5"/>
+  <text x="110" y="135" text-anchor="middle" fill="#C7D2FE" font-family="system-ui, sans-serif" font-size="12" font-weight="bold">
+    DIVISION
+  </text>
+  <text x="178" y="135" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">
+    Bounded context — 3 departments cooperating (e.g. &quot;auth&quot;, &quot;billing&quot;)
+  </text>
+
+  <!-- ─────────────────────────────────────────────── -->
+  <!-- CMD Department (Cartwheel 1 — front-office)     -->
+  <!-- ─────────────────────────────────────────────── -->
+  <rect x="60" y="150" width="310" height="345" rx="8" fill="url(#cmdGrad)" stroke="#8B5CF6" stroke-width="2"/>
+
+  <!-- CMD header -->
+  <text x="215" y="175" text-anchor="middle" fill="#A78BFA" font-family="system-ui, sans-serif" font-size="15" font-weight="bold">
+    CMD Department
+  </text>
+  <text x="215" y="192" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">
+    Front-Office &bull; Requests &bull; Cartwheel 1
+  </text>
+
+  <!-- CMD Hub (dossier/aggregate) -->
+  <rect x="140" y="205" width="150" height="50" rx="25" fill="#312E81" stroke="#A78BFA" stroke-width="2"/>
+  <text x="215" y="226" text-anchor="middle" fill="#E0E7FF" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">
+    Dossier
+  </text>
+  <text x="215" y="242" text-anchor="middle" fill="#A5B4FC" font-family="system-ui, sans-serif" font-size="9">
+    (aggregate state)
+  </text>
+
+  <!-- CMD Desks (Spokes) -->
+  <rect x="80" y="270" width="125" height="50" rx="4" fill="#1E1B4B" stroke="#7C3AED" stroke-width="1"/>
+  <text x="142" y="290" text-anchor="middle" fill="#C7D2FE" font-family="system-ui, sans-serif" font-size="10" font-weight="500">
+    start_design
+  </text>
+  <text x="142" y="305" text-anchor="middle" fill="#818CF8" font-family="system-ui, sans-serif" font-size="8">
+    Desk (Spoke)
+  </text>
+
+  <rect x="225" y="270" width="125" height="50" rx="4" fill="#1E1B4B" stroke="#7C3AED" stroke-width="1"/>
+  <text x="287" y="290" text-anchor="middle" fill="#C7D2FE" font-family="system-ui, sans-serif" font-size="10" font-weight="500">
+    design_aggregate
+  </text>
+  <text x="287" y="305" text-anchor="middle" fill="#818CF8" font-family="system-ui, sans-serif" font-size="8">
+    Desk (Spoke)
+  </text>
+
+  <rect x="80" y="335" width="125" height="50" rx="4" fill="#1E1B4B" stroke="#7C3AED" stroke-width="1"/>
+  <text x="142" y="355" text-anchor="middle" fill="#C7D2FE" font-family="system-ui, sans-serif" font-size="10" font-weight="500">
+    complete_design
+  </text>
+  <text x="142" y="370" text-anchor="middle" fill="#818CF8" font-family="system-ui, sans-serif" font-size="8">
+    Desk (Spoke)
+  </text>
+
+  <rect x="225" y="335" width="125" height="50" rx="4" fill="#1E1B4B" stroke="#7C3AED" stroke-width="1"/>
+  <text x="287" y="355" text-anchor="middle" fill="#C7D2FE" font-family="system-ui, sans-serif" font-size="10" font-weight="500">
+    archive_design
+  </text>
+  <text x="287" y="370" text-anchor="middle" fill="#818CF8" font-family="system-ui, sans-serif" font-size="8">
+    Desk (Spoke)
+  </text>
+
+  <!-- CMD produces events label -->
+  <rect x="105" y="400" width="220" height="30" rx="4" fill="#4C1D95" fill-opacity="0.5" stroke="#A78BFA" stroke-width="1" stroke-dasharray="4,2"/>
+  <text x="215" y="420" text-anchor="middle" fill="#DDD6FE" font-family="system-ui, sans-serif" font-size="10">
+    produces Events (slips in the dossier)
+  </text>
+
+  <!-- Spoke lines (from hub to desks) -->
+  <line x1="190" y1="255" x2="142" y2="270" stroke="#7C3AED" stroke-width="1" stroke-opacity="0.5"/>
+  <line x1="240" y1="255" x2="287" y2="270" stroke="#7C3AED" stroke-width="1" stroke-opacity="0.5"/>
+  <line x1="190" y1="255" x2="142" y2="335" stroke="#7C3AED" stroke-width="1" stroke-opacity="0.5"/>
+  <line x1="240" y1="255" x2="287" y2="335" stroke="#7C3AED" stroke-width="1" stroke-opacity="0.5"/>
+
+  <!-- ─────────────────────────────────────────────── -->
+  <!-- PRJ Department (Cartwheel 2 — back-office)      -->
+  <!-- ─────────────────────────────────────────────── -->
+  <rect x="395" y="150" width="310" height="345" rx="8" fill="url(#prjGrad)" stroke="#10B981" stroke-width="2"/>
+
+  <!-- PRJ header -->
+  <text x="550" y="175" text-anchor="middle" fill="#6EE7B7" font-family="system-ui, sans-serif" font-size="15" font-weight="bold">
+    PRJ Department
+  </text>
+  <text x="550" y="192" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">
+    Back-Office &bull; Knowledge Warehouse &bull; Cartwheel 2
+  </text>
+
+  <!-- PRJ Hub (read model store) -->
+  <rect x="475" y="205" width="150" height="50" rx="25" fill="#022C22" stroke="#34D399" stroke-width="2"/>
+  <text x="550" y="226" text-anchor="middle" fill="#A7F3D0" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">
+    SQLite Store
+  </text>
+  <text x="550" y="242" text-anchor="middle" fill="#6EE7B7" font-family="system-ui, sans-serif" font-size="9">
+    (read model)
+  </text>
+
+  <!-- PRJ Desks (projections) -->
+  <rect x="415" y="270" width="260" height="50" rx="4" fill="#064E3B" stroke="#059669" stroke-width="1"/>
+  <text x="545" y="290" text-anchor="middle" fill="#A7F3D0" font-family="system-ui, sans-serif" font-size="10" font-weight="500">
+    aggregate_designed_v1 &rarr; designs table
+  </text>
+  <text x="545" y="305" text-anchor="middle" fill="#34D399" font-family="system-ui, sans-serif" font-size="8">
+    Projection Desk (Spoke)
+  </text>
+
+  <rect x="415" y="335" width="260" height="50" rx="4" fill="#064E3B" stroke="#059669" stroke-width="1"/>
+  <text x="545" y="355" text-anchor="middle" fill="#A7F3D0" font-family="system-ui, sans-serif" font-size="10" font-weight="500">
+    design_completed_v1 &rarr; designs table
+  </text>
+  <text x="545" y="370" text-anchor="middle" fill="#34D399" font-family="system-ui, sans-serif" font-size="8">
+    Projection Desk (Spoke)
+  </text>
+
+  <!-- PRJ subscribes to events label -->
+  <rect x="440" y="400" width="220" height="30" rx="4" fill="#065F46" fill-opacity="0.5" stroke="#34D399" stroke-width="1" stroke-dasharray="4,2"/>
+  <text x="550" y="420" text-anchor="middle" fill="#A7F3D0" font-family="system-ui, sans-serif" font-size="10">
+    subscribes to Events, writes Read Model
+  </text>
+
+  <!-- Spoke lines (from hub to desks) -->
+  <line x1="550" y1="255" x2="545" y2="270" stroke="#059669" stroke-width="1" stroke-opacity="0.5"/>
+  <line x1="550" y1="255" x2="545" y2="335" stroke="#059669" stroke-width="1" stroke-opacity="0.5"/>
+
+  <!-- ─────────────────────────────────────────────── -->
+  <!-- QRY Department (Cartwheel 3 — front-office)     -->
+  <!-- ─────────────────────────────────────────────── -->
+  <rect x="730" y="150" width="310" height="345" rx="8" fill="url(#qryGrad)" stroke="#F59E0B" stroke-width="2"/>
+
+  <!-- QRY header -->
+  <text x="885" y="175" text-anchor="middle" fill="#FCD34D" font-family="system-ui, sans-serif" font-size="15" font-weight="bold">
+    QRY Department
+  </text>
+  <text x="885" y="192" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">
+    Front-Office &bull; Inquiries &bull; Cartwheel 3
+  </text>
+
+  <!-- QRY Hub (query service) -->
+  <rect x="810" y="205" width="150" height="50" rx="25" fill="#451A03" stroke="#FBBF24" stroke-width="2"/>
+  <text x="885" y="226" text-anchor="middle" fill="#FDE68A" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">
+    API Gateway
+  </text>
+  <text x="885" y="242" text-anchor="middle" fill="#FCD34D" font-family="system-ui, sans-serif" font-size="9">
+    (serves queries)
+  </text>
+
+  <!-- QRY Desks (query endpoints) -->
+  <rect x="750" y="270" width="260" height="50" rx="4" fill="#78350F" stroke="#D97706" stroke-width="1"/>
+  <text x="880" y="290" text-anchor="middle" fill="#FDE68A" font-family="system-ui, sans-serif" font-size="10" font-weight="500">
+    get_design_by_id
+  </text>
+  <text x="880" y="305" text-anchor="middle" fill="#FBBF24" font-family="system-ui, sans-serif" font-size="8">
+    Query Desk (Spoke) &mdash; GET /designs/:id
+  </text>
+
+  <rect x="750" y="335" width="260" height="50" rx="4" fill="#78350F" stroke="#D97706" stroke-width="1"/>
+  <text x="880" y="355" text-anchor="middle" fill="#FDE68A" font-family="system-ui, sans-serif" font-size="10" font-weight="500">
+    get_designs_page
+  </text>
+  <text x="880" y="370" text-anchor="middle" fill="#FBBF24" font-family="system-ui, sans-serif" font-size="8">
+    Query Desk (Spoke) &mdash; GET /designs?page=N
+  </text>
+
+  <!-- QRY reads from PRJ label -->
+  <rect x="775" y="400" width="220" height="30" rx="4" fill="#78350F" fill-opacity="0.5" stroke="#FBBF24" stroke-width="1" stroke-dasharray="4,2"/>
+  <text x="885" y="420" text-anchor="middle" fill="#FDE68A" font-family="system-ui, sans-serif" font-size="10">
+    reads from Read Model (fast queries)
+  </text>
+
+  <!-- Spoke lines (from hub to desks) -->
+  <line x1="885" y1="255" x2="880" y2="270" stroke="#D97706" stroke-width="1" stroke-opacity="0.5"/>
+  <line x1="885" y1="255" x2="880" y2="335" stroke="#D97706" stroke-width="1" stroke-opacity="0.5"/>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- DATA FLOW ARROWS (between departments)                      -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+
+  <!-- CMD → ReckonDB → PRJ (Event Flow) -->
+  <!-- Arrow from CMD to ReckonDB area -->
+  <path d="M 370 440 L 370 460 Q 370 470 380 470 L 520 470 Q 530 470 530 460 L 530 440"
+        stroke="#A78BFA" stroke-width="2" fill="none" marker-end="url(#arrPrj)"/>
+
+  <!-- ReckonDB label on the path -->
+  <rect x="405" y="455" width="100" height="24" rx="12" fill="url(#reckonGrad)" stroke="#7C3AED" stroke-width="1"/>
+  <text x="455" y="471" text-anchor="middle" fill="#DDD6FE" font-family="system-ui, sans-serif" font-size="9" font-weight="bold">
+    ReckonDB
+  </text>
+
+  <!-- Animated event dots: CMD → PRJ -->
+  <circle r="3" fill="#A78BFA" filter="url(#glow)" class="dot-cmd">
+    <animateMotion dur="2.5s" repeatCount="indefinite" path="M 370,440 L 370,465 L 530,465 L 530,440"/>
+  </circle>
+  <circle r="3" fill="#A78BFA" filter="url(#glow)" class="dot-cmd-2">
+    <animateMotion dur="2.5s" begin="1.2s" repeatCount="indefinite" path="M 370,440 L 370,465 L 530,465 L 530,440"/>
+  </circle>
+
+  <!-- PRJ → QRY (Read Model Flow) -->
+  <path d="M 705 300 L 745 300" stroke="#34D399" stroke-width="2" fill="none" stroke-dasharray="6,3" marker-end="url(#arrQry)"/>
+  <text x="725" y="292" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="8">
+    reads
+  </text>
+
+  <!-- Animated read dots: PRJ → QRY -->
+  <circle r="3" fill="#34D399" filter="url(#glow)">
+    <animateMotion dur="1.5s" begin="0.5s" repeatCount="indefinite" path="M 705,300 L 745,300"/>
+  </circle>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- FACT FLOW (between divisions / to mesh)                     -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+
+  <!-- Second Division (collapsed view) -->
+  <rect x="40" y="525" width="500" height="100" rx="10" fill="url(#divisionGrad)" stroke="#818CF8" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <rect x="55" y="533" width="110" height="24" rx="12" fill="#4338CA" fill-opacity="0.5"/>
+  <text x="110" y="550" text-anchor="middle" fill="#C7D2FE" font-family="system-ui, sans-serif" font-size="12" font-weight="bold">
+    DIVISION
+  </text>
+  <text x="178" y="550" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">
+    Another bounded context (e.g. &quot;billing&quot;)
+  </text>
+  <!-- Mini departments -->
+  <rect x="60" y="565" width="140" height="45" rx="4" fill="url(#cmdGrad)" stroke="#8B5CF6" stroke-width="1" stroke-opacity="0.6"/>
+  <text x="130" y="592" text-anchor="middle" fill="#A78BFA" font-family="system-ui, sans-serif" font-size="10">CMD (desks...)</text>
+  <rect x="215" y="565" width="140" height="45" rx="4" fill="url(#prjGrad)" stroke="#10B981" stroke-width="1" stroke-opacity="0.6"/>
+  <text x="285" y="592" text-anchor="middle" fill="#6EE7B7" font-family="system-ui, sans-serif" font-size="10">PRJ (desks...)</text>
+  <rect x="370" y="565" width="140" height="45" rx="4" fill="url(#qryGrad)" stroke="#F59E0B" stroke-width="1" stroke-opacity="0.6"/>
+  <text x="440" y="592" text-anchor="middle" fill="#FCD34D" font-family="system-ui, sans-serif" font-size="10">QRY (desks...)</text>
+
+  <!-- Fact flow between divisions (via pg groups) -->
+  <rect x="555" y="525" width="180" height="100" rx="8" fill="#1E1B4B" stroke="#F472B6" stroke-width="1.5"/>
+  <text x="645" y="550" text-anchor="middle" fill="#F9A8D4" font-family="system-ui, sans-serif" font-size="12" font-weight="bold">
+    Fact Transport
+  </text>
+  <text x="645" y="570" text-anchor="middle" fill="#F472B6" font-family="system-ui, sans-serif" font-size="10">
+    pg groups (internal)
+  </text>
+  <text x="645" y="588" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">
+    Same BEAM VM
+  </text>
+  <text x="645" y="605" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">
+    Division-to-Division
+  </text>
+
+  <!-- Fact arrows between divisions -->
+  <!-- Division 1 → Fact Transport -->
+  <path d="M 215 500 L 215 520 Q 215 535 225 540 L 555 575" stroke="#F472B6" stroke-width="1.5" fill="none" stroke-dasharray="5,3" marker-end="url(#arrFact)"/>
+  <!-- Fact Transport → Division 2 -->
+  <path d="M 555 575 L 540 575" stroke="#F472B6" stroke-width="1.5" fill="none" stroke-dasharray="5,3" marker-end="url(#arrFact)"/>
+
+  <!-- Animated fact dots -->
+  <circle r="3" fill="#F472B6" filter="url(#glow)" class="pulse">
+    <animateMotion dur="3s" repeatCount="indefinite" path="M 215,500 L 215,540 L 555,575"/>
+  </circle>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- MACULA MESH (external fact transport)                       -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <rect x="40" y="645" width="1020" height="115" rx="10" fill="#0C4A6E" fill-opacity="0.3" stroke="#38BDF8" stroke-width="2"/>
+
+  <!-- Mesh label -->
+  <rect x="55" y="653" width="130" height="24" rx="12" fill="#0369A1" fill-opacity="0.7"/>
+  <text x="120" y="670" text-anchor="middle" fill="#BAE6FD" font-family="system-ui, sans-serif" font-size="12" font-weight="bold">
+    MACULA MESH
+  </text>
+  <text x="200" y="670" fill="#7DD3FC" font-family="system-ui, sans-serif" font-size="10">
+    External fact transport — HTTP/3 over QUIC, DHT PubSub
+  </text>
+
+  <!-- Other agents on the mesh -->
+  <rect x="80" y="690" width="200" height="50" rx="6" fill="#0C4A6E" stroke="#0EA5E9" stroke-width="1"/>
+  <text x="180" y="712" text-anchor="middle" fill="#BAE6FD" font-family="system-ui, sans-serif" font-size="11" font-weight="500">
+    Agent A (beam00)
+  </text>
+  <text x="180" y="728" text-anchor="middle" fill="#7DD3FC" font-family="system-ui, sans-serif" font-size="9">
+    Publishes facts to mesh topics
+  </text>
+
+  <rect x="350" y="690" width="200" height="50" rx="6" fill="#0C4A6E" stroke="#0EA5E9" stroke-width="1"/>
+  <text x="450" y="712" text-anchor="middle" fill="#BAE6FD" font-family="system-ui, sans-serif" font-size="11" font-weight="500">
+    Agent B (beam01)
+  </text>
+  <text x="450" y="728" text-anchor="middle" fill="#7DD3FC" font-family="system-ui, sans-serif" font-size="9">
+    Subscribes to mesh topics
+  </text>
+
+  <rect x="620" y="690" width="200" height="50" rx="6" fill="#0C4A6E" stroke="#0EA5E9" stroke-width="1"/>
+  <text x="720" y="712" text-anchor="middle" fill="#BAE6FD" font-family="system-ui, sans-serif" font-size="11" font-weight="500">
+    Agent C (edge)
+  </text>
+  <text x="720" y="728" text-anchor="middle" fill="#7DD3FC" font-family="system-ui, sans-serif" font-size="9">
+    Discovers peers via DHT
+  </text>
+
+  <!-- Animated mesh dots -->
+  <circle r="3" fill="#38BDF8" filter="url(#glow)">
+    <animateMotion dur="2s" begin="0s" repeatCount="indefinite" path="M 280,715 L 350,715"/>
+  </circle>
+  <circle r="3" fill="#38BDF8" filter="url(#glow)">
+    <animateMotion dur="2s" begin="0.7s" repeatCount="indefinite" path="M 550,715 L 620,715"/>
+  </circle>
+
+  <!-- Arrow from Fact Transport down to Mesh -->
+  <path d="M 645 625 L 645 645" stroke="#38BDF8" stroke-width="2" fill="none" marker-end="url(#arrMesh)"/>
+  <text x="665" y="638" fill="#7DD3FC" font-family="system-ui, sans-serif" font-size="8">
+    mesh emitter
+  </text>
+
+  <!-- Arrow from Mesh up (subscription) -->
+  <path d="M 880 645 L 880 525 Q 880 515 870 515 L 550 500" stroke="#38BDF8" stroke-width="1.5" fill="none" stroke-dasharray="5,3" marker-end="url(#arrMesh)"/>
+  <text x="895" y="585" fill="#7DD3FC" font-family="system-ui, sans-serif" font-size="8" transform="rotate(-90, 895, 585)">
+    mesh listener
+  </text>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- LEGEND                                                      -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <rect x="20" y="780" width="1060" height="35" rx="6" fill="#1E293B"/>
+
+  <!-- Legend items -->
+  <circle cx="45" cy="797" r="5" fill="#8B5CF6"/>
+  <text x="55" y="801" fill="#A5B4FC" font-family="system-ui, sans-serif" font-size="9">CMD = Requests</text>
+
+  <circle cx="160" cy="797" r="5" fill="#10B981"/>
+  <text x="170" y="801" fill="#6EE7B7" font-family="system-ui, sans-serif" font-size="9">PRJ = Projections</text>
+
+  <circle cx="290" cy="797" r="5" fill="#F59E0B"/>
+  <text x="300" y="801" fill="#FCD34D" font-family="system-ui, sans-serif" font-size="9">QRY = Queries</text>
+
+  <circle cx="400" cy="797" r="5" fill="#F472B6"/>
+  <text x="410" y="801" fill="#F9A8D4" font-family="system-ui, sans-serif" font-size="9">Facts (pg groups)</text>
+
+  <circle cx="520" cy="797" r="5" fill="#38BDF8"/>
+  <text x="530" y="801" fill="#7DD3FC" font-family="system-ui, sans-serif" font-size="9">Mesh (QUIC)</text>
+
+  <circle cx="630" cy="797" r="5" fill="#7C3AED"/>
+  <text x="640" y="801" fill="#DDD6FE" font-family="system-ui, sans-serif" font-size="9">ReckonDB (events)</text>
+
+  <line x1="755" y1="797" x2="780" y2="797" stroke="#94A3B8" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <text x="788" y="801" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">= read-only flow</text>
+
+  <!-- Animated dots for legend -->
+  <circle cx="920" cy="797" r="3" fill="#A78BFA" class="pulse"/>
+  <text x="928" y="801" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">= animated data flow</text>
+
+  <!-- Right side: Hierarchy reminder -->
+  <rect x="755" y="525" width="305" height="100" rx="8" fill="#1E1B4B" stroke="#4338CA" stroke-width="1"/>
+  <text x="907" y="548" text-anchor="middle" fill="#E0E7FF" font-family="system-ui, sans-serif" font-size="12" font-weight="bold">
+    Hierarchy
+  </text>
+  <text x="777" y="568" fill="#A5B4FC" font-family="system-ui, sans-serif" font-size="10">
+    Venture
+  </text>
+  <text x="797" y="583" fill="#818CF8" font-family="system-ui, sans-serif" font-size="10">
+    &gt; Division (bounded context)
+  </text>
+  <text x="817" y="598" fill="#A78BFA" font-family="system-ui, sans-serif" font-size="10">
+    &gt; Department = Cartwheel
+  </text>
+  <text x="837" y="613" fill="#C4B5FD" font-family="system-ui, sans-serif" font-size="10">
+    &gt; Desk = Spoke (vertical slice)
+  </text>
+</svg>

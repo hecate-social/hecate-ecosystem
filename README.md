@@ -90,6 +90,7 @@ Applications built with Hecate follow the **Division** pattern — vertical slic
 ### Getting Started
 
 - [**Overview**](guides/overview.md) — What Hecate is and why it exists
+- [**Mental Model**](guides/mental-model.md) — Venture, Division, Department, Desk — the company metaphor explained
 - [**Getting Started**](guides/getting-started.md) — Install and run your first session
 - [**Architecture**](guides/architecture.md) — How the components fit together
 
