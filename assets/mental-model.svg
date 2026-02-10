@@ -293,24 +293,23 @@
   <!-- ═══════════════════════════════════════════════════════════ -->
 
   <!-- 1. CMD ReckonDB → PRJ (Event subscription flow) -->
-  <!-- Curved arrow from ReckonDB right side to PRJ left side -->
-  <path id="eventPath" d="M 260,440 C 330,440 370,295 385,295" stroke="#A78BFA" stroke-width="2" fill="none" marker-end="url(#arrPrj)"/>
-  <text x="340" y="355" fill="#C4B5FD" font-family="system-ui, sans-serif" font-size="8" transform="rotate(-55, 340, 355)">
-    events
+  <path id="eventPath" d="M 258,440 L 385,440" stroke="#A78BFA" stroke-width="2" fill="none" marker-end="url(#arrPrj)"/>
+  <text x="322" y="433" text-anchor="middle" fill="#C4B5FD" font-family="system-ui, sans-serif" font-size="8">
+    subscription
   </text>
 
-  <!-- Animated event dots: CMD ReckonDB to PRJ (SMIL) -->
+  <!-- Animated event dots: ReckonDB to PRJ (SMIL) -->
   <circle r="4" fill="#A78BFA">
-    <animateMotion dur="2.5s" repeatCount="indefinite" begin="0s">
+    <animateMotion dur="2s" repeatCount="indefinite" begin="0s">
       <mpath href="#eventPath"/>
     </animateMotion>
-    <animate attributeName="opacity" values="0;1;1;0" dur="2.5s" repeatCount="indefinite" begin="0s"/>
+    <animate attributeName="opacity" values="0;1;1;0" dur="2s" repeatCount="indefinite" begin="0s"/>
   </circle>
   <circle r="4" fill="#A78BFA">
-    <animateMotion dur="2.5s" repeatCount="indefinite" begin="1.2s">
+    <animateMotion dur="2s" repeatCount="indefinite" begin="1s">
       <mpath href="#eventPath"/>
     </animateMotion>
-    <animate attributeName="opacity" values="0;1;1;0" dur="2.5s" repeatCount="indefinite" begin="1.2s"/>
+    <animate attributeName="opacity" values="0;1;1;0" dur="2s" repeatCount="indefinite" begin="1s"/>
   </circle>
 
   <!-- 2. PRJ → SQLite (Write flow) -->
