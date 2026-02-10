@@ -342,128 +342,141 @@
   </circle>
 
   <!-- ═══════════════════════════════════════════════════════════ -->
-  <!-- FACT FLOW (between divisions / to mesh)                     -->
+  <!-- FACT TRANSPORT (centered under CMD department)              -->
   <!-- ═══════════════════════════════════════════════════════════ -->
-
-  <!-- Second Division (collapsed view) -->
-  <rect x="35" y="525" width="520" height="100" rx="10" fill="url(#divisionGrad)" stroke="#818CF8" stroke-width="1.5" stroke-dasharray="6,3"/>
-  <rect x="50" y="533" width="110" height="24" rx="12" fill="#4338CA" fill-opacity="0.5"/>
-  <text x="105" y="550" text-anchor="middle" fill="#C7D2FE" font-family="system-ui, sans-serif" font-size="12" font-weight="bold">
-    DIVISION
-  </text>
-  <text x="173" y="550" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">
-    Another bounded context (e.g. "billing")
-  </text>
-  <!-- Mini departments -->
-  <rect x="55" y="565" width="150" height="45" rx="4" fill="url(#cmdGrad)" stroke="#8B5CF6" stroke-width="1" stroke-opacity="0.6"/>
-  <text x="130" y="592" text-anchor="middle" fill="#A78BFA" font-family="system-ui, sans-serif" font-size="10">CMD (desks...)</text>
-  <rect x="220" y="565" width="150" height="45" rx="4" fill="url(#prjGrad)" stroke="#10B981" stroke-width="1" stroke-opacity="0.6"/>
-  <text x="295" y="592" text-anchor="middle" fill="#6EE7B7" font-family="system-ui, sans-serif" font-size="10">PRJ (desks...)</text>
-  <rect x="385" y="565" width="150" height="45" rx="4" fill="url(#qryGrad)" stroke="#F59E0B" stroke-width="1" stroke-opacity="0.6"/>
-  <text x="460" y="592" text-anchor="middle" fill="#FCD34D" font-family="system-ui, sans-serif" font-size="10">QRY (desks...)</text>
-
-  <!-- Fact flow between divisions (via pg groups) -->
-  <rect x="575" y="525" width="190" height="100" rx="8" fill="#1E1B4B" stroke="#F472B6" stroke-width="1.5"/>
-  <text x="670" y="550" text-anchor="middle" fill="#F9A8D4" font-family="system-ui, sans-serif" font-size="12" font-weight="bold">
+  <rect x="113" y="535" width="190" height="100" rx="8" fill="#1E1B4B" stroke="#F472B6" stroke-width="1.5"/>
+  <text x="208" y="560" text-anchor="middle" fill="#F9A8D4" font-family="system-ui, sans-serif" font-size="12" font-weight="bold">
     Fact Transport
   </text>
-  <text x="670" y="570" text-anchor="middle" fill="#F472B6" font-family="system-ui, sans-serif" font-size="10">
+  <text x="208" y="578" text-anchor="middle" fill="#F472B6" font-family="system-ui, sans-serif" font-size="10">
     pg groups (internal)
   </text>
-  <text x="670" y="588" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">
+  <text x="208" y="596" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">
     Same BEAM VM
   </text>
-  <text x="670" y="605" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">
+  <text x="208" y="612" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">
     Division-to-Division
   </text>
 
-  <!-- Fact arrows between divisions -->
-  <!-- Division 1 to Fact Transport -->
-  <path id="factPath1" d="M 208 510 L 208 535 Q 208 545 220 548 L 575 575" stroke="#F472B6" stroke-width="1.5" fill="none" stroke-dasharray="5,3" marker-end="url(#arrFact)"/>
-  <!-- Fact Transport to Division 2 -->
-  <path d="M 575 575 L 555 575" stroke="#F472B6" stroke-width="1.5" fill="none" stroke-dasharray="5,3" marker-end="url(#arrFact)"/>
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- SECOND DIVISION (collapsed, shifted right)                  -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <rect x="400" y="535" width="720" height="100" rx="10" fill="url(#divisionGrad)" stroke="#818CF8" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <rect x="415" y="543" width="110" height="24" rx="12" fill="#4338CA" fill-opacity="0.5"/>
+  <text x="470" y="560" text-anchor="middle" fill="#C7D2FE" font-family="system-ui, sans-serif" font-size="12" font-weight="bold">
+    DIVISION
+  </text>
+  <text x="538" y="560" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">
+    Another bounded context (e.g. "billing")
+  </text>
+  <!-- Mini departments -->
+  <rect x="420" y="575" width="200" height="45" rx="4" fill="url(#cmdGrad)" stroke="#8B5CF6" stroke-width="1" stroke-opacity="0.6"/>
+  <text x="520" y="602" text-anchor="middle" fill="#A78BFA" font-family="system-ui, sans-serif" font-size="10">CMD (desks...)</text>
+  <rect x="640" y="575" width="200" height="45" rx="4" fill="url(#prjGrad)" stroke="#10B981" stroke-width="1" stroke-opacity="0.6"/>
+  <text x="740" y="602" text-anchor="middle" fill="#6EE7B7" font-family="system-ui, sans-serif" font-size="10">PRJ (desks...)</text>
+  <rect x="860" y="575" width="200" height="45" rx="4" fill="url(#qryGrad)" stroke="#F59E0B" stroke-width="1" stroke-opacity="0.6"/>
+  <text x="960" y="602" text-anchor="middle" fill="#FCD34D" font-family="system-ui, sans-serif" font-size="10">QRY (desks...)</text>
 
-  <!-- Animated fact dots (SMIL) -->
-  <circle r="4" fill="#F472B6">
-    <animateMotion dur="3s" repeatCount="indefinite" begin="0s">
-      <mpath href="#factPath1"/>
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- FACT FLOW: Division 1 ↔ Fact Transport (emit / listen)     -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+
+  <!-- Division 1 → Fact Transport (emit ↓) -->
+  <path id="factEmitDown" d="M 196,510 L 196,535" stroke="#F472B6" stroke-width="1.5" fill="none" stroke-dasharray="5,3" marker-end="url(#arrFact)"/>
+  <text x="178" y="526" text-anchor="end" fill="#F9A8D4" font-family="system-ui, sans-serif" font-size="8">emit</text>
+
+  <!-- Fact Transport → Division 1 (listen ↑) -->
+  <path id="factListenUp" d="M 220,535 L 220,510" stroke="#F472B6" stroke-width="1.5" fill="none" stroke-dasharray="5,3" marker-end="url(#arrFact)"/>
+  <text x="238" y="526" fill="#F9A8D4" font-family="system-ui, sans-serif" font-size="8">listen</text>
+
+  <!-- Animated dots: Div1 ↔ FT vertical -->
+  <circle r="3" fill="#F472B6">
+    <animateMotion dur="1.5s" repeatCount="indefinite" begin="0s">
+      <mpath href="#factEmitDown"/>
     </animateMotion>
-    <animate attributeName="opacity" values="0;1;1;0" dur="3s" repeatCount="indefinite" begin="0s"/>
+    <animate attributeName="opacity" values="0;1;1;0" dur="1.5s" repeatCount="indefinite" begin="0s"/>
   </circle>
-  <circle r="4" fill="#F472B6">
-    <animateMotion dur="3s" repeatCount="indefinite" begin="1.5s">
-      <mpath href="#factPath1"/>
+  <circle r="3" fill="#F472B6">
+    <animateMotion dur="1.5s" repeatCount="indefinite" begin="0.4s">
+      <mpath href="#factListenUp"/>
     </animateMotion>
-    <animate attributeName="opacity" values="0;1;1;0" dur="3s" repeatCount="indefinite" begin="1.5s"/>
+    <animate attributeName="opacity" values="0;1;1;0" dur="1.5s" repeatCount="indefinite" begin="0.4s"/>
   </circle>
 
   <!-- ═══════════════════════════════════════════════════════════ -->
-  <!-- HIERARCHY REMINDER (right side)                             -->
+  <!-- FACT FLOW: Fact Transport ↔ Division 2 (emit / listen)     -->
   <!-- ═══════════════════════════════════════════════════════════ -->
-  <rect x="785" y="525" width="305" height="100" rx="8" fill="#1E1B4B" stroke="#4338CA" stroke-width="1"/>
-  <text x="937" y="548" text-anchor="middle" fill="#E0E7FF" font-family="system-ui, sans-serif" font-size="12" font-weight="bold">
-    Hierarchy
-  </text>
-  <text x="807" y="568" fill="#A5B4FC" font-family="system-ui, sans-serif" font-size="10">
-    Venture
-  </text>
-  <text x="827" y="583" fill="#818CF8" font-family="system-ui, sans-serif" font-size="10">
-    &gt; Division (bounded context)
-  </text>
-  <text x="847" y="598" fill="#A78BFA" font-family="system-ui, sans-serif" font-size="10">
-    &gt; Department = Cartwheel
-  </text>
-  <text x="867" y="613" fill="#C4B5FD" font-family="system-ui, sans-serif" font-size="10">
-    &gt; Desk = Spoke (vertical slice)
-  </text>
+
+  <!-- Fact Transport → Division 2 (emit →) -->
+  <path id="factEmitRight" d="M 303,575 L 400,575" stroke="#F472B6" stroke-width="1.5" fill="none" stroke-dasharray="5,3" marker-end="url(#arrFact)"/>
+  <text x="352" y="568" text-anchor="middle" fill="#F9A8D4" font-family="system-ui, sans-serif" font-size="8">emit</text>
+
+  <!-- Division 2 → Fact Transport (listen ←) -->
+  <path id="factListenLeft" d="M 400,595 L 303,595" stroke="#F472B6" stroke-width="1.5" fill="none" stroke-dasharray="5,3" marker-end="url(#arrFact)"/>
+  <text x="352" y="610" text-anchor="middle" fill="#F9A8D4" font-family="system-ui, sans-serif" font-size="8">listen</text>
+
+  <!-- Animated dots: FT ↔ Div2 horizontal -->
+  <circle r="3" fill="#F472B6">
+    <animateMotion dur="2s" repeatCount="indefinite" begin="0.2s">
+      <mpath href="#factEmitRight"/>
+    </animateMotion>
+    <animate attributeName="opacity" values="0;1;1;0" dur="2s" repeatCount="indefinite" begin="0.2s"/>
+  </circle>
+  <circle r="3" fill="#F472B6">
+    <animateMotion dur="2s" repeatCount="indefinite" begin="0.8s">
+      <mpath href="#factListenLeft"/>
+    </animateMotion>
+    <animate attributeName="opacity" values="0;1;1;0" dur="2s" repeatCount="indefinite" begin="0.8s"/>
+  </circle>
 
   <!-- ═══════════════════════════════════════════════════════════ -->
   <!-- MACULA MESH (external fact transport)                       -->
   <!-- ═══════════════════════════════════════════════════════════ -->
-  <rect x="35" y="645" width="1130" height="115" rx="10" fill="#0C4A6E" fill-opacity="0.3" stroke="#38BDF8" stroke-width="2"/>
+  <rect x="35" y="660" width="1130" height="110" rx="10" fill="#0C4A6E" fill-opacity="0.3" stroke="#38BDF8" stroke-width="2"/>
 
   <!-- Mesh label -->
-  <rect x="50" y="653" width="130" height="24" rx="12" fill="#0369A1" fill-opacity="0.7"/>
-  <text x="115" y="670" text-anchor="middle" fill="#BAE6FD" font-family="system-ui, sans-serif" font-size="12" font-weight="bold">
+  <rect x="50" y="668" width="130" height="24" rx="12" fill="#0369A1" fill-opacity="0.7"/>
+  <text x="115" y="685" text-anchor="middle" fill="#BAE6FD" font-family="system-ui, sans-serif" font-size="12" font-weight="bold">
     MACULA MESH
   </text>
-  <text x="195" y="670" fill="#7DD3FC" font-family="system-ui, sans-serif" font-size="10">
+  <text x="195" y="685" fill="#7DD3FC" font-family="system-ui, sans-serif" font-size="10">
     External fact transport — HTTP/3 over QUIC, DHT PubSub
   </text>
 
   <!-- Other agents on the mesh -->
-  <rect x="80" y="690" width="200" height="50" rx="6" fill="#0C4A6E" stroke="#0EA5E9" stroke-width="1"/>
-  <text x="180" y="712" text-anchor="middle" fill="#BAE6FD" font-family="system-ui, sans-serif" font-size="11" font-weight="500">
+  <rect x="80" y="700" width="200" height="50" rx="6" fill="#0C4A6E" stroke="#0EA5E9" stroke-width="1"/>
+  <text x="180" y="722" text-anchor="middle" fill="#BAE6FD" font-family="system-ui, sans-serif" font-size="11" font-weight="500">
     Agent A (beam00)
   </text>
-  <text x="180" y="728" text-anchor="middle" fill="#7DD3FC" font-family="system-ui, sans-serif" font-size="9">
+  <text x="180" y="738" text-anchor="middle" fill="#7DD3FC" font-family="system-ui, sans-serif" font-size="9">
     Publishes facts to mesh topics
   </text>
 
   <!-- Pulse ring around Agent A -->
-  <circle cx="180" cy="715" r="14" fill="none" stroke="#0EA5E9">
+  <circle cx="180" cy="725" r="14" fill="none" stroke="#0EA5E9">
     <animate attributeName="r" values="14;40;55" dur="3s" repeatCount="indefinite"/>
     <animate attributeName="opacity" values="0.6;0.2;0" dur="3s" repeatCount="indefinite"/>
   </circle>
 
-  <rect x="370" y="690" width="200" height="50" rx="6" fill="#0C4A6E" stroke="#0EA5E9" stroke-width="1"/>
-  <text x="470" y="712" text-anchor="middle" fill="#BAE6FD" font-family="system-ui, sans-serif" font-size="11" font-weight="500">
+  <rect x="400" y="700" width="200" height="50" rx="6" fill="#0C4A6E" stroke="#0EA5E9" stroke-width="1"/>
+  <text x="500" y="722" text-anchor="middle" fill="#BAE6FD" font-family="system-ui, sans-serif" font-size="11" font-weight="500">
     Agent B (beam01)
   </text>
-  <text x="470" y="728" text-anchor="middle" fill="#7DD3FC" font-family="system-ui, sans-serif" font-size="9">
+  <text x="500" y="738" text-anchor="middle" fill="#7DD3FC" font-family="system-ui, sans-serif" font-size="9">
     Subscribes to mesh topics
   </text>
 
-  <rect x="660" y="690" width="200" height="50" rx="6" fill="#0C4A6E" stroke="#0EA5E9" stroke-width="1"/>
-  <text x="760" y="712" text-anchor="middle" fill="#BAE6FD" font-family="system-ui, sans-serif" font-size="11" font-weight="500">
+  <rect x="720" y="700" width="200" height="50" rx="6" fill="#0C4A6E" stroke="#0EA5E9" stroke-width="1"/>
+  <text x="820" y="722" text-anchor="middle" fill="#BAE6FD" font-family="system-ui, sans-serif" font-size="11" font-weight="500">
     Agent C (edge)
   </text>
-  <text x="760" y="728" text-anchor="middle" fill="#7DD3FC" font-family="system-ui, sans-serif" font-size="9">
+  <text x="820" y="738" text-anchor="middle" fill="#7DD3FC" font-family="system-ui, sans-serif" font-size="9">
     Discovers peers via DHT
   </text>
 
   <!-- Animated mesh packets: A to B -->
-  <path id="meshPathAB" d="M 280,715 L 370,715" fill="none" stroke="none"/>
+  <path id="meshPathAB" d="M 280,725 L 400,725" fill="none" stroke="none"/>
+  <line x1="280" y1="725" x2="400" y2="725" stroke="#0EA5E9" stroke-width="1" stroke-dasharray="4,3" stroke-opacity="0.4"/>
   <circle r="4" fill="#38BDF8">
     <animateMotion dur="2s" repeatCount="indefinite" begin="0s">
       <mpath href="#meshPathAB"/>
@@ -478,7 +491,8 @@
   </circle>
 
   <!-- Animated mesh packets: B to C -->
-  <path id="meshPathBC" d="M 570,715 L 660,715" fill="none" stroke="none"/>
+  <path id="meshPathBC" d="M 600,725 L 720,725" fill="none" stroke="none"/>
+  <line x1="600" y1="725" x2="720" y2="725" stroke="#0EA5E9" stroke-width="1" stroke-dasharray="4,3" stroke-opacity="0.4"/>
   <circle r="4" fill="#38BDF8">
     <animateMotion dur="2s" repeatCount="indefinite" begin="0.3s">
       <mpath href="#meshPathBC"/>
@@ -492,28 +506,30 @@
     <animate attributeName="opacity" values="0;1;1;0" dur="2s" repeatCount="indefinite" begin="1s"/>
   </circle>
 
-  <!-- Mesh connection lines -->
-  <line x1="280" y1="715" x2="370" y2="715" stroke="#0EA5E9" stroke-width="1" stroke-dasharray="4,3" stroke-opacity="0.4"/>
-  <line x1="570" y1="715" x2="660" y2="715" stroke="#0EA5E9" stroke-width="1" stroke-dasharray="4,3" stroke-opacity="0.4"/>
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- FACT FLOW: Fact Transport ↔ Mesh (publish / subscribe)     -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
 
-  <!-- Arrow from Fact Transport down to Mesh -->
-  <path d="M 670 625 L 670 645" stroke="#38BDF8" stroke-width="2" fill="none" marker-end="url(#arrMesh)"/>
-  <text x="690" y="638" fill="#7DD3FC" font-family="system-ui, sans-serif" font-size="8">
-    mesh emitter
-  </text>
+  <!-- Fact Transport → Mesh (publish ↓) -->
+  <path id="factPublishDown" d="M 196,635 L 196,660" stroke="#38BDF8" stroke-width="1.5" fill="none" marker-end="url(#arrMesh)"/>
+  <text x="178" y="651" text-anchor="end" fill="#7DD3FC" font-family="system-ui, sans-serif" font-size="8">publish</text>
 
-  <!-- Arrow from Mesh up (subscription) -->
-  <path id="meshUpPath" d="M 920 645 L 920 525 Q 920 515 910 515 L 570 500" stroke="#38BDF8" stroke-width="1.5" fill="none" stroke-dasharray="5,3" marker-end="url(#arrMesh)"/>
-  <text x="935" y="585" fill="#7DD3FC" font-family="system-ui, sans-serif" font-size="8" transform="rotate(-90, 935, 585)">
-    mesh listener
-  </text>
+  <!-- Mesh → Fact Transport (subscribe ↑) -->
+  <path id="factSubscribeUp" d="M 220,660 L 220,635" stroke="#38BDF8" stroke-width="1.5" fill="none" stroke-dasharray="5,3" marker-end="url(#arrMesh)"/>
+  <text x="238" y="651" fill="#7DD3FC" font-family="system-ui, sans-serif" font-size="8">subscribe</text>
 
-  <!-- Animated mesh subscription dot -->
+  <!-- Animated dots: FT ↔ Mesh vertical -->
   <circle r="3" fill="#38BDF8">
-    <animateMotion dur="4s" repeatCount="indefinite" begin="0s">
-      <mpath href="#meshUpPath"/>
+    <animateMotion dur="1.5s" repeatCount="indefinite" begin="0.3s">
+      <mpath href="#factPublishDown"/>
     </animateMotion>
-    <animate attributeName="opacity" values="0;1;1;0" dur="4s" repeatCount="indefinite" begin="0s"/>
+    <animate attributeName="opacity" values="0;1;1;0" dur="1.5s" repeatCount="indefinite" begin="0.3s"/>
+  </circle>
+  <circle r="3" fill="#38BDF8">
+    <animateMotion dur="1.5s" repeatCount="indefinite" begin="0.9s">
+      <mpath href="#factSubscribeUp"/>
+    </animateMotion>
+    <animate attributeName="opacity" values="0;1;1;0" dur="1.5s" repeatCount="indefinite" begin="0.9s"/>
   </circle>
 
   <!-- ═══════════════════════════════════════════════════════════ -->
