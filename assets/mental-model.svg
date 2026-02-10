@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 855">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 920">
   <defs>
     <!-- Gradients -->
     <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -46,7 +46,7 @@
   </defs>
 
   <!-- Background -->
-  <rect width="1200" height="855" fill="url(#bgGrad)"/>
+  <rect width="1200" height="920" fill="url(#bgGrad)"/>
 
   <!-- Title -->
   <text x="600" y="32" text-anchor="middle" fill="#E0E7FF" font-family="system-ui, sans-serif" font-size="22" font-weight="bold">
@@ -71,17 +71,17 @@
   </text>
 
   <!-- ═══════════════════════════════════════════════════════════ -->
-  <!-- DIVISION (bounded context within the venture)               -->
+  <!-- DIVISION 1 (bounded context within the venture)             -->
   <!-- ═══════════════════════════════════════════════════════════ -->
   <rect x="35" y="110" width="1130" height="400" rx="10" fill="url(#divisionGrad)" stroke="#818CF8" stroke-width="1.5"/>
 
-  <!-- Division label -->
-  <rect x="50" y="118" width="110" height="24" rx="12" fill="#4338CA" fill-opacity="0.5"/>
-  <text x="105" y="135" text-anchor="middle" fill="#C7D2FE" font-family="system-ui, sans-serif" font-size="12" font-weight="bold">
-    DIVISION
+  <!-- Division 1 label -->
+  <rect x="50" y="118" width="130" height="24" rx="12" fill="#4338CA" fill-opacity="0.5"/>
+  <text x="115" y="135" text-anchor="middle" fill="#C7D2FE" font-family="system-ui, sans-serif" font-size="12" font-weight="bold">
+    DIVISION 1
   </text>
-  <text x="173" y="135" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">
-    Bounded context — 3 departments cooperating (e.g. "auth", "billing")
+  <text x="193" y="135" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">
+    Bounded context — 3 departments cooperating (e.g. "auth")
   </text>
 
   <!-- ─────────────────────────────────────────────── -->
@@ -170,131 +170,134 @@
 
   <!-- ─────────────────────────────────────────────── -->
   <!-- PRJ Department (Cartwheel 2 — back-office)      -->
+  <!-- Shifted right: x=385→400, center=530            -->
   <!-- ─────────────────────────────────────────────── -->
-  <rect x="385" y="150" width="265" height="345" rx="8" fill="url(#prjGrad)" stroke="#10B981" stroke-width="2"/>
+  <rect x="400" y="150" width="260" height="345" rx="8" fill="url(#prjGrad)" stroke="#10B981" stroke-width="2"/>
 
   <!-- PRJ header -->
-  <text x="518" y="175" text-anchor="middle" fill="#6EE7B7" font-family="system-ui, sans-serif" font-size="15" font-weight="bold">
+  <text x="530" y="175" text-anchor="middle" fill="#6EE7B7" font-family="system-ui, sans-serif" font-size="15" font-weight="bold">
     PRJ Department
   </text>
-  <text x="518" y="192" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">
+  <text x="530" y="192" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">
     Back-Office · Knowledge Warehouse · Cartwheel 2
   </text>
 
   <!-- PRJ Hub (projections) -->
-  <rect x="448" y="205" width="140" height="50" rx="25" fill="#022C22" stroke="#34D399" stroke-width="2"/>
-  <text x="518" y="226" text-anchor="middle" fill="#A7F3D0" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">
+  <rect x="460" y="205" width="140" height="50" rx="25" fill="#022C22" stroke="#34D399" stroke-width="2"/>
+  <text x="530" y="226" text-anchor="middle" fill="#A7F3D0" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">
     Projections
   </text>
-  <text x="518" y="242" text-anchor="middle" fill="#6EE7B7" font-family="system-ui, sans-serif" font-size="9">
+  <text x="530" y="242" text-anchor="middle" fill="#6EE7B7" font-family="system-ui, sans-serif" font-size="9">
     (event subscribers)
   </text>
 
   <!-- PRJ Desks (projections) -->
-  <rect x="398" y="270" width="240" height="50" rx="4" fill="#064E3B" stroke="#059669" stroke-width="1"/>
-  <text x="518" y="290" text-anchor="middle" fill="#A7F3D0" font-family="system-ui, sans-serif" font-size="10" font-weight="500">
+  <rect x="413" y="270" width="234" height="50" rx="4" fill="#064E3B" stroke="#059669" stroke-width="1"/>
+  <text x="530" y="290" text-anchor="middle" fill="#A7F3D0" font-family="system-ui, sans-serif" font-size="10" font-weight="500">
     aggregate_designed_v1 to designs
   </text>
-  <text x="518" y="305" text-anchor="middle" fill="#34D399" font-family="system-ui, sans-serif" font-size="8">
+  <text x="530" y="305" text-anchor="middle" fill="#34D399" font-family="system-ui, sans-serif" font-size="8">
     Projection Desk (Spoke)
   </text>
 
-  <rect x="398" y="335" width="240" height="50" rx="4" fill="#064E3B" stroke="#059669" stroke-width="1"/>
-  <text x="518" y="355" text-anchor="middle" fill="#A7F3D0" font-family="system-ui, sans-serif" font-size="10" font-weight="500">
+  <rect x="413" y="335" width="234" height="50" rx="4" fill="#064E3B" stroke="#059669" stroke-width="1"/>
+  <text x="530" y="355" text-anchor="middle" fill="#A7F3D0" font-family="system-ui, sans-serif" font-size="10" font-weight="500">
     design_completed_v1 to designs
   </text>
-  <text x="518" y="370" text-anchor="middle" fill="#34D399" font-family="system-ui, sans-serif" font-size="8">
+  <text x="530" y="370" text-anchor="middle" fill="#34D399" font-family="system-ui, sans-serif" font-size="8">
     Projection Desk (Spoke)
   </text>
 
   <!-- PRJ subscribes to events label -->
-  <rect x="403" y="400" width="230" height="30" rx="4" fill="#065F46" fill-opacity="0.5" stroke="#34D399" stroke-width="1" stroke-dasharray="4,2"/>
-  <text x="518" y="420" text-anchor="middle" fill="#A7F3D0" font-family="system-ui, sans-serif" font-size="10">
+  <rect x="413" y="400" width="234" height="30" rx="4" fill="#065F46" fill-opacity="0.5" stroke="#34D399" stroke-width="1" stroke-dasharray="4,2"/>
+  <text x="530" y="420" text-anchor="middle" fill="#A7F3D0" font-family="system-ui, sans-serif" font-size="10">
     subscribes to Events, writes to SQLite
   </text>
 
   <!-- Spoke lines (from hub to desks) -->
-  <line x1="518" y1="255" x2="518" y2="270" stroke="#059669" stroke-width="1" stroke-opacity="0.5"/>
-  <line x1="518" y1="255" x2="518" y2="335" stroke="#059669" stroke-width="1" stroke-opacity="0.5"/>
+  <line x1="530" y1="255" x2="530" y2="270" stroke="#059669" stroke-width="1" stroke-opacity="0.5"/>
+  <line x1="530" y1="255" x2="530" y2="335" stroke="#059669" stroke-width="1" stroke-opacity="0.5"/>
 
   <!-- ─────────────────────────────────────────────── -->
   <!-- SQLite CYLINDER (centered between PRJ and QRY)  -->
+  <!-- PRJ right: 660, QRY left: 830, midpoint: 745   -->
   <!-- ─────────────────────────────────────────────── -->
   <g>
     <!-- Cylinder body -->
-    <rect x="718" y="265" width="70" height="50" fill="#1E293B"/>
+    <rect x="710" y="265" width="70" height="50" fill="#1E293B"/>
     <!-- Left/right sides -->
-    <line x1="718" y1="265" x2="718" y2="315" stroke="#94A3B8" stroke-width="1.5"/>
-    <line x1="788" y1="265" x2="788" y2="315" stroke="#94A3B8" stroke-width="1.5"/>
+    <line x1="710" y1="265" x2="710" y2="315" stroke="#94A3B8" stroke-width="1.5"/>
+    <line x1="780" y1="265" x2="780" y2="315" stroke="#94A3B8" stroke-width="1.5"/>
     <!-- Bottom ellipse -->
-    <ellipse cx="753" cy="315" rx="35" ry="8" fill="#1E293B" stroke="#94A3B8" stroke-width="1.5"/>
+    <ellipse cx="745" cy="315" rx="35" ry="8" fill="#1E293B" stroke="#94A3B8" stroke-width="1.5"/>
     <!-- Top ellipse (lid) -->
-    <ellipse cx="753" cy="265" rx="35" ry="8" fill="#334155" stroke="#94A3B8" stroke-width="1.5"/>
+    <ellipse cx="745" cy="265" rx="35" ry="8" fill="#334155" stroke="#94A3B8" stroke-width="1.5"/>
     <!-- Labels -->
-    <text x="753" y="286" text-anchor="middle" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">
+    <text x="745" y="286" text-anchor="middle" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">
       SQLite
     </text>
-    <text x="753" y="302" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="8">
+    <text x="745" y="302" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="8">
       (read model)
     </text>
   </g>
 
   <!-- ─────────────────────────────────────────────── -->
   <!-- QRY Department (Cartwheel 3 — front-office)     -->
+  <!-- Shifted left: x=855→830, center=980             -->
   <!-- ─────────────────────────────────────────────── -->
-  <rect x="855" y="150" width="305" height="345" rx="8" fill="url(#qryGrad)" stroke="#F59E0B" stroke-width="2"/>
+  <rect x="830" y="150" width="300" height="345" rx="8" fill="url(#qryGrad)" stroke="#F59E0B" stroke-width="2"/>
 
   <!-- QRY header -->
-  <text x="1008" y="175" text-anchor="middle" fill="#FCD34D" font-family="system-ui, sans-serif" font-size="15" font-weight="bold">
+  <text x="980" y="175" text-anchor="middle" fill="#FCD34D" font-family="system-ui, sans-serif" font-size="15" font-weight="bold">
     QRY Department
   </text>
-  <text x="1008" y="192" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">
+  <text x="980" y="192" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">
     Front-Office · Inquiries · Cartwheel 3
   </text>
 
   <!-- QRY Hub (query service) -->
-  <rect x="933" y="205" width="150" height="50" rx="25" fill="#451A03" stroke="#FBBF24" stroke-width="2"/>
-  <text x="1008" y="226" text-anchor="middle" fill="#FDE68A" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">
+  <rect x="905" y="205" width="150" height="50" rx="25" fill="#451A03" stroke="#FBBF24" stroke-width="2"/>
+  <text x="980" y="226" text-anchor="middle" fill="#FDE68A" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">
     API Gateway
   </text>
-  <text x="1008" y="242" text-anchor="middle" fill="#FCD34D" font-family="system-ui, sans-serif" font-size="9">
+  <text x="980" y="242" text-anchor="middle" fill="#FCD34D" font-family="system-ui, sans-serif" font-size="9">
     (serves queries)
   </text>
 
   <!-- QRY Desks (query endpoints) -->
-  <rect x="870" y="270" width="260" height="50" rx="4" fill="#78350F" stroke="#D97706" stroke-width="1"/>
-  <text x="1000" y="290" text-anchor="middle" fill="#FDE68A" font-family="system-ui, sans-serif" font-size="10" font-weight="500">
+  <rect x="843" y="270" width="260" height="50" rx="4" fill="#78350F" stroke="#D97706" stroke-width="1"/>
+  <text x="973" y="290" text-anchor="middle" fill="#FDE68A" font-family="system-ui, sans-serif" font-size="10" font-weight="500">
     get_design_by_id
   </text>
-  <text x="1000" y="305" text-anchor="middle" fill="#FBBF24" font-family="system-ui, sans-serif" font-size="8">
+  <text x="973" y="305" text-anchor="middle" fill="#FBBF24" font-family="system-ui, sans-serif" font-size="8">
     Query Desk (Spoke) — GET /designs/:id
   </text>
 
-  <rect x="870" y="335" width="260" height="50" rx="4" fill="#78350F" stroke="#D97706" stroke-width="1"/>
-  <text x="1000" y="355" text-anchor="middle" fill="#FDE68A" font-family="system-ui, sans-serif" font-size="10" font-weight="500">
+  <rect x="843" y="335" width="260" height="50" rx="4" fill="#78350F" stroke="#D97706" stroke-width="1"/>
+  <text x="973" y="355" text-anchor="middle" fill="#FDE68A" font-family="system-ui, sans-serif" font-size="10" font-weight="500">
     get_designs_page
   </text>
-  <text x="1000" y="370" text-anchor="middle" fill="#FBBF24" font-family="system-ui, sans-serif" font-size="8">
+  <text x="973" y="370" text-anchor="middle" fill="#FBBF24" font-family="system-ui, sans-serif" font-size="8">
     Query Desk (Spoke) — GET /designs?page=N
   </text>
 
   <!-- QRY reads from SQLite label -->
-  <rect x="898" y="400" width="220" height="30" rx="4" fill="#78350F" fill-opacity="0.5" stroke="#FBBF24" stroke-width="1" stroke-dasharray="4,2"/>
-  <text x="1008" y="420" text-anchor="middle" fill="#FDE68A" font-family="system-ui, sans-serif" font-size="10">
+  <rect x="870" y="400" width="220" height="30" rx="4" fill="#78350F" fill-opacity="0.5" stroke="#FBBF24" stroke-width="1" stroke-dasharray="4,2"/>
+  <text x="980" y="420" text-anchor="middle" fill="#FDE68A" font-family="system-ui, sans-serif" font-size="10">
     reads from SQLite (fast queries)
   </text>
 
   <!-- Spoke lines (from hub to desks) -->
-  <line x1="1008" y1="255" x2="1000" y2="270" stroke="#D97706" stroke-width="1" stroke-opacity="0.5"/>
-  <line x1="1008" y1="255" x2="1000" y2="335" stroke="#D97706" stroke-width="1" stroke-opacity="0.5"/>
+  <line x1="980" y1="255" x2="973" y2="270" stroke="#D97706" stroke-width="1" stroke-opacity="0.5"/>
+  <line x1="980" y1="255" x2="973" y2="335" stroke="#D97706" stroke-width="1" stroke-opacity="0.5"/>
 
   <!-- ═══════════════════════════════════════════════════════════ -->
   <!-- DATA FLOW ARROWS (between departments)                      -->
   <!-- ═══════════════════════════════════════════════════════════ -->
 
   <!-- 1. CMD ReckonDB → PRJ (Event subscription flow) -->
-  <path id="eventPath" d="M 258,440 L 385,440" stroke="#A78BFA" stroke-width="2" fill="none" marker-end="url(#arrPrj)"/>
-  <text x="322" y="433" text-anchor="middle" fill="#C4B5FD" font-family="system-ui, sans-serif" font-size="8">
+  <path id="eventPath" d="M 258,440 L 400,440" stroke="#A78BFA" stroke-width="2" fill="none" marker-end="url(#arrPrj)"/>
+  <text x="329" y="433" text-anchor="middle" fill="#C4B5FD" font-family="system-ui, sans-serif" font-size="8">
     subscription
   </text>
 
@@ -313,8 +316,8 @@
   </circle>
 
   <!-- 2. PRJ → SQLite (Write flow) -->
-  <path id="writePath" d="M 650,295 L 718,295" stroke="#34D399" stroke-width="2" fill="none" marker-end="url(#arrPrj)"/>
-  <text x="684" y="248" text-anchor="middle" fill="#6EE7B7" font-family="system-ui, sans-serif" font-size="8">
+  <path id="writePath" d="M 660,295 L 710,295" stroke="#34D399" stroke-width="2" fill="none" marker-end="url(#arrPrj)"/>
+  <text x="685" y="248" text-anchor="middle" fill="#6EE7B7" font-family="system-ui, sans-serif" font-size="8">
     writes
   </text>
 
@@ -327,8 +330,8 @@
   </circle>
 
   <!-- 3. SQLite → QRY (Read flow) -->
-  <path id="readPath" d="M 788,295 L 855,295" stroke="#FBBF24" stroke-width="2" fill="none" stroke-dasharray="6,3" marker-end="url(#arrQry)"/>
-  <text x="822" y="248" text-anchor="middle" fill="#FCD34D" font-family="system-ui, sans-serif" font-size="8">
+  <path id="readPath" d="M 780,295 L 830,295" stroke="#FBBF24" stroke-width="2" fill="none" stroke-dasharray="6,3" marker-end="url(#arrQry)"/>
+  <text x="805" y="248" text-anchor="middle" fill="#FCD34D" font-family="system-ui, sans-serif" font-size="8">
     reads
   </text>
 
@@ -358,16 +361,18 @@
   </text>
 
   <!-- ═══════════════════════════════════════════════════════════ -->
-  <!-- SECOND DIVISION (collapsed, shifted right)                  -->
+  <!-- DIVISION 2 (solid border, matching Division 1 style)        -->
   <!-- ═══════════════════════════════════════════════════════════ -->
-  <rect x="400" y="535" width="720" height="100" rx="10" fill="url(#divisionGrad)" stroke="#818CF8" stroke-width="1.5" stroke-dasharray="6,3"/>
-  <rect x="415" y="543" width="110" height="24" rx="12" fill="#4338CA" fill-opacity="0.5"/>
-  <text x="470" y="560" text-anchor="middle" fill="#C7D2FE" font-family="system-ui, sans-serif" font-size="12" font-weight="bold">
-    DIVISION
+  <rect x="400" y="535" width="720" height="100" rx="10" fill="url(#divisionGrad)" stroke="#818CF8" stroke-width="1.5"/>
+
+  <rect x="415" y="543" width="130" height="24" rx="12" fill="#4338CA" fill-opacity="0.5"/>
+  <text x="480" y="560" text-anchor="middle" fill="#C7D2FE" font-family="system-ui, sans-serif" font-size="12" font-weight="bold">
+    DIVISION 2
   </text>
-  <text x="538" y="560" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">
+  <text x="558" y="560" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">
     Another bounded context (e.g. "billing")
   </text>
+
   <!-- Mini departments -->
   <rect x="420" y="575" width="200" height="45" rx="4" fill="url(#cmdGrad)" stroke="#8B5CF6" stroke-width="1" stroke-opacity="0.6"/>
   <text x="520" y="602" text-anchor="middle" fill="#A78BFA" font-family="system-ui, sans-serif" font-size="10">CMD (desks...)</text>
@@ -429,9 +434,9 @@
   </circle>
 
   <!-- ═══════════════════════════════════════════════════════════ -->
-  <!-- MACULA MESH (external fact transport)                       -->
+  <!-- MACULA MESH (external fact transport — taller)              -->
   <!-- ═══════════════════════════════════════════════════════════ -->
-  <rect x="35" y="690" width="1130" height="110" rx="10" fill="#0C4A6E" fill-opacity="0.3" stroke="#38BDF8" stroke-width="2"/>
+  <rect x="35" y="690" width="1130" height="145" rx="10" fill="#0C4A6E" fill-opacity="0.3" stroke="#38BDF8" stroke-width="2"/>
 
   <!-- Mesh label -->
   <rect x="50" y="698" width="130" height="24" rx="12" fill="#0369A1" fill-opacity="0.7"/>
@@ -442,67 +447,80 @@
     External fact transport — HTTP/3 over QUIC, DHT PubSub
   </text>
 
-  <!-- Other agents on the mesh -->
-  <rect x="80" y="730" width="200" height="50" rx="6" fill="#0C4A6E" stroke="#0EA5E9" stroke-width="1"/>
-  <text x="180" y="752" text-anchor="middle" fill="#BAE6FD" font-family="system-ui, sans-serif" font-size="11" font-weight="500">
+  <!-- Beam Cluster group border (subtle dashed) -->
+  <rect x="62" y="735" width="420" height="85" rx="8" fill="none" stroke="#0EA5E9" stroke-width="1" stroke-dasharray="6,3" stroke-opacity="0.4"/>
+  <text x="272" y="731" text-anchor="middle" fill="#7DD3FC" font-family="system-ui, sans-serif" font-size="9" fill-opacity="0.6">beam cluster</text>
+
+  <!-- Agent A (beam00) — cluster node -->
+  <rect x="75" y="748" width="185" height="55" rx="6" fill="#0C4A6E" stroke="#0EA5E9" stroke-width="1"/>
+  <text x="168" y="770" text-anchor="middle" fill="#BAE6FD" font-family="system-ui, sans-serif" font-size="11" font-weight="500">
     Agent A (beam00)
   </text>
-  <text x="180" y="768" text-anchor="middle" fill="#7DD3FC" font-family="system-ui, sans-serif" font-size="9">
-    Publishes facts to mesh topics
+  <text x="168" y="788" text-anchor="middle" fill="#7DD3FC" font-family="system-ui, sans-serif" font-size="9">
+    Publishes facts to mesh
   </text>
 
   <!-- Pulse ring around Agent A -->
-  <circle cx="180" cy="755" r="14" fill="none" stroke="#0EA5E9">
+  <circle cx="168" cy="775" r="14" fill="none" stroke="#0EA5E9">
     <animate attributeName="r" values="14;40;55" dur="3s" repeatCount="indefinite"/>
     <animate attributeName="opacity" values="0.6;0.2;0" dur="3s" repeatCount="indefinite"/>
   </circle>
 
-  <rect x="400" y="730" width="200" height="50" rx="6" fill="#0C4A6E" stroke="#0EA5E9" stroke-width="1"/>
-  <text x="500" y="752" text-anchor="middle" fill="#BAE6FD" font-family="system-ui, sans-serif" font-size="11" font-weight="500">
+  <!-- Agent B (beam01) — cluster node, closer to A -->
+  <rect x="282" y="748" width="185" height="55" rx="6" fill="#0C4A6E" stroke="#0EA5E9" stroke-width="1"/>
+  <text x="375" y="770" text-anchor="middle" fill="#BAE6FD" font-family="system-ui, sans-serif" font-size="11" font-weight="500">
     Agent B (beam01)
   </text>
-  <text x="500" y="768" text-anchor="middle" fill="#7DD3FC" font-family="system-ui, sans-serif" font-size="9">
+  <text x="375" y="788" text-anchor="middle" fill="#7DD3FC" font-family="system-ui, sans-serif" font-size="9">
     Subscribes to mesh topics
   </text>
 
-  <rect x="720" y="730" width="200" height="50" rx="6" fill="#0C4A6E" stroke="#0EA5E9" stroke-width="1"/>
-  <text x="820" y="752" text-anchor="middle" fill="#BAE6FD" font-family="system-ui, sans-serif" font-size="11" font-weight="500">
+  <!-- Edge nodes group border (subtle dashed, warm) -->
+  <rect x="577" y="735" width="420" height="85" rx="8" fill="none" stroke="#D97706" stroke-width="1" stroke-dasharray="6,3" stroke-opacity="0.4"/>
+  <text x="787" y="731" text-anchor="middle" fill="#FBBF24" font-family="system-ui, sans-serif" font-size="9" fill-opacity="0.6">edge nodes</text>
+
+  <!-- Agent C (edge) — warm amber color -->
+  <rect x="590" y="748" width="185" height="55" rx="6" fill="#451A03" stroke="#D97706" stroke-width="1"/>
+  <text x="683" y="770" text-anchor="middle" fill="#FDE68A" font-family="system-ui, sans-serif" font-size="11" font-weight="500">
     Agent C (edge)
   </text>
-  <text x="820" y="768" text-anchor="middle" fill="#7DD3FC" font-family="system-ui, sans-serif" font-size="9">
+  <text x="683" y="788" text-anchor="middle" fill="#FBBF24" font-family="system-ui, sans-serif" font-size="9">
     Discovers peers via DHT
   </text>
 
-  <!-- Animated mesh packets: A to B -->
-  <path id="meshPathAB" d="M 280,755 L 400,755" fill="none" stroke="none"/>
-  <line x1="280" y1="755" x2="400" y2="755" stroke="#0EA5E9" stroke-width="1" stroke-dasharray="4,3" stroke-opacity="0.4"/>
+  <!-- Agent D (mobile) — warm amber color -->
+  <rect x="800" y="748" width="185" height="55" rx="6" fill="#451A03" stroke="#D97706" stroke-width="1"/>
+  <text x="893" y="770" text-anchor="middle" fill="#FDE68A" font-family="system-ui, sans-serif" font-size="11" font-weight="500">
+    Agent D (mobile)
+  </text>
+  <text x="893" y="788" text-anchor="middle" fill="#FBBF24" font-family="system-ui, sans-serif" font-size="9">
+    Mesh participant
+  </text>
+
+  <!-- Animated mesh packets: Cluster → C -->
+  <path id="meshPathClusterC" d="M 467,775 L 590,775" fill="none" stroke="none"/>
+  <line x1="467" y1="775" x2="590" y2="775" stroke="#0EA5E9" stroke-width="1" stroke-dasharray="4,3" stroke-opacity="0.4"/>
   <circle r="4" fill="#38BDF8">
     <animateMotion dur="2s" repeatCount="indefinite" begin="0s">
-      <mpath href="#meshPathAB"/>
+      <mpath href="#meshPathClusterC"/>
     </animateMotion>
     <animate attributeName="opacity" values="0;1;1;0" dur="2s" repeatCount="indefinite" begin="0s"/>
   </circle>
   <circle r="4" fill="#38BDF8">
     <animateMotion dur="2s" repeatCount="indefinite" begin="0.6s">
-      <mpath href="#meshPathAB"/>
+      <mpath href="#meshPathClusterC"/>
     </animateMotion>
     <animate attributeName="opacity" values="0;1;1;0" dur="2s" repeatCount="indefinite" begin="0.6s"/>
   </circle>
 
-  <!-- Animated mesh packets: B to C -->
-  <path id="meshPathBC" d="M 600,755 L 720,755" fill="none" stroke="none"/>
-  <line x1="600" y1="755" x2="720" y2="755" stroke="#0EA5E9" stroke-width="1" stroke-dasharray="4,3" stroke-opacity="0.4"/>
-  <circle r="4" fill="#38BDF8">
-    <animateMotion dur="2s" repeatCount="indefinite" begin="0.3s">
-      <mpath href="#meshPathBC"/>
+  <!-- Animated mesh packets: C → D -->
+  <path id="meshPathCD" d="M 775,775 L 800,775" fill="none" stroke="none"/>
+  <line x1="775" y1="775" x2="800" y2="775" stroke="#D97706" stroke-width="1" stroke-dasharray="4,3" stroke-opacity="0.4"/>
+  <circle r="4" fill="#FBBF24">
+    <animateMotion dur="1.5s" repeatCount="indefinite" begin="0.3s">
+      <mpath href="#meshPathCD"/>
     </animateMotion>
-    <animate attributeName="opacity" values="0;1;1;0" dur="2s" repeatCount="indefinite" begin="0.3s"/>
-  </circle>
-  <circle r="4" fill="#38BDF8">
-    <animateMotion dur="2s" repeatCount="indefinite" begin="1s">
-      <mpath href="#meshPathBC"/>
-    </animateMotion>
-    <animate attributeName="opacity" values="0;1;1;0" dur="2s" repeatCount="indefinite" begin="1s"/>
+    <animate attributeName="opacity" values="0;1;1;0" dur="1.5s" repeatCount="indefinite" begin="0.3s"/>
   </circle>
 
   <!-- ═══════════════════════════════════════════════════════════ -->
@@ -534,37 +552,37 @@
   <!-- ═══════════════════════════════════════════════════════════ -->
   <!-- LEGEND                                                      -->
   <!-- ═══════════════════════════════════════════════════════════ -->
-  <rect x="15" y="812" width="1170" height="35" rx="6" fill="#1E293B"/>
+  <rect x="15" y="855" width="1170" height="35" rx="6" fill="#1E293B"/>
 
   <!-- Legend items -->
-  <circle cx="40" cy="829" r="5" fill="#8B5CF6"/>
-  <text x="50" y="833" fill="#A5B4FC" font-family="system-ui, sans-serif" font-size="9">CMD = Requests</text>
+  <circle cx="40" cy="872" r="5" fill="#8B5CF6"/>
+  <text x="50" y="876" fill="#A5B4FC" font-family="system-ui, sans-serif" font-size="9">CMD = Requests</text>
 
-  <circle cx="160" cy="829" r="5" fill="#10B981"/>
-  <text x="170" y="833" fill="#6EE7B7" font-family="system-ui, sans-serif" font-size="9">PRJ = Projections</text>
+  <circle cx="160" cy="872" r="5" fill="#10B981"/>
+  <text x="170" y="876" fill="#6EE7B7" font-family="system-ui, sans-serif" font-size="9">PRJ = Projections</text>
 
-  <circle cx="295" cy="829" r="5" fill="#F59E0B"/>
-  <text x="305" y="833" fill="#FCD34D" font-family="system-ui, sans-serif" font-size="9">QRY = Queries</text>
+  <circle cx="295" cy="872" r="5" fill="#F59E0B"/>
+  <text x="305" y="876" fill="#FCD34D" font-family="system-ui, sans-serif" font-size="9">QRY = Queries</text>
 
-  <circle cx="405" cy="829" r="5" fill="#F472B6"/>
-  <text x="415" y="833" fill="#F9A8D4" font-family="system-ui, sans-serif" font-size="9">Facts (pg groups)</text>
+  <circle cx="405" cy="872" r="5" fill="#F472B6"/>
+  <text x="415" y="876" fill="#F9A8D4" font-family="system-ui, sans-serif" font-size="9">Facts (pg groups)</text>
 
-  <circle cx="535" cy="829" r="5" fill="#38BDF8"/>
-  <text x="545" y="833" fill="#7DD3FC" font-family="system-ui, sans-serif" font-size="9">Mesh (QUIC)</text>
+  <circle cx="535" cy="872" r="5" fill="#38BDF8"/>
+  <text x="545" y="876" fill="#7DD3FC" font-family="system-ui, sans-serif" font-size="9">Mesh (QUIC)</text>
 
   <!-- ReckonDB legend -->
-  <rect x="640" y="823" width="16" height="12" rx="2" fill="#2D1B69" stroke="#A78BFA" stroke-width="1"/>
-  <text x="662" y="833" fill="#DDD6FE" font-family="system-ui, sans-serif" font-size="9">ReckonDB (events)</text>
+  <rect x="640" y="866" width="16" height="12" rx="2" fill="#2D1B69" stroke="#A78BFA" stroke-width="1"/>
+  <text x="662" y="876" fill="#DDD6FE" font-family="system-ui, sans-serif" font-size="9">ReckonDB (events)</text>
 
   <!-- SQLite legend -->
-  <rect x="785" y="823" width="16" height="12" rx="2" fill="#1E293B" stroke="#94A3B8" stroke-width="1"/>
-  <text x="807" y="833" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">SQLite (read model)</text>
+  <rect x="785" y="866" width="16" height="12" rx="2" fill="#1E293B" stroke="#94A3B8" stroke-width="1"/>
+  <text x="807" y="876" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">SQLite (read model)</text>
 
-  <line x1="930" y1="829" x2="955" y2="829" stroke="#94A3B8" stroke-width="1.5" stroke-dasharray="4,2"/>
-  <text x="963" y="833" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">= read-only flow</text>
+  <line x1="930" y1="872" x2="955" y2="872" stroke="#94A3B8" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <text x="963" y="876" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">= read-only flow</text>
 
-  <circle cx="1070" cy="829" r="4" fill="#A78BFA">
+  <circle cx="1070" cy="872" r="4" fill="#A78BFA">
     <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
   </circle>
-  <text x="1080" y="833" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">= animated</text>
+  <text x="1080" y="876" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">= animated</text>
 </svg>
