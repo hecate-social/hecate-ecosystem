@@ -47,74 +47,7 @@
     <marker id="arrMesh" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
       <polygon points="0 0, 8 3, 0 6" fill="#38BDF8"/>
     </marker>
-
-    <!-- Animated pulse for data flow -->
-    <filter id="glow">
-      <feGaussianBlur stdDeviation="2" result="blur"/>
-      <feMerge>
-        <feMergeNode in="blur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
   </defs>
-
-  <style>
-    /* Animated data flow dots */
-    @keyframes flowRight {
-      0% { transform: translateX(0); opacity: 0; }
-      15% { opacity: 1; }
-      85% { opacity: 1; }
-      100% { transform: translateX(120px); opacity: 0; }
-    }
-    @keyframes flowDown {
-      0% { transform: translateY(0); opacity: 0; }
-      15% { opacity: 1; }
-      85% { opacity: 1; }
-      100% { transform: translateY(80px); opacity: 0; }
-    }
-    @keyframes flowUp {
-      0% { transform: translateY(0); opacity: 0; }
-      15% { opacity: 1; }
-      85% { opacity: 1; }
-      100% { transform: translateY(-80px); opacity: 0; }
-    }
-    @keyframes flowLeft {
-      0% { transform: translateX(0); opacity: 0; }
-      15% { opacity: 1; }
-      85% { opacity: 1; }
-      100% { transform: translateX(-120px); opacity: 0; }
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 0.6; }
-      50% { opacity: 1; }
-    }
-    @keyframes flowCmdToPrj {
-      0% { transform: translate(0, 0); opacity: 0; }
-      10% { opacity: 1; }
-      90% { opacity: 1; }
-      100% { transform: translate(260px, 0); opacity: 0; }
-    }
-    @keyframes flowPrjToQry {
-      0% { transform: translate(0, 0); opacity: 0; }
-      10% { opacity: 1; }
-      90% { opacity: 1; }
-      100% { transform: translate(260px, 0); opacity: 0; }
-    }
-    @keyframes flowFactDown {
-      0% { transform: translateY(0); opacity: 0; }
-      10% { opacity: 1; }
-      90% { opacity: 1; }
-      100% { transform: translateY(100px); opacity: 0; }
-    }
-    .dot-cmd { animation: flowCmdToPrj 2.5s ease-in-out infinite; }
-    .dot-cmd-2 { animation: flowCmdToPrj 2.5s ease-in-out 1.2s infinite; }
-    .dot-prj { animation: flowPrjToQry 2s ease-in-out 0.8s infinite; }
-    .dot-prj-2 { animation: flowPrjToQry 2s ease-in-out 1.8s infinite; }
-    .dot-fact { animation: flowFactDown 3s ease-in-out infinite; }
-    .dot-fact-2 { animation: flowFactDown 3s ease-in-out 1.5s infinite; }
-    .pulse { animation: pulse 2s ease-in-out infinite; }
-    .pulse-slow { animation: pulse 3s ease-in-out infinite; }
-  </style>
 
   <!-- Background -->
   <rect width="1100" height="820" fill="url(#bgGrad)"/>
@@ -124,7 +57,7 @@
     The Hecate Mental Model
   </text>
   <text x="550" y="52" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="12">
-    Venture &gt; Division &gt; Department (Cartwheel) &gt; Desk (Spoke) &mdash; Event-driven data flow
+    Venture &gt; Division &gt; Department (Cartwheel) &gt; Desk (Spoke) — Event-driven data flow
   </text>
 
   <!-- ═══════════════════════════════════════════════════════════ -->
@@ -152,7 +85,7 @@
     DIVISION
   </text>
   <text x="178" y="135" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">
-    Bounded context — 3 departments cooperating (e.g. &quot;auth&quot;, &quot;billing&quot;)
+    Bounded context — 3 departments cooperating (e.g. "auth", "billing")
   </text>
 
   <!-- ─────────────────────────────────────────────── -->
@@ -165,7 +98,7 @@
     CMD Department
   </text>
   <text x="215" y="192" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">
-    Front-Office &bull; Requests &bull; Cartwheel 1
+    Front-Office · Requests · Cartwheel 1
   </text>
 
   <!-- CMD Hub (dossier/aggregate) -->
@@ -232,7 +165,7 @@
     PRJ Department
   </text>
   <text x="550" y="192" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">
-    Back-Office &bull; Knowledge Warehouse &bull; Cartwheel 2
+    Back-Office · Knowledge Warehouse · Cartwheel 2
   </text>
 
   <!-- PRJ Hub (read model store) -->
@@ -247,7 +180,7 @@
   <!-- PRJ Desks (projections) -->
   <rect x="415" y="270" width="260" height="50" rx="4" fill="#064E3B" stroke="#059669" stroke-width="1"/>
   <text x="545" y="290" text-anchor="middle" fill="#A7F3D0" font-family="system-ui, sans-serif" font-size="10" font-weight="500">
-    aggregate_designed_v1 &rarr; designs table
+    aggregate_designed_v1 to designs
   </text>
   <text x="545" y="305" text-anchor="middle" fill="#34D399" font-family="system-ui, sans-serif" font-size="8">
     Projection Desk (Spoke)
@@ -255,7 +188,7 @@
 
   <rect x="415" y="335" width="260" height="50" rx="4" fill="#064E3B" stroke="#059669" stroke-width="1"/>
   <text x="545" y="355" text-anchor="middle" fill="#A7F3D0" font-family="system-ui, sans-serif" font-size="10" font-weight="500">
-    design_completed_v1 &rarr; designs table
+    design_completed_v1 to designs
   </text>
   <text x="545" y="370" text-anchor="middle" fill="#34D399" font-family="system-ui, sans-serif" font-size="8">
     Projection Desk (Spoke)
@@ -281,7 +214,7 @@
     QRY Department
   </text>
   <text x="885" y="192" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">
-    Front-Office &bull; Inquiries &bull; Cartwheel 3
+    Front-Office · Inquiries · Cartwheel 3
   </text>
 
   <!-- QRY Hub (query service) -->
@@ -299,7 +232,7 @@
     get_design_by_id
   </text>
   <text x="880" y="305" text-anchor="middle" fill="#FBBF24" font-family="system-ui, sans-serif" font-size="8">
-    Query Desk (Spoke) &mdash; GET /designs/:id
+    Query Desk (Spoke) — GET /designs/:id
   </text>
 
   <rect x="750" y="335" width="260" height="50" rx="4" fill="#78350F" stroke="#D97706" stroke-width="1"/>
@@ -307,7 +240,7 @@
     get_designs_page
   </text>
   <text x="880" y="370" text-anchor="middle" fill="#FBBF24" font-family="system-ui, sans-serif" font-size="8">
-    Query Desk (Spoke) &mdash; GET /designs?page=N
+    Query Desk (Spoke) — GET /designs?page=N
   </text>
 
   <!-- QRY reads from PRJ label -->
@@ -324,8 +257,7 @@
   <!-- DATA FLOW ARROWS (between departments)                      -->
   <!-- ═══════════════════════════════════════════════════════════ -->
 
-  <!-- CMD → ReckonDB → PRJ (Event Flow) -->
-  <!-- Arrow from CMD to ReckonDB area -->
+  <!-- CMD to ReckonDB to PRJ (Event Flow) -->
   <path d="M 370 440 L 370 460 Q 370 470 380 470 L 520 470 Q 530 470 530 460 L 530 440"
         stroke="#A78BFA" stroke-width="2" fill="none" marker-end="url(#arrPrj)"/>
 
@@ -335,24 +267,40 @@
     ReckonDB
   </text>
 
-  <!-- Animated event dots: CMD → PRJ -->
-  <circle r="3" fill="#A78BFA" filter="url(#glow)" class="dot-cmd">
-    <animateMotion dur="2.5s" repeatCount="indefinite" path="M 370,440 L 370,465 L 530,465 L 530,440"/>
-  </circle>
-  <circle r="3" fill="#A78BFA" filter="url(#glow)" class="dot-cmd-2">
-    <animateMotion dur="2.5s" begin="1.2s" repeatCount="indefinite" path="M 370,440 L 370,465 L 530,465 L 530,440"/>
-  </circle>
+  <!-- Animated event dots: CMD to PRJ (SMIL) -->
+  <g>
+    <circle r="4" fill="#A78BFA">
+      <animateMotion dur="2.5s" repeatCount="indefinite" begin="0s">
+        <mpath href="#eventPath"/>
+      </animateMotion>
+      <animate attributeName="opacity" values="0;1;1;0" dur="2.5s" repeatCount="indefinite" begin="0s"/>
+    </circle>
+  </g>
+  <g>
+    <circle r="4" fill="#A78BFA">
+      <animateMotion dur="2.5s" repeatCount="indefinite" begin="1.2s">
+        <mpath href="#eventPath"/>
+      </animateMotion>
+      <animate attributeName="opacity" values="0;1;1;0" dur="2.5s" repeatCount="indefinite" begin="1.2s"/>
+    </circle>
+  </g>
+  <!-- Hidden path for animateMotion -->
+  <path id="eventPath" d="M 370,440 L 370,465 L 530,465 L 530,440" fill="none" stroke="none"/>
 
-  <!-- PRJ → QRY (Read Model Flow) -->
+  <!-- PRJ to QRY (Read Model Flow) -->
   <path d="M 705 300 L 745 300" stroke="#34D399" stroke-width="2" fill="none" stroke-dasharray="6,3" marker-end="url(#arrQry)"/>
   <text x="725" y="292" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="8">
     reads
   </text>
 
-  <!-- Animated read dots: PRJ → QRY -->
-  <circle r="3" fill="#34D399" filter="url(#glow)">
-    <animateMotion dur="1.5s" begin="0.5s" repeatCount="indefinite" path="M 705,300 L 745,300"/>
+  <!-- Animated read dot: PRJ to QRY (SMIL) -->
+  <circle r="3" fill="#34D399">
+    <animateMotion dur="1.5s" repeatCount="indefinite" begin="0.5s">
+      <mpath href="#readPath"/>
+    </animateMotion>
+    <animate attributeName="opacity" values="0;1;1;0" dur="1.5s" repeatCount="indefinite" begin="0.5s"/>
   </circle>
+  <path id="readPath" d="M 705,300 L 745,300" fill="none" stroke="none"/>
 
   <!-- ═══════════════════════════════════════════════════════════ -->
   <!-- FACT FLOW (between divisions / to mesh)                     -->
@@ -365,7 +313,7 @@
     DIVISION
   </text>
   <text x="178" y="550" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">
-    Another bounded context (e.g. &quot;billing&quot;)
+    Another bounded context (e.g. "billing")
   </text>
   <!-- Mini departments -->
   <rect x="60" y="565" width="140" height="45" rx="4" fill="url(#cmdGrad)" stroke="#8B5CF6" stroke-width="1" stroke-opacity="0.6"/>
@@ -391,14 +339,23 @@
   </text>
 
   <!-- Fact arrows between divisions -->
-  <!-- Division 1 → Fact Transport -->
-  <path d="M 215 500 L 215 520 Q 215 535 225 540 L 555 575" stroke="#F472B6" stroke-width="1.5" fill="none" stroke-dasharray="5,3" marker-end="url(#arrFact)"/>
-  <!-- Fact Transport → Division 2 -->
+  <!-- Division 1 to Fact Transport -->
+  <path id="factPath1" d="M 215 510 L 215 535 Q 215 545 225 548 L 555 575" stroke="#F472B6" stroke-width="1.5" fill="none" stroke-dasharray="5,3" marker-end="url(#arrFact)"/>
+  <!-- Fact Transport to Division 2 -->
   <path d="M 555 575 L 540 575" stroke="#F472B6" stroke-width="1.5" fill="none" stroke-dasharray="5,3" marker-end="url(#arrFact)"/>
 
-  <!-- Animated fact dots -->
-  <circle r="3" fill="#F472B6" filter="url(#glow)" class="pulse">
-    <animateMotion dur="3s" repeatCount="indefinite" path="M 215,500 L 215,540 L 555,575"/>
+  <!-- Animated fact dots (SMIL) -->
+  <circle r="4" fill="#F472B6">
+    <animateMotion dur="3s" repeatCount="indefinite" begin="0s">
+      <mpath href="#factPath1"/>
+    </animateMotion>
+    <animate attributeName="opacity" values="0;1;1;0" dur="3s" repeatCount="indefinite" begin="0s"/>
+  </circle>
+  <circle r="4" fill="#F472B6">
+    <animateMotion dur="3s" repeatCount="indefinite" begin="1.5s">
+      <mpath href="#factPath1"/>
+    </animateMotion>
+    <animate attributeName="opacity" values="0;1;1;0" dur="3s" repeatCount="indefinite" begin="1.5s"/>
   </circle>
 
   <!-- ═══════════════════════════════════════════════════════════ -->
@@ -424,6 +381,12 @@
     Publishes facts to mesh topics
   </text>
 
+  <!-- Pulse ring around Agent A -->
+  <circle cx="180" cy="715" r="14" fill="none" stroke="#0EA5E9">
+    <animate attributeName="r" values="14;40;55" dur="3s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.6;0.2;0" dur="3s" repeatCount="indefinite"/>
+  </circle>
+
   <rect x="350" y="690" width="200" height="50" rx="6" fill="#0C4A6E" stroke="#0EA5E9" stroke-width="1"/>
   <text x="450" y="712" text-anchor="middle" fill="#BAE6FD" font-family="system-ui, sans-serif" font-size="11" font-weight="500">
     Agent B (beam01)
@@ -440,13 +403,39 @@
     Discovers peers via DHT
   </text>
 
-  <!-- Animated mesh dots -->
-  <circle r="3" fill="#38BDF8" filter="url(#glow)">
-    <animateMotion dur="2s" begin="0s" repeatCount="indefinite" path="M 280,715 L 350,715"/>
+  <!-- Animated mesh packets: A to B -->
+  <path id="meshPathAB" d="M 280,715 L 350,715" fill="none" stroke="none"/>
+  <circle r="4" fill="#38BDF8">
+    <animateMotion dur="2s" repeatCount="indefinite" begin="0s">
+      <mpath href="#meshPathAB"/>
+    </animateMotion>
+    <animate attributeName="opacity" values="0;1;1;0" dur="2s" repeatCount="indefinite" begin="0s"/>
   </circle>
-  <circle r="3" fill="#38BDF8" filter="url(#glow)">
-    <animateMotion dur="2s" begin="0.7s" repeatCount="indefinite" path="M 550,715 L 620,715"/>
+  <circle r="4" fill="#38BDF8">
+    <animateMotion dur="2s" repeatCount="indefinite" begin="0.6s">
+      <mpath href="#meshPathAB"/>
+    </animateMotion>
+    <animate attributeName="opacity" values="0;1;1;0" dur="2s" repeatCount="indefinite" begin="0.6s"/>
   </circle>
+
+  <!-- Animated mesh packets: B to C -->
+  <path id="meshPathBC" d="M 550,715 L 620,715" fill="none" stroke="none"/>
+  <circle r="4" fill="#38BDF8">
+    <animateMotion dur="2s" repeatCount="indefinite" begin="0.3s">
+      <mpath href="#meshPathBC"/>
+    </animateMotion>
+    <animate attributeName="opacity" values="0;1;1;0" dur="2s" repeatCount="indefinite" begin="0.3s"/>
+  </circle>
+  <circle r="4" fill="#38BDF8">
+    <animateMotion dur="2s" repeatCount="indefinite" begin="1s">
+      <mpath href="#meshPathBC"/>
+    </animateMotion>
+    <animate attributeName="opacity" values="0;1;1;0" dur="2s" repeatCount="indefinite" begin="1s"/>
+  </circle>
+
+  <!-- Mesh connection lines -->
+  <line x1="280" y1="715" x2="350" y2="715" stroke="#0EA5E9" stroke-width="1" stroke-dasharray="4,3" stroke-opacity="0.4"/>
+  <line x1="550" y1="715" x2="620" y2="715" stroke="#0EA5E9" stroke-width="1" stroke-dasharray="4,3" stroke-opacity="0.4"/>
 
   <!-- Arrow from Fact Transport down to Mesh -->
   <path d="M 645 625 L 645 645" stroke="#38BDF8" stroke-width="2" fill="none" marker-end="url(#arrMesh)"/>
@@ -455,9 +444,37 @@
   </text>
 
   <!-- Arrow from Mesh up (subscription) -->
-  <path d="M 880 645 L 880 525 Q 880 515 870 515 L 550 500" stroke="#38BDF8" stroke-width="1.5" fill="none" stroke-dasharray="5,3" marker-end="url(#arrMesh)"/>
+  <path id="meshUpPath" d="M 880 645 L 880 525 Q 880 515 870 515 L 550 500" stroke="#38BDF8" stroke-width="1.5" fill="none" stroke-dasharray="5,3" marker-end="url(#arrMesh)"/>
   <text x="895" y="585" fill="#7DD3FC" font-family="system-ui, sans-serif" font-size="8" transform="rotate(-90, 895, 585)">
     mesh listener
+  </text>
+
+  <!-- Animated mesh subscription dot -->
+  <circle r="3" fill="#38BDF8">
+    <animateMotion dur="4s" repeatCount="indefinite" begin="0s">
+      <mpath href="#meshUpPath"/>
+    </animateMotion>
+    <animate attributeName="opacity" values="0;1;1;0" dur="4s" repeatCount="indefinite" begin="0s"/>
+  </circle>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- HIERARCHY REMINDER (right side)                             -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <rect x="755" y="525" width="305" height="100" rx="8" fill="#1E1B4B" stroke="#4338CA" stroke-width="1"/>
+  <text x="907" y="548" text-anchor="middle" fill="#E0E7FF" font-family="system-ui, sans-serif" font-size="12" font-weight="bold">
+    Hierarchy
+  </text>
+  <text x="777" y="568" fill="#A5B4FC" font-family="system-ui, sans-serif" font-size="10">
+    Venture
+  </text>
+  <text x="797" y="583" fill="#818CF8" font-family="system-ui, sans-serif" font-size="10">
+    &gt; Division (bounded context)
+  </text>
+  <text x="817" y="598" fill="#A78BFA" font-family="system-ui, sans-serif" font-size="10">
+    &gt; Department = Cartwheel
+  </text>
+  <text x="837" y="613" fill="#C4B5FD" font-family="system-ui, sans-serif" font-size="10">
+    &gt; Desk = Spoke (vertical slice)
   </text>
 
   <!-- ═══════════════════════════════════════════════════════════ -->
@@ -487,25 +504,8 @@
   <line x1="755" y1="797" x2="780" y2="797" stroke="#94A3B8" stroke-width="1.5" stroke-dasharray="4,2"/>
   <text x="788" y="801" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">= read-only flow</text>
 
-  <!-- Animated dots for legend -->
-  <circle cx="920" cy="797" r="3" fill="#A78BFA" class="pulse"/>
-  <text x="928" y="801" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">= animated data flow</text>
-
-  <!-- Right side: Hierarchy reminder -->
-  <rect x="755" y="525" width="305" height="100" rx="8" fill="#1E1B4B" stroke="#4338CA" stroke-width="1"/>
-  <text x="907" y="548" text-anchor="middle" fill="#E0E7FF" font-family="system-ui, sans-serif" font-size="12" font-weight="bold">
-    Hierarchy
-  </text>
-  <text x="777" y="568" fill="#A5B4FC" font-family="system-ui, sans-serif" font-size="10">
-    Venture
-  </text>
-  <text x="797" y="583" fill="#818CF8" font-family="system-ui, sans-serif" font-size="10">
-    &gt; Division (bounded context)
-  </text>
-  <text x="817" y="598" fill="#A78BFA" font-family="system-ui, sans-serif" font-size="10">
-    &gt; Department = Cartwheel
-  </text>
-  <text x="837" y="613" fill="#C4B5FD" font-family="system-ui, sans-serif" font-size="10">
-    &gt; Desk = Spoke (vertical slice)
-  </text>
+  <circle cx="900" cy="797" r="4" fill="#A78BFA">
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  <text x="910" y="801" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">= animated data flow</text>
 </svg>
