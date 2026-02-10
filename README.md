@@ -100,6 +100,7 @@ Applications built with Hecate follow the **Cartwheel** pattern — vertical sli
 
 ### Building Mesh Applications
 
+- [**Venture Lifecycle**](guides/venture-lifecycle.md) — ALC philosophy and building event-sourced applications for the mesh
 - [**Mesh Integration**](guides/mesh-integration.md) — Connect to Macula, discover peers, share capabilities
 - [**Deployment**](guides/deployment.md) — GitOps deployment to Kubernetes
 
