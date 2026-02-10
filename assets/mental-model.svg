@@ -407,13 +407,13 @@
   <!-- FACT FLOW: Fact Transport ↔ Division 2 (emit / listen)     -->
   <!-- ═══════════════════════════════════════════════════════════ -->
 
-  <!-- Fact Transport → Division 2 (emit →) -->
+  <!-- Fact Transport → Division 2 (listen →) -->
   <path id="factEmitRight" d="M 303,575 L 400,575" stroke="#F472B6" stroke-width="1.5" fill="none" stroke-dasharray="5,3" marker-end="url(#arrFact)"/>
-  <text x="352" y="568" text-anchor="middle" fill="#F9A8D4" font-family="system-ui, sans-serif" font-size="8">emit</text>
+  <text x="352" y="568" text-anchor="middle" fill="#F9A8D4" font-family="system-ui, sans-serif" font-size="8">listen</text>
 
-  <!-- Division 2 → Fact Transport (listen ←) -->
+  <!-- Division 2 → Fact Transport (emit ←) -->
   <path id="factListenLeft" d="M 400,595 L 303,595" stroke="#F472B6" stroke-width="1.5" fill="none" stroke-dasharray="5,3" marker-end="url(#arrFact)"/>
-  <text x="352" y="610" text-anchor="middle" fill="#F9A8D4" font-family="system-ui, sans-serif" font-size="8">listen</text>
+  <text x="352" y="610" text-anchor="middle" fill="#F9A8D4" font-family="system-ui, sans-serif" font-size="8">emit</text>
 
   <!-- Animated dots: FT ↔ Div2 horizontal -->
   <circle r="3" fill="#F472B6">
