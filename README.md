@@ -81,7 +81,7 @@ Applications built with Hecate follow the **Division** pattern — vertical slic
 **Desks = Vertical Slices.** Each business capability is self-contained.
 
 → See [Architecture](guides/architecture.md) for component details.
-→ See [Venture Lifecycle](guides/venture-lifecycle.md) for the full process-centric model.
+→ See [Application Lifecycle](guides/application-lifecycle.md) for the full process-centric model.
 
 ---
 
@@ -101,7 +101,7 @@ Applications built with Hecate follow the **Division** pattern — vertical slic
 
 ### Building Mesh Applications
 
-- [**Venture Lifecycle**](guides/venture-lifecycle.md) — ALC philosophy and building event-sourced applications for the mesh
+- [**Application Lifecycle**](guides/application-lifecycle.md) — ALC philosophy and building event-sourced applications for the mesh
 - [**Mesh Integration**](guides/mesh-integration.md) — Connect to Macula, discover peers, share capabilities
 - [**Deployment**](guides/deployment.md) — GitOps deployment to Kubernetes
 

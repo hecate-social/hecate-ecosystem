@@ -69,7 +69,7 @@ The terminal interface is built with Go and the Bubble Tea framework.
 
 ### Hecate Daemon
 
-The daemon is an Erlang/OTP umbrella application organized around the [Venture Lifecycle](venture-lifecycle.md).
+The daemon is an Erlang/OTP umbrella application organized around the [Application Lifecycle](application-lifecycle.md).
 
 **Venture Lifecycle Apps (CMD):**
 
@@ -273,7 +273,7 @@ The daemon runs as a DaemonSet so every node gets one instance. Deployment is ma
 
 ## Next Steps
 
-- [Venture Lifecycle](venture-lifecycle.md) — The ALC philosophy and process-centric architecture
+- [Application Lifecycle](application-lifecycle.md) — The ALC philosophy and process-centric architecture
 - [Daemon API](daemon-api.md) — REST API reference
 - [Mesh Integration](mesh-integration.md) — Peer-to-peer features
 - [Deployment](deployment.md) — GitOps deployment guide
