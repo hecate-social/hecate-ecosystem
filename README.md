@@ -136,10 +136,6 @@ Hecate composes three independent ecosystems:
 | [**Reckon**](https://github.com/reckon-db-org/reckon-ecosystem) | Event sourcing — distributed event store, CQRS framework, projections | [reckon-db-org](https://github.com/reckon-db-org) |
 | [**Faber**](https://github.com/rgfaber/faber-ecosystem) | AI & neuroevolution — TWEANN neural networks, NEAT, LTC neurons | [rgfaber](https://github.com/rgfaber) |
 
-<p align="center">
-  <img src="assets/cartwheel-architecture.svg" alt="Division Architecture" width="100%">
-</p>
-
 ---
 
 ## Community
