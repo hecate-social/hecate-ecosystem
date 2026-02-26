@@ -1,6 +1,6 @@
 # Overview
 
-Hecate is a **developer studio for building applications on the Macula mesh network**. It combines an AI-assisted terminal interface with local infrastructure for distributed, event-sourced application development.
+Hecate is a **local-first development platform** for building distributed applications on the Macula mesh network. It combines an AI-assisted desktop environment with an Erlang/OTP daemon that handles event sourcing, LLM routing, and mesh connectivity.
 
 ## Not Just Another Chatbot
 
@@ -30,11 +30,13 @@ Hecate is designed to build applications for [Macula](https://github.com/macula-
 - Coordinate through distributed events
 - Run at the edge without cloud dependencies
 
+See [Macula Mesh](macula-mesh.md) for the full architecture.
+
 ## Development Lifecycle (ALC)
 
 Hecate structures development into four phases, each with specialized AI behavior:
 
-### Discovery & Analysis (DNA)
+### Discovery & Analysis (DnA)
 
 Before writing code, understand the problem:
 - Explore existing codebases
@@ -42,9 +44,7 @@ Before writing code, understand the problem:
 - Identify constraints and requirements
 - Document findings for the team
 
-The AI in DNA mode asks questions, explores thoroughly, and resists jumping to implementation.
-
-### Architecture & Planning (ANP)
+### Architecture & Planning (AnP)
 
 Design before you build:
 - Choose patterns (event sourcing, CQRS, vertical slices)
@@ -52,9 +52,7 @@ Design before you build:
 - Plan the implementation in phases
 - Identify risks and unknowns
 
-The AI in ANP mode thinks in systems, proposes architectures, and challenges assumptions.
-
-### Testing & Implementation (TNI)
+### Testing & Implementation (TnI)
 
 Write code that works:
 - Test-first development
@@ -62,17 +60,13 @@ Write code that works:
 - Minimal changes — do what was asked
 - Verify before declaring done
 
-The AI in TNI mode is focused, precise, and stays close to the code.
-
-### Deployment & Operations (DNO)
+### Deployment & Operations (DnO)
 
 Ship and maintain:
-- GitOps deployments via Flux
+- systemd + podman deployment via GitOps reconciler
 - Monitor health and performance
 - Respond to incidents
 - Iterate based on production feedback
-
-The AI in DNO mode thinks about infrastructure, reliability, and operational concerns.
 
 ## Architecture Principles
 
@@ -114,10 +108,11 @@ Your data stays yours:
 
 | Component | Technology | Purpose |
 |-----------|------------|---------|
-| [**hecate-tui**](https://github.com/hecate-social/hecate-tui) | Go / Bubble Tea | Terminal interface, AI interaction |
-| [**hecate-daemon**](https://github.com/hecate-social/hecate-daemon) | Erlang/OTP | LLM routing, event store, mesh client |
-| [**hecate-agents**](https://github.com/hecate-social/hecate-agents) | Markdown | Personality, roles, philosophy |
-| [**hecate-gitops**](https://github.com/hecate-social/hecate-gitops) | YAML / Flux | Kubernetes deployment |
+| [**hecate-daemon**](https://github.com/hecate-social/hecate-daemon) | Erlang/OTP | Runtime — identity, event sourcing, LLM routing, mesh client |
+| [**hecate-web**](https://github.com/hecate-social/hecate-web) | Tauri / SvelteKit | Desktop app — studios for LLM, DevOps, node management |
+| [**hecate-agents**](https://github.com/hecate-social/hecate-agents) | Markdown | Personality, roles, philosophy, skills |
+| [**hecate-install**](https://github.com/hecate-social/hecate-install) | Bash / Nix | Installer + NixOS flake for bootable media |
+| [**hecate-gitops**](https://github.com/hecate-social/hecate-gitops) | Quadlet | Per-node systemd + podman deployment |
 
 ## Use Cases
 
@@ -129,12 +124,13 @@ Run Hecate on your workstation. Build mesh applications with AI assistance. Depl
 
 Each developer runs Hecate locally. Agents share learnings and patterns through the mesh. Consistent architecture enforced through shared personality and roles.
 
-### Enterprise Mesh Deployments
+### Home Lab with Multiple Nodes
 
-Deploy Hecate daemon as a DaemonSet across Kubernetes clusters. Developers connect via TUI from any machine. Centralized secrets, decentralized execution.
+Deploy Hecate across a cluster of machines (e.g., beam00-03). Daemons form a BEAM cluster for intra-network communication and connect to the Macula mesh for cross-network collaboration.
 
 ## Next Steps
 
-- [**Getting Started**](getting-started.md) — Install Hecate and run your first session
-- [**Architecture**](architecture.md) — Deep dive into component design
-- [**Mesh Integration**](mesh-integration.md) — Connect to the Macula mesh
+- [**Getting Started**](getting-started.md) — Install Hecate and verify everything works
+- [**Mental Model**](mental-model.md) — Understand the Venture/Division/Department/Desk hierarchy
+- [**Macula Mesh**](macula-mesh.md) — How the mesh works and Hecate's role in it
+- [**App Development**](app-development.md) — Build your own Hecate plugin

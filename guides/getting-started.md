@@ -1,165 +1,120 @@
 # Getting Started
 
-This guide walks you through installing Hecate and having your first conversation with an AI agent.
+This guide walks you through installing Hecate and verifying that everything works.
 
 ## Prerequisites
 
-- **Ollama** (recommended) - For running local models
-- **Docker** (optional) - For containerized daemon deployment
-- **Go 1.21+** (optional) - For building TUI from source
-- **Erlang/OTP 27+** (optional) - For building daemon from source
+- **Linux** (x86_64 or arm64) or **macOS** (arm64)
+- **curl** and **git**
+- **systemd** (for service management)
+- **Ollama** (recommended for local LLM inference)
 
-## Step 1: Install Ollama
-
-Ollama provides the easiest path to running local LLMs.
+## Step 1: Install Hecate
 
 ```bash
-# Linux
-curl -fsSL https://ollama.com/install.sh | sh
-
-# macOS
-brew install ollama
-
-# Start Ollama service
-ollama serve
+curl -fsSL https://raw.githubusercontent.com/hecate-social/hecate-install/main/install.sh | bash
 ```
 
-Pull a model to get started:
+The installer will:
+1. Detect your hardware (RAM, CPU, GPU, storage)
+2. Ask you to select a node role (standalone, cluster, inference)
+3. Optionally install Ollama and pull a model
+4. Install podman, the daemon, and the reconciler
+5. Optionally install the desktop app (hecate-web)
+
+For headless servers:
 
 ```bash
+curl -fsSL https://raw.githubusercontent.com/hecate-social/hecate-install/main/install.sh | bash -s -- --daemon-only
+```
+
+## Step 2: Verify the Daemon
+
+```bash
+# Check service status
+hecate status
+
+# Check daemon health
+curl --unix-socket ~/.hecate/hecate-daemon/sockets/api.sock http://localhost/health
+
+# Check node identity (auto-generated on first boot)
+curl --unix-socket ~/.hecate/hecate-daemon/sockets/api.sock http://localhost/api/node/identity
+```
+
+Expected output:
+
+```json
+{
+  "ok": true,
+  "node_identity": {
+    "mri": "mri:agent:io.macula/anonymous/hecate-a1b2",
+    "public_key": "base64...",
+    "realm": "io.macula",
+    "initialized": true
+  }
+}
+```
+
+## Step 3: Install Ollama (if not done by installer)
+
+```bash
+curl -fsSL https://ollama.com/install.sh | sh
 ollama pull llama3.2
 ```
 
-## Step 2: Install the Daemon
-
-### Option A: Docker (Recommended)
+Verify the daemon can see models:
 
 ```bash
-docker run -d \
-  --name hecate-daemon \
-  -v /run/hecate:/run/hecate \
-  -v ~/.hecate:/var/lib/hecate \
-  --network host \
-  ghcr.io/hecate-social/hecate-daemon:latest
+curl --unix-socket ~/.hecate/hecate-daemon/sockets/api.sock http://localhost/api/llm/models
 ```
 
-The daemon exposes a Unix socket at `/run/hecate/daemon.sock`.
+## Step 4: (Optional) Install the Desktop App
 
-### Option B: Build from Source
+Download from [GitHub Releases](https://github.com/hecate-social/hecate-web/releases), or if installed via `install.sh`:
 
 ```bash
-git clone https://github.com/hecate-social/hecate-daemon.git
-cd hecate-daemon
-rebar3 release
-_build/default/rel/hecate/bin/hecate foreground
+hecate-web
 ```
 
-### Verify the Daemon
+The desktop app connects to the daemon via Unix socket and provides studios for LLM chat, node management, and DevOps workflows.
+
+## Step 5: Pair with Macula Realm
+
+Pairing links your daemon to a Macula realm account (via GitHub OAuth):
 
 ```bash
-curl --unix-socket /run/hecate/daemon.sock http://localhost/api/health
-# Expected: {"ok":true,"status":"healthy",...}
-
-curl --unix-socket /run/hecate/daemon.sock http://localhost/api/llm/models
-# Expected: {"ok":true,"models":[...]}
+# Start pairing
+curl -X POST --unix-socket ~/.hecate/hecate-daemon/sockets/api.sock \
+  http://localhost/api/pairing/initiate
 ```
 
-## Step 3: Install the TUI
+This returns a URL — open it in your browser. The confirmation code is included in the URL for seamless auto-confirmation.
 
-### Option A: Download Release
+Or use the desktop app's Settings page to initiate pairing with one click.
+
+## Step 6: (Optional) Set Up AI Personality
+
+Clone the agents knowledge base:
 
 ```bash
-# Linux amd64
-curl -LO https://github.com/hecate-social/hecate-tui/releases/latest/download/hecate-tui-linux-amd64.tar.gz
-tar xzf hecate-tui-linux-amd64.tar.gz
-sudo mv hecate-tui /usr/local/bin/
-
-# macOS arm64
-curl -LO https://github.com/hecate-social/hecate-tui/releases/latest/download/hecate-tui-darwin-arm64.tar.gz
-tar xzf hecate-tui-darwin-arm64.tar.gz
-sudo mv hecate-tui /usr/local/bin/
+git clone https://github.com/hecate-social/hecate-agents.git ~/.hecate/hecate-agents
 ```
 
-### Option B: Build from Source
+This provides philosophy documents, skills, and guardrails that shape how AI assistants interact with your Hecate codebase.
+
+## Daemon Logs
 
 ```bash
-git clone https://github.com/hecate-social/hecate-tui.git
-cd hecate-tui
-go build -o hecate-tui ./cmd/hecate-tui
-sudo mv hecate-tui /usr/local/bin/
+# View logs
+hecate logs
+
+# Or directly via journalctl
+journalctl --user -u hecate-daemon -f
 ```
-
-## Step 4: Configure the TUI
-
-Create the configuration file:
-
-```bash
-mkdir -p ~/.config/hecate-tui
-cat > ~/.config/hecate-tui/config.toml << 'EOF'
-[daemon]
-socket_path = "/run/hecate/daemon.sock"
-
-[ui]
-theme = "dark"
-EOF
-```
-
-## Step 5: Start Chatting
-
-Launch the TUI:
-
-```bash
-hecate-tui
-```
-
-You'll see a terminal interface with:
-- Status bar at the top (daemon status, model name)
-- Chat area in the middle
-- Input field at the bottom
-- Hints bar showing available commands
-
-### Basic Interaction
-
-1. Press `i` to enter **Insert mode**
-2. Type your message
-3. Press `Enter` to send
-4. Press `Esc` to return to **Normal mode**
-
-### Switch Models
-
-Press `Tab` to cycle through available models, or use the command:
-
-```
-/models
-```
-
-### Get Help
-
-```
-/help
-```
-
-## Step 6: (Optional) Set Up Personality
-
-Clone the agents repository for custom personalities:
-
-```bash
-git clone https://github.com/hecate-social/hecate-agents.git ~/hecate-agents
-```
-
-Update your config:
-
-```toml
-[personality]
-personality_file = "~/hecate-agents/PERSONALITY.md"
-roles_dir = "~/hecate-agents/philosophy"
-active_role = "dna"
-```
-
-Now your agent will respond with the configured personality.
 
 ## Next Steps
 
-- [TUI Usage](tui-usage.md) - Learn all commands and shortcuts
-- [Daemon API](daemon-api.md) - Explore the REST API
-- [Personality System](personality-system.md) - Customize your agent
+- [Hecate Web](hecate-web.md) — learn the desktop app studios
+- [Macula Mesh](macula-mesh.md) — connect to the mesh network
+- [Daemon API](daemon-api.md) — explore the REST API
+- [App Development](app-development.md) — build your own Hecate plugin

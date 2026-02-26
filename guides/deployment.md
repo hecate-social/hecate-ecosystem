@@ -1,385 +1,201 @@
 # Deployment Guide
 
-This guide covers deploying Hecate to Kubernetes clusters using GitOps.
+Hecate runs as **rootless Podman containers** managed by **systemd user services**. No Kubernetes, no Docker, no root at runtime.
 
 ## Overview
 
-Hecate uses Flux for GitOps-based deployments:
-
-1. Code changes pushed to GitHub trigger CI/CD
-2. CI builds and pushes Docker images to ghcr.io
-3. Update manifests in hecate-gitops repository
-4. Flux reconciles the cluster to match the manifests
-
-## Prerequisites
-
-- Kubernetes cluster (k3s, k8s, or KinD)
-- Flux installed on the cluster
-- Access to hecate-gitops repository
-- kubectl configured for your cluster
-
-## Repository Structure
-
 ```
-hecate-gitops/
-├── infrastructure/
-│   └── hecate/
-│       ├── namespace.yaml
-│       ├── configmap.yaml
-│       ├── sealed-secret.yaml
-│       └── daemonset.yaml
-└── clusters/
-    └── beam-cluster/
-        └── hecate-kustomization.yaml
+~/.hecate/gitops/           ← Source of truth (Quadlet .container files)
+    ↓ reconciler watches
+~/.config/containers/systemd/  ← Podman Quadlet picks up symlinks
+    ↓ systemctl --user daemon-reload
+systemd user services          ← Containers run as user services
 ```
 
-## Deployment Model
+1. CI/CD builds OCI images and pushes to ghcr.io (`:latest` + semver tags)
+2. Quadlet `.container` files in `~/.hecate/gitops/` define what runs on each node
+3. The reconciler watches gitops and symlinks Quadlet files to systemd
+4. `podman auto-update` pulls new `:latest` images automatically
 
-Hecate daemon runs as a **DaemonSet**, deploying one pod per node:
-
-```yaml
-apiVersion: apps/v1
-kind: DaemonSet
-metadata:
-  name: hecate-daemon
-  namespace: hecate
-spec:
-  selector:
-    matchLabels:
-      app: hecate-daemon
-  template:
-    spec:
-      hostNetwork: true
-      containers:
-        - name: daemon
-          image: ghcr.io/hecate-social/hecate-daemon:0.7.2
-          volumeMounts:
-            - name: socket-dir
-              mountPath: /run/hecate
-      volumes:
-        - name: socket-dir
-          hostPath:
-            path: /run/hecate
-```
-
-Key points:
-- `hostNetwork: true` - Binds to host network for Ollama access
-- Socket at `/run/hecate/daemon.sock` on the host
-- Each node gets its own daemon instance
-
-## Step-by-Step Deployment
-
-### 1. Create Namespace
-
-```yaml
-# infrastructure/hecate/namespace.yaml
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: hecate
-```
-
-### 2. Create ConfigMap
-
-```yaml
-# infrastructure/hecate/configmap.yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: hecate-config
-  namespace: hecate
-data:
-  OLLAMA_HOST: "http://localhost:11434"
-  HECATE_LOG_LEVEL: "info"
-```
-
-### 3. Create Sealed Secret (for API keys)
-
-First, create the secret locally:
+## Quick Install
 
 ```bash
-kubectl create secret generic hecate-secrets \
-  --namespace hecate \
-  --from-literal=OPENAI_API_KEY=sk-... \
-  --from-literal=ANTHROPIC_API_KEY=sk-ant-... \
-  --dry-run=client -o yaml > /tmp/hecate-secrets.yaml
+curl -fsSL https://raw.githubusercontent.com/hecate-social/hecate-install/main/install.sh | bash
 ```
 
-Then seal it using kubeseal:
+This installs podman, the daemon, the reconciler, and optionally the desktop app and Ollama. See [hecate-install](https://github.com/hecate-social/hecate-install) for details.
+
+## Directory Layout
+
+| Path | Contents |
+|------|----------|
+| `~/.hecate/` | Data root |
+| `~/.hecate/hecate-daemon/` | Daemon data (sqlite, reckon-db, sockets) |
+| `~/.hecate/gitops/system/` | Core Quadlet files (daemon, reconciler) |
+| `~/.hecate/gitops/apps/` | Plugin Quadlet files (installed on demand) |
+| `~/.hecate/secrets/` | LLM API keys (sops + age encrypted) |
+| `~/.local/bin/hecate` | CLI wrapper |
+| `~/.local/bin/hecate-reconciler` | GitOps reconciler |
+| `~/.config/containers/systemd/` | Podman Quadlet units (symlinks) |
+
+## Quadlet Container Files
+
+A Quadlet `.container` file is a declarative container definition:
+
+```ini
+# ~/.hecate/gitops/system/hecate-daemon.container
+[Unit]
+Description=Hecate Daemon
+
+[Container]
+Image=ghcr.io/hecate-social/hecate-daemon:latest
+AutoUpdate=registry
+Network=host
+
+Volume=%h/.hecate/hecate-daemon:/home/hecate/.hecate/hecate-daemon:Z
+Volume=%h/.hecate/secrets:/home/hecate/.hecate/secrets:ro,Z
+
+Environment=HOME=%h
+Environment=HECATE_HOSTNAME=%H
+Environment=HECATE_USER=%u
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target
+```
+
+Key features:
+- `AutoUpdate=registry` — `podman auto-update` pulls new `:latest` images
+- `%H` / `%u` — systemd specifiers inject host hostname and user into container
+- `Network=host` — daemon binds directly to host network for BEAM clustering and Ollama access
+- No root needed — containers run as user-level systemd services
+
+## The Reconciler
+
+The reconciler is a filesystem watcher that manages the lifecycle of Quadlet units:
+
+1. Watches `~/.hecate/gitops/system/` and `~/.hecate/gitops/apps/`
+2. When a `.container` file is added → symlinks to `~/.config/containers/systemd/` → `daemon-reload` → starts service
+3. When removed → stops service → removes symlink → `daemon-reload`
 
 ```bash
-kubeseal --format yaml < /tmp/hecate-secrets.yaml > infrastructure/hecate/sealed-secret.yaml
-rm /tmp/hecate-secrets.yaml
+# Check desired vs actual state
+hecate-reconciler --status
+
+# Manual reconciliation
+hecate reconcile
 ```
 
-### 4. Create DaemonSet
+## Installing Plugins
 
-```yaml
-# infrastructure/hecate/daemonset.yaml
-apiVersion: apps/v1
-kind: DaemonSet
-metadata:
-  name: hecate-daemon
-  namespace: hecate
-  labels:
-    app.kubernetes.io/name: hecate-daemon
-spec:
-  selector:
-    matchLabels:
-      app: hecate-daemon
-  template:
-    metadata:
-      labels:
-        app: hecate-daemon
-    spec:
-      hostNetwork: true
-      dnsPolicy: ClusterFirstWithHostNet
-
-      volumes:
-        - name: socket-dir
-          hostPath:
-            path: /run/hecate
-            type: DirectoryOrCreate
-        - name: data-dir
-          hostPath:
-            path: /var/lib/hecate
-            type: DirectoryOrCreate
-
-      containers:
-        - name: daemon
-          image: ghcr.io/hecate-social/hecate-daemon:0.7.2
-          imagePullPolicy: Always
-
-          envFrom:
-            - configMapRef:
-                name: hecate-config
-            - secretRef:
-                name: hecate-secrets
-                optional: true
-
-          volumeMounts:
-            - name: socket-dir
-              mountPath: /run/hecate
-            - name: data-dir
-              mountPath: /var/lib/hecate
-
-          livenessProbe:
-            exec:
-              command: ["test", "-S", "/run/hecate/daemon.sock"]
-            initialDelaySeconds: 10
-            periodSeconds: 30
-
-          readinessProbe:
-            exec:
-              command: ["test", "-S", "/run/hecate/daemon.sock"]
-            initialDelaySeconds: 5
-            periodSeconds: 10
-
-          resources:
-            requests:
-              memory: "256Mi"
-              cpu: "100m"
-            limits:
-              memory: "1Gi"
-              cpu: "1000m"
-```
-
-### 5. Create Kustomization
-
-```yaml
-# clusters/beam-cluster/hecate-kustomization.yaml
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
-metadata:
-  name: hecate
-  namespace: flux-system
-spec:
-  interval: 5m
-  path: ./infrastructure/hecate
-  prune: true
-  sourceRef:
-    kind: GitRepository
-    name: hecate-gitops
-  targetNamespace: hecate
-```
-
-### 6. Commit and Push
+Drop a Quadlet file into `~/.hecate/gitops/apps/`:
 
 ```bash
-cd hecate-gitops
-git add -A
-git commit -m "deploy: Add hecate daemon v0.7.2"
-git push
+cp hecate-marthad.container ~/.hecate/gitops/apps/
+# Reconciler picks it up automatically
 ```
 
-### 7. Verify Deployment
+## Managing Services
 
 ```bash
-# Check Flux reconciliation
-flux get kustomizations
+# CLI wrapper
+hecate status                    # Show all hecate services
+hecate start                     # Start daemon
+hecate stop                      # Stop daemon
+hecate restart                   # Restart daemon
+hecate logs                      # View daemon logs
+hecate health                    # Check daemon health
+hecate update                    # Pull latest container images
 
-# Check pods
-kubectl get pods -n hecate -o wide
-
-# Check daemon status
-kubectl exec -n hecate hecate-daemon-xxxxx -- \
-  curl -s --unix-socket /run/hecate/daemon.sock http://localhost/api/health
+# Direct systemd
+systemctl --user list-units 'hecate-*'
+systemctl --user status hecate-daemon
+journalctl --user -u hecate-daemon -f
 ```
 
-## Updating the Daemon
+## Updating
 
-### 1. Push Code Changes
+Updates happen automatically via `podman auto-update`:
 
-```bash
-cd hecate-daemon
-# Make changes
-git add -A
-git commit -m "feat: Add new feature"
-git push
-```
+1. CI pushes new `:latest` image to ghcr.io
+2. `podman auto-update` detects the new digest
+3. Container restarts with the new image
 
-### 2. Tag a Release
+For manual updates:
 
 ```bash
-git tag v0.7.3
-git push origin v0.7.3
-```
-
-CI/CD will build and push `ghcr.io/hecate-social/hecate-daemon:0.7.3`.
-
-### 3. Update GitOps Manifest
-
-```bash
-cd hecate-gitops
-# Edit daemonset.yaml to use new version
-sed -i 's/hecate-daemon:0.7.2/hecate-daemon:0.7.3/' infrastructure/hecate/daemonset.yaml
-git add -A
-git commit -m "deploy: Update hecate-daemon to v0.7.3"
-git push
-```
-
-### 4. Flux Reconciles
-
-Flux will automatically detect the change and update the cluster.
-
-```bash
-# Watch rollout
-kubectl rollout status daemonset/hecate-daemon -n hecate
-
-# Verify new version
-kubectl get pods -n hecate -o jsonpath='{.items[0].spec.containers[0].image}'
+hecate update
 ```
 
 ## Rolling Back
 
-### Via GitOps (Recommended)
+Pin a `.container` file to a specific version:
 
-Revert the manifest change:
-
-```bash
-cd hecate-gitops
-git revert HEAD
-git push
+```ini
+# Change from :latest to a specific version
+Image=ghcr.io/hecate-social/hecate-daemon:0.11.2
 ```
 
-### Manual (Emergency)
+After the fix ships, revert to `:latest`.
+
+## Multi-Node Deployment
+
+For clusters (beam00-03), use Ansible:
 
 ```bash
-kubectl rollout undo daemonset/hecate-daemon -n hecate
+cd hecate-install/ansible
+ansible-playbook -i inventory.ini hecate.yml
 ```
 
-**Note:** Manual changes will be overwritten by Flux on next reconciliation.
+See [ansible/README.md](https://github.com/hecate-social/hecate-install/tree/main/ansible) for variables and examples.
 
-## Monitoring
+## NixOS
 
-### Pod Status
+For bootable USB/ISO images:
 
 ```bash
-kubectl get pods -n hecate -o wide
+cd hecate-install
+nix build .#iso
 ```
 
-### Logs
-
-```bash
-# All pods
-kubectl logs -n hecate -l app=hecate-daemon
-
-# Specific pod
-kubectl logs -n hecate hecate-daemon-xxxxx -f
-```
-
-### Health Checks
-
-```bash
-# From inside cluster
-kubectl exec -n hecate hecate-daemon-xxxxx -- \
-  curl -s --unix-socket /run/hecate/daemon.sock http://localhost/api/health
-
-# From node (SSH)
-ssh beam00.lab "curl -s --unix-socket /run/hecate/daemon.sock http://localhost/api/health"
-```
+See [hecate-install](https://github.com/hecate-social/hecate-install) for NixOS flake details.
 
 ## Troubleshooting
 
-### Pods Not Starting
-
-Check events:
+### Daemon Not Starting
 
 ```bash
-kubectl describe pod -n hecate hecate-daemon-xxxxx
+systemctl --user status hecate-daemon
+journalctl --user -u hecate-daemon -n 50
+podman ps -a
 ```
-
-Common issues:
-- Image pull errors - Check ghcr.io access
-- Volume mount errors - Check hostPath permissions
-- Resource limits - Increase if OOM killed
 
 ### Socket Not Created
 
-Check daemon logs:
+```bash
+ls -la ~/.hecate/hecate-daemon/sockets/
+```
+
+### Container Image Not Pulling
 
 ```bash
-kubectl logs -n hecate hecate-daemon-xxxxx
+podman pull ghcr.io/hecate-social/hecate-daemon:latest
 ```
 
-Verify the socket directory exists on the host:
+### Wrong Hostname/User in Settings
+
+Check that `HECATE_HOSTNAME` and `HECATE_USER` are set in the `.container` file:
 
 ```bash
-ssh node "ls -la /run/hecate/"
+grep HECATE_ ~/.hecate/gitops/system/hecate-daemon.container
 ```
 
-### Flux Not Reconciling
+### User Lingering Not Enabled
 
-Check Flux status:
+Services won't persist after logout without lingering:
 
 ```bash
-flux get sources git
-flux get kustomizations
-flux logs --follow
+loginctl enable-linger $USER
 ```
-
-Force reconciliation:
-
-```bash
-flux reconcile kustomization hecate --with-source
-```
-
-## Multi-Cluster Deployment
-
-For multiple clusters, create separate directories:
-
-```
-hecate-gitops/
-├── infrastructure/
-│   └── hecate/
-│       └── ... (shared manifests)
-└── clusters/
-    ├── beam-cluster/
-    │   └── hecate-kustomization.yaml
-    ├── edge-cluster/
-    │   └── hecate-kustomization.yaml
-    └── dev-cluster/
-        └── hecate-kustomization.yaml
-```
-
-Each cluster's kustomization can reference the shared infrastructure with cluster-specific patches.
