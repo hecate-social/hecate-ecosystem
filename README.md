@@ -53,11 +53,11 @@ Hecate is not decentralized for ideology. It's decentralized because it's the ri
 
 | Component | Description | |
 |-----------|-------------|---|
-| [**hecate-daemon**](https://github.com/hecate-social/hecate-daemon) | Erlang/OTP runtime — identity, event sourcing, LLM routing, mesh connectivity | [ghcr.io](https://ghcr.io/hecate-social/hecate-daemon) |
-| [**hecate-web**](https://github.com/hecate-social/hecate-web) | Native desktop app — studios for LLM, node management, DevOps (Tauri/SvelteKit) | [Releases](https://github.com/hecate-social/hecate-web/releases) |
-| [**hecate-agents**](https://github.com/hecate-social/hecate-agents) | Philosophy, skills, and guardrails — the agent's personality and knowledge base | |
-| [**hecate-install**](https://github.com/hecate-social/hecate-install) | One-command installer + NixOS flake for bootable media | |
-| [**hecate-gitops**](https://github.com/hecate-social/hecate-gitops) | Per-node Quadlet templates + reconciler for systemd+podman deployment | |
+| [**hecate-daemon**](https://codeberg.org/hecate-social/hecate-daemon) | Erlang/OTP runtime — identity, event sourcing, LLM routing, mesh connectivity | [ghcr.io](https://ghcr.io/hecate-social/hecate-daemon) |
+| [**hecate-web**](https://codeberg.org/hecate-social/hecate-web) | Native desktop app — studios for LLM, node management, DevOps (Tauri/SvelteKit) | [Releases](https://codeberg.org/hecate-social/hecate-web/releases) |
+| [**hecate-agents**](https://codeberg.org/hecate-social/hecate-agents) | Philosophy, skills, and guardrails — the agent's personality and knowledge base | |
+| [**hecate-install**](https://codeberg.org/hecate-social/hecate-install) | One-command installer + NixOS flake for bootable media | |
+| [**hecate-gitops**](https://codeberg.org/hecate-social/hecate-gitops) | Per-node Quadlet templates + reconciler for systemd+podman deployment | |
 
 **Plugin apps** extend the platform:
 
@@ -132,9 +132,9 @@ Hecate composes three independent ecosystems:
 
 | Ecosystem | Purpose | Organization |
 |-----------|---------|-------------|
-| [**Macula**](https://github.com/macula-io/macula-ecosystem) | HTTP/3 mesh networking — DHT discovery, PubSub, RPC, NAT traversal | [macula-io](https://github.com/macula-io) |
-| [**Reckon**](https://github.com/reckon-db-org/reckon-ecosystem) | Event sourcing — distributed event store, CQRS framework, projections | [reckon-db-org](https://github.com/reckon-db-org) |
-| [**Faber**](https://github.com/rgfaber/faber-ecosystem) | AI & neuroevolution — TWEANN neural networks, NEAT, LTC neurons | [rgfaber](https://github.com/rgfaber) |
+| [**Macula**](https://codeberg.org/macula-io/macula-ecosystem) | HTTP/3 mesh networking — DHT discovery, PubSub, RPC, NAT traversal | [macula-io](https://github.com/macula-io) |
+| [**Reckon**](https://codeberg.org/reckon-db-org/reckon-ecosystem) | Event sourcing — distributed event store, CQRS framework, projections | [reckon-db-org](https://github.com/reckon-db-org) |
+| [**Faber**](https://codeberg.org/rgfaber/faber-ecosystem) | AI & neuroevolution — TWEANN neural networks, NEAT, LTC neurons | [rgfaber](https://github.com/rgfaber) |
 
 ---
 
