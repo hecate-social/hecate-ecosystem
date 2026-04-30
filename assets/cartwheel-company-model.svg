@@ -32,7 +32,7 @@
   
   <!-- Title -->
   <text x="500" y="35" text-anchor="middle" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="24" font-weight="bold">
-    Domain Service: The Company Model
+    Domain Service: The Division Model
   </text>
   <text x="500" y="55" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="12">
     manage_capabilities domain
@@ -41,7 +41,7 @@
   <!-- Company Border -->
   <rect x="30" y="70" width="940" height="580" rx="12" fill="none" stroke="#334155" stroke-width="2"/>
   <text x="50" y="95" fill="#CBD5E1" font-family="system-ui, sans-serif" font-size="14" font-weight="600">
-    CAPABILITY COMPANY
+    CAPABILITY DIVISION
   </text>
   
   <!-- CMD Department -->
@@ -278,7 +278,7 @@
   <!-- Legend -->
   <rect x="30" y="660" width="940" height="35" rx="4" fill="#1E293B"/>
   <text x="50" y="682" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">
-    HOPE = Request from mesh  •  FACT = Event from other company  •  Tube Mail = Internal event routing  •  📁 = Filing cabinet (read model)
+    HOPE = Request from mesh  •  FACT = Event from other division  •  Tube Mail = Internal event routing  •  📁 = Filing cabinet (read model)
   </text>
   
 </svg>

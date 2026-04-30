@@ -53,7 +53,7 @@
     The Hecate Mental Model
   </text>
   <text x="600" y="52" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="12">
-    Venture &gt; Division &gt; Department (Cartwheel) &gt; Desk (Spoke) — Event-driven data flow
+    Venture &gt; Division &gt; Department &gt; Desk — Event-driven data flow
   </text>
 
   <!-- ═══════════════════════════════════════════════════════════ -->
@@ -85,7 +85,7 @@
   </text>
 
   <!-- ─────────────────────────────────────────────── -->
-  <!-- CMD Department (Cartwheel 1 — front-office)     -->
+  <!-- CMD Department (front-office)                     -->
   <!-- ─────────────────────────────────────────────── -->
   <rect x="55" y="150" width="305" height="345" rx="8" fill="url(#cmdGrad)" stroke="#8B5CF6" stroke-width="2"/>
 
@@ -94,7 +94,7 @@
     CMD Department
   </text>
   <text x="208" y="192" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">
-    Front-Office · Requests · Cartwheel 1
+    Front-Office · Requests
   </text>
 
   <!-- CMD Hub (dossier/aggregate) -->
@@ -106,13 +106,13 @@
     (aggregate state)
   </text>
 
-  <!-- CMD Desks (Spokes) -->
+  <!-- CMD Desks -->
   <rect x="72" y="270" width="125" height="50" rx="4" fill="#1E1B4B" stroke="#7C3AED" stroke-width="1"/>
   <text x="134" y="290" text-anchor="middle" fill="#C7D2FE" font-family="system-ui, sans-serif" font-size="10" font-weight="500">
     start_design
   </text>
   <text x="134" y="305" text-anchor="middle" fill="#818CF8" font-family="system-ui, sans-serif" font-size="8">
-    Desk (Spoke)
+    Desk
   </text>
 
   <rect x="218" y="270" width="125" height="50" rx="4" fill="#1E1B4B" stroke="#7C3AED" stroke-width="1"/>
@@ -120,7 +120,7 @@
     design_aggregate
   </text>
   <text x="280" y="305" text-anchor="middle" fill="#818CF8" font-family="system-ui, sans-serif" font-size="8">
-    Desk (Spoke)
+    Desk
   </text>
 
   <rect x="72" y="335" width="125" height="50" rx="4" fill="#1E1B4B" stroke="#7C3AED" stroke-width="1"/>
@@ -128,7 +128,7 @@
     complete_design
   </text>
   <text x="134" y="370" text-anchor="middle" fill="#818CF8" font-family="system-ui, sans-serif" font-size="8">
-    Desk (Spoke)
+    Desk
   </text>
 
   <rect x="218" y="335" width="125" height="50" rx="4" fill="#1E1B4B" stroke="#7C3AED" stroke-width="1"/>
@@ -136,10 +136,10 @@
     archive_design
   </text>
   <text x="280" y="370" text-anchor="middle" fill="#818CF8" font-family="system-ui, sans-serif" font-size="8">
-    Desk (Spoke)
+    Desk
   </text>
 
-  <!-- Spoke lines (from hub to desks) -->
+  <!-- Lines from hub to desks -->
   <line x1="183" y1="255" x2="134" y2="270" stroke="#7C3AED" stroke-width="1" stroke-opacity="0.5"/>
   <line x1="233" y1="255" x2="280" y2="270" stroke="#7C3AED" stroke-width="1" stroke-opacity="0.5"/>
   <line x1="183" y1="255" x2="134" y2="335" stroke="#7C3AED" stroke-width="1" stroke-opacity="0.5"/>
@@ -169,7 +169,7 @@
   <line x1="208" y1="385" x2="208" y2="415" stroke="#7C3AED" stroke-width="1.5" stroke-opacity="0.6" marker-end="url(#arrCmd)"/>
 
   <!-- ─────────────────────────────────────────────── -->
-  <!-- PRJ Department (Cartwheel 2 — back-office)      -->
+  <!-- PRJ Department (back-office)                      -->
   <!-- Shifted right: x=385→400, center=530            -->
   <!-- ─────────────────────────────────────────────── -->
   <rect x="400" y="150" width="260" height="345" rx="8" fill="url(#prjGrad)" stroke="#10B981" stroke-width="2"/>
@@ -179,7 +179,7 @@
     PRJ Department
   </text>
   <text x="530" y="192" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">
-    Back-Office · Knowledge Warehouse · Cartwheel 2
+    Back-Office · Knowledge Warehouse
   </text>
 
   <!-- PRJ Hub (projections) -->
@@ -197,7 +197,7 @@
     aggregate_designed_v1 to designs
   </text>
   <text x="530" y="305" text-anchor="middle" fill="#34D399" font-family="system-ui, sans-serif" font-size="8">
-    Projection Desk (Spoke)
+    Projection Desk
   </text>
 
   <rect x="413" y="335" width="234" height="50" rx="4" fill="#064E3B" stroke="#059669" stroke-width="1"/>
@@ -205,7 +205,7 @@
     design_completed_v1 to designs
   </text>
   <text x="530" y="370" text-anchor="middle" fill="#34D399" font-family="system-ui, sans-serif" font-size="8">
-    Projection Desk (Spoke)
+    Projection Desk
   </text>
 
   <!-- PRJ subscribes to events label -->
@@ -214,7 +214,7 @@
     subscribes to Events, writes to SQLite
   </text>
 
-  <!-- Spoke lines (from hub to desks) -->
+  <!-- Lines from hub to desks -->
   <line x1="530" y1="255" x2="530" y2="270" stroke="#059669" stroke-width="1" stroke-opacity="0.5"/>
   <line x1="530" y1="255" x2="530" y2="335" stroke="#059669" stroke-width="1" stroke-opacity="0.5"/>
 
@@ -242,7 +242,7 @@
   </g>
 
   <!-- ─────────────────────────────────────────────── -->
-  <!-- QRY Department (Cartwheel 3 — front-office)     -->
+  <!-- QRY Department (front-office)                     -->
   <!-- Shifted left: x=855→830, center=980             -->
   <!-- ─────────────────────────────────────────────── -->
   <rect x="830" y="150" width="300" height="345" rx="8" fill="url(#qryGrad)" stroke="#F59E0B" stroke-width="2"/>
@@ -252,7 +252,7 @@
     QRY Department
   </text>
   <text x="980" y="192" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">
-    Front-Office · Inquiries · Cartwheel 3
+    Front-Office · Inquiries
   </text>
 
   <!-- QRY Hub (query service) -->
@@ -270,7 +270,7 @@
     get_design_by_id
   </text>
   <text x="973" y="305" text-anchor="middle" fill="#FBBF24" font-family="system-ui, sans-serif" font-size="8">
-    Query Desk (Spoke) — GET /designs/:id
+    Query Desk — GET /designs/:id
   </text>
 
   <rect x="843" y="335" width="260" height="50" rx="4" fill="#78350F" stroke="#D97706" stroke-width="1"/>
@@ -278,7 +278,7 @@
     get_designs_page
   </text>
   <text x="973" y="370" text-anchor="middle" fill="#FBBF24" font-family="system-ui, sans-serif" font-size="8">
-    Query Desk (Spoke) — GET /designs?page=N
+    Query Desk — GET /designs?page=N
   </text>
 
   <!-- QRY reads from SQLite label -->
@@ -287,7 +287,7 @@
     reads from SQLite (fast queries)
   </text>
 
-  <!-- Spoke lines (from hub to desks) -->
+  <!-- Lines from hub to desks -->
   <line x1="980" y1="255" x2="973" y2="270" stroke="#D97706" stroke-width="1" stroke-opacity="0.5"/>
   <line x1="980" y1="255" x2="973" y2="335" stroke="#D97706" stroke-width="1" stroke-opacity="0.5"/>
 

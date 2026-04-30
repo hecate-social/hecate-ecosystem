@@ -13,12 +13,12 @@ Hecate uses a **company metaphor** to make distributed, event-sourced architectu
 ```
 Venture
   └── Division
-       ├── CMD Department (Cartwheel)
-       │    └── Desks (Spokes)
-       ├── PRJ Department (Cartwheel)
-       │    └── Desks (Spokes)
-       └── QRY Department (Cartwheel)
-            └── Desks (Spokes)
+       ├── CMD Department
+       │    └── Desks
+       ├── PRJ Department
+       │    └── Desks
+       └── QRY Department
+            └── Desks
 ```
 
 Four levels. Each maps from a business concept to a technical structure.
@@ -53,30 +53,30 @@ The key insight: **a division is not one app — it's three departments cooperat
 
 ---
 
-## Department — The Cartwheel
+## Department — The Wheel
 
-A **Department** is a single Cartwheel. This is where the company metaphor meets the technical architecture.
+A **Department** is a single wheel. This is where the company metaphor meets the technical architecture.
 
-### The Cartwheel Shape
+### The Department Shape
 
 Picture a wheel:
 - The **hub** at the center holds state (the aggregate/dossier for CMD, the SQLite store for PRJ/QRY)
-- **Spokes** radiate outward — each spoke is a desk where specific work happens
+- **Desks** radiate outward — each desk is where specific work happens
 
 ```
-            spoke
+            desk
              │
-    spoke ── HUB ── spoke
+     desk ── HUB ── desk
              │
-            spoke
+            desk
 ```
 
-### Three Departments, Three Cartwheels
+### Three Departments
 
-Each division contains exactly three departments. Each one is its own cartwheel:
+Each division contains exactly three departments:
 
-| Department | Role | Office Type | Hub | Spokes |
-|------------|------|-------------|-----|--------|
+| Department | Role | Office Type | Hub | Desks |
+|------------|------|-------------|-----|-------|
 | **CMD** | Receives requests, produces events | Front-office | Dossier (aggregate) | Command desks |
 | **PRJ** | Subscribes to events, builds read models | Back-office | SQLite store | Projection desks |
 | **QRY** | Serves inquiries from read models | Front-office | API gateway | Query desks |
@@ -94,9 +94,9 @@ One department works internally (**back-office**):
 
 ---
 
-## Desk — The Spoke
+## Desk — The Vertical Slice
 
-A **Desk** is a single capability — a vertical slice of functionality. It is the spoke in the cartwheel.
+A **Desk** is a single capability — a vertical slice of functionality within a department.
 
 ### What Makes a Desk
 
@@ -161,7 +161,7 @@ The mental model has two kinds of data flow:
 Events flow from CMD through ReckonDB to PRJ to QRY:
 
 ```
-CMD Cartwheel              PRJ Cartwheel              QRY Cartwheel
+CMD Department             PRJ Department             QRY Department
 (Front-Office)             (Back-Office)              (Front-Office)
 
 [desk] → command           [desk] ← event             [desk] ← query
@@ -190,12 +190,12 @@ When an agent on `beam00` discovers a division, it publishes a fact to the mesh.
 
 ## Mapping Table
 
-| Company Model | Cartwheel Architecture | Technical Realization | Example |
-|---------------|----------------------|----------------------|---------|
+| Company Model | Architecture | Technical Realization | Example |
+|---------------|-------------|----------------------|---------|
 | **Venture** | Conglomerate | Top-level entity | `my-saas-app` |
 | **Division** | 3 Departments | 3 OTP apps (CMD + PRJ + QRY) | `auth` division |
-| **Department** | **Cartwheel** | 1 OTP app with hub + spokes | `design_division` (CMD) |
-| **Desk** | **Spoke** | 1 directory with command + event + handler | `register_user/` |
+| **Department** | Hub + Desks | 1 OTP app with hub + desks | `design_division` (CMD) |
+| **Desk** | Vertical Slice | 1 directory with command + event + handler | `register_user/` |
 | **Dossier** | Aggregate | In-memory state rebuilt from events | `design_aggregate.erl` |
 | **Slip** | Event | Immutable fact stored in ReckonDB | `aggregate_designed_v1` |
 | **Filing Cabinet** | Read Model | SQLite table | `designs` table |

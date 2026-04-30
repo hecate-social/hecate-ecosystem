@@ -21,36 +21,36 @@ If the answer is "they investigate, decide, produce, and hand off" — the model
 
 ## The Company Model
 
-Hecate uses a company metaphor to make the Cartwheel architecture accessible. The metaphor maps directly to the technical model:
+Hecate uses a company metaphor to make the architecture accessible. The metaphor maps directly to the technical model:
 
 ### Hierarchy
 
 ```
 Venture (conglomerate)
   └── Division (co-operating departments)
-       ├── CMD Department (Cartwheel) — front-office, handles Requests
-       │    └── Desks (Spokes)
-       ├── QRY Department (Cartwheel) — front-office, handles Inquiries
-       │    └── Desks (Spokes)
-       └── PRJ Department (Cartwheel) — back-office, Knowledge Warehouse
-            └── Desks (Spokes)
+       ├── CMD Department — front-office, handles Requests
+       │    └── Desks
+       ├── QRY Department — front-office, handles Inquiries
+       │    └── Desks
+       └── PRJ Department — back-office, Knowledge Warehouse
+            └── Desks
 ```
 
-### Mapping: Company Model to Cartwheel Architecture
+### Mapping: Company Model to Architecture
 
-| Company Model | Cartwheel Architecture | What It Is |
-|---------------|----------------------|------------|
+| Company Model | Architecture | What It Is |
+|---------------|-------------|------------|
 | **Venture** | Conglomerate | The overall business endeavor — multiple divisions co-operating |
 | **Division** | 3 Departments | A cohesive piece of software (bounded context) with CMD, QRY, and PRJ |
-| **Department** | **Cartwheel** | A single wheel — hub (aggregate) with spokes (desks) radiating outward |
-| **Desk** | **Spoke** | A single capability — where work gets done (vertical slice) |
+| **Department** | Hub + Desks | A single wheel — hub (aggregate) with desks radiating outward |
+| **Desk** | Vertical Slice | A single capability — where work gets done |
 | **Dossier** | Aggregate | The folder of event slips passing through desks |
 
-### Three Departments, Three Cartwheels
+### Three Departments
 
-Each division contains exactly three departments. Each department is a Cartwheel:
+Each division contains exactly three departments:
 
-| Department | Role | Cartwheel Type | Analogy |
+| Department | Role | Type | Analogy |
 |------------|------|----------------|---------|
 | **CMD** | Commands — receives intents, produces events | Front-office | **Request desk** — customers walk in with requests |
 | **QRY** | Queries — serves read models | Front-office | **Inquiry desk** — customers walk in asking questions |
@@ -145,7 +145,7 @@ Question: "What IS this thing?"      Question: "What has HAPPENED?"
 
 Imagine a physical folder moving through an office:
 
-1. **Dossier arrives** at a desk (spoke)
+1. **Dossier arrives** at a desk
 2. **Clerk reviews** the slips inside (events so far)
 3. **Clerk may add** a new slip (new event) if business rules allow
 4. **Dossier moves on** to the next desk
@@ -158,7 +158,7 @@ When modeling a domain, ask four questions:
 
 **1. What dossiers exist?** What are the things that accumulate history?
 
-**2. What desks (spokes) process each dossier?** What actions can happen?
+**2. What desks process each dossier?** What actions can happen?
 
 ```
 Design Dossier passes through:
@@ -171,7 +171,7 @@ Design Dossier passes through:
 
 **3. What slips can be added?** Each desk adds specific event types.
 
-| Desk (Spoke) | Slip (Event) |
+| Desk | Slip (Event) |
 |--------------|-------------|
 | `design_aggregate` | `aggregate_designed_v1` |
 | `design_event` | `event_designed_v1` |
@@ -181,68 +181,68 @@ Design Dossier passes through:
 
 ---
 
-## CQRS Architecture — The Three Cartwheels
+## CQRS Architecture — The Three Departments
 
-Every division produces apps following the three-department pattern. Each department is a Cartwheel with its own spokes (desks).
+Every division produces apps following the three-department pattern. Each department has its own desks.
 
-### CMD Cartwheel (Front-Office — Requests)
+### CMD Department (Front-Office — Requests)
 
 The CMD app handles incoming commands. Its name IS the process verb — no `manage_` prefix.
 
 ```
-apps/design_division/                      ← CMD Department (1 Cartwheel)
+apps/design_division/                      ← CMD Department
 ├── src/
 │   ├── design_division_app.erl
 │   ├── design_division_sup.erl
 │   ├── design_aggregate.erl               ← Hub (the dossier's state)
-│   ├── start_design/                      ← Spoke (desk)
+│   ├── start_design/                      ← Desk
 │   │   ├── start_design_v1.erl            (command)
 │   │   ├── design_started_v1.erl          (event/slip)
 │   │   └── maybe_start_design.erl         (handler)
-│   ├── design_aggregate/                  ← Spoke (desk)
+│   ├── design_aggregate/                  ← Desk
 │   │   ├── design_aggregate_v1.erl
 │   │   ├── aggregate_designed_v1.erl
 │   │   ├── maybe_design_aggregate.erl
 │   │   └── aggregate_designed_v1_to_pg.erl  (emitter)
-│   ├── complete_design/                   ← Spoke (desk)
-│   └── archive_design/                    ← Spoke (desk)
+│   ├── complete_design/                   ← Desk
+│   └── archive_design/                    ← Desk
 └── rebar.config
 ```
 
-Each spoke is a **vertical slice** — command, event, handler, and emitters all live together. No `services/`, `handlers/`, or `utils/` directories.
+Each desk is a **vertical slice** — command, event, handler, and emitters all live together. No `services/`, `handlers/`, or `utils/` directories.
 
-### QRY Cartwheel (Front-Office — Inquiries)
+### QRY Department (Front-Office — Inquiries)
 
-The QRY app serves read models. Always named `query_{read_model}`. Its spokes are query endpoints.
+The QRY app serves read models. Always named `query_{read_model}`. Its desks are query endpoints.
 
 ```
-apps/query_designs/                        ← QRY Department (1 Cartwheel)
+apps/query_designs/                        ← QRY Department
 ├── src/
 │   ├── query_designs_store.erl            ← Hub (SQLite connection)
-│   ├── get_design_by_id/                  ← Spoke (desk)
+│   ├── get_design_by_id/                  ← Desk
 │   │   └── get_design_by_id.erl
-│   └── get_designs_page/                  ← Spoke (desk)
+│   └── get_designs_page/                  ← Desk
 │       └── get_designs_page.erl
 └── rebar.config
 ```
 
-### PRJ Cartwheel (Back-Office — Knowledge Warehouse)
+### PRJ Department (Back-Office — Knowledge Warehouse)
 
-Projections live within the QRY app (they share the same read model store). Each projection is a spoke that subscribes to events and updates the knowledge warehouse.
+Projections live within the QRY app (they share the same read model store). Each projection is a desk that subscribes to events and updates the knowledge warehouse.
 
 ```
-apps/query_designs/                        ← also contains PRJ spokes
+apps/query_designs/                        ← also contains PRJ desks
 ├── src/
-│   ├── aggregate_designed_v1_to_designs/  ← PRJ Spoke (desk)
+│   ├── aggregate_designed_v1_to_designs/  ← PRJ Desk
 │   │   └── on_aggregate_designed_v1.erl   (event → SQLite row)
-│   └── design_completed_v1_to_designs/    ← PRJ Spoke (desk)
+│   └── design_completed_v1_to_designs/    ← PRJ Desk
 │       └── on_design_completed_v1.erl     (event → SQLite row)
 ```
 
-### How the Three Cartwheels Cooperate
+### How the Three Departments Cooperate
 
 ```
-                 CMD Cartwheel                    PRJ Cartwheel
+                 CMD Department                   PRJ Department
                  (Front-Office)                   (Back-Office)
 
     Request ──► [desk: start_design]              [desk: on_aggregate_designed]
@@ -253,7 +253,7 @@ apps/query_designs/                        ← also contains PRJ spokes
                                                        ▼
                                                   SQLite Read Model
                                                        │
-                 QRY Cartwheel                         │
+                 QRY Department                        │
                  (Front-Office)                        │
                                                        │
     Inquiry ──► [desk: get_design_by_id] ◄─────────────┘
@@ -265,7 +265,7 @@ apps/query_designs/                        ← also contains PRJ spokes
 
 ## Event Flow Through the Stack
 
-### Writing (CMD Cartwheel)
+### Writing (CMD Department)
 
 ```
 User Action
@@ -298,7 +298,7 @@ reckon_db (Event Store)
 Stored ✓
 ```
 
-### Projecting (PRJ Cartwheel)
+### Projecting (PRJ Department)
 
 ```
 reckon_db (Event Store)
@@ -319,7 +319,7 @@ query_{read_model}_store.erl (SQLite)
 Updated ✓
 ```
 
-### Querying (QRY Cartwheel)
+### Querying (QRY Department)
 
 ```
 User Action
@@ -451,7 +451,7 @@ Hecate's AI assistant follows a structured protocol at each phase:
 > **Delete a feature → Delete a folder.**
 > **No archaeology required.**
 
-Every desk (spoke) contains everything needed for that capability:
+Every desk contains everything needed for that capability:
 
 | Component | Purpose |
 |-----------|---------|
@@ -486,7 +486,7 @@ Names must scream intent. A new developer should understand the system's structu
 | Element | Pattern | Example |
 |---------|---------|---------|
 | App name | `{process_verb}_{subject}` | `design_division` |
-| Desk (spoke) directory | `{verb}_{noun}/` | `design_aggregate/` |
+| Desk directory | `{verb}_{noun}/` | `design_aggregate/` |
 | Command | `{verb}_{noun}_v{N}.erl` | `design_aggregate_v1.erl` |
 | Event | `{noun}_{past_verb}_v{N}.erl` | `aggregate_designed_v1.erl` |
 | Handler | `maybe_{verb}_{noun}.erl` | `maybe_design_aggregate.erl` |
@@ -496,8 +496,8 @@ Names must scream intent. A new developer should understand the system's structu
 | Element | Pattern | Example |
 |---------|---------|---------|
 | App name | `query_{read_model}` | `query_designs` |
-| Projection (PRJ spoke) | `{event}_to_{table}/` | `aggregate_designed_v1_to_designs/` |
-| Query (QRY spoke) | `get_{item}_by_id/` | `get_design_by_id/` |
+| Projection (PRJ desk) | `{event}_to_{table}/` | `aggregate_designed_v1_to_designs/` |
+| Query (QRY desk) | `get_{item}_by_id/` | `get_design_by_id/` |
 
 ### Events Are Business Verbs
 
@@ -527,7 +527,7 @@ Macula provides the distributed communication layer. Reckon provides the event s
 
 ## Walking Skeleton Pattern
 
-Every aggregate needs two desks (spokes) from day one:
+Every aggregate needs two desks from day one:
 
 1. **Initiate** — the birth event that starts the dossier
 2. **Archive** — the soft delete (event sourcing has no deletes)

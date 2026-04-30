@@ -96,7 +96,7 @@
   <rect width="900" height="750" fill="url(#grid)" opacity="0.4"/>
 
   <!-- Title -->
-  <text x="450" y="45" text-anchor="middle" font-family="system-ui, sans-serif" font-size="28" font-weight="bold" fill="#fff">Cartwheel Architecture</text>
+  <text x="450" y="45" text-anchor="middle" font-family="system-ui, sans-serif" font-size="28" font-weight="bold" fill="#fff">Division Architecture</text>
   <text x="450" y="72" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#94a3b8">"Majestic Modularity" — Vertical Slices with Integration Infrastructure</text>
 
   <!-- Main wheel group centered -->
@@ -121,9 +121,9 @@
       <text x="-155" y="-155" text-anchor="middle" transform="rotate(-45, -155, -155)">SECURITY</text>
     </g>
 
-    <!-- Spokes (Vertical Slices) -->
-    <g id="spokes">
-      <!-- 8 spokes evenly distributed -->
+    <!-- Desks (Vertical Slices) -->
+    <g id="desks">
+      <!-- 8 desks evenly distributed -->
       <g class="spoke-hover">
         <line x1="0" y1="-60" x2="0" y2="-160" stroke="url(#spokeGrad)" stroke-width="10" stroke-linecap="round" filter="url(#softGlow)"/>
         <rect x="-50" y="-195" width="100" height="32" rx="5" fill="#1e3a5f" stroke="#3b82f6" stroke-width="2"/>
@@ -248,7 +248,7 @@
 
     <g transform="translate(20, 60)" font-family="system-ui, sans-serif" font-size="11">
       <circle cx="8" cy="4" r="5" fill="#3b82f6"/>
-      <text x="22" y="8" fill="#fff">Spokes = Vertical Slices</text>
+      <text x="22" y="8" fill="#fff">Desks = Vertical Slices</text>
 
       <circle cx="8" cy="30" r="5" fill="#a855f7"/>
       <text x="22" y="34" fill="#fff">Hub = Aggregate State</text>
@@ -293,5 +293,5 @@
   </g>
 
   <!-- Attribution -->
-  <text x="870" y="745" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#475569">macula-hecate • Cartwheel Architecture</text>
+  <text x="870" y="745" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#475569">macula-hecate • Division Architecture</text>
 </svg>
