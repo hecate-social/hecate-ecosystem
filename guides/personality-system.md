@@ -26,8 +26,8 @@ In `~/.config/hecate-tui/config.toml`:
 
 ```toml
 [personality]
-personality_file = "~/hecate-agents/PERSONALITY.md"
-roles_dir = "~/hecate-agents/philosophy"
+personality_file = "~/hecate-corpus/PERSONALITY.md"
+roles_dir = "~/hecate-corpus/philosophy"
 active_role = "dna"
 ```
 
@@ -156,7 +156,7 @@ You are in Testing & Implementation mode. Your focus is writing quality code.
 1. Create a new markdown file in your roles directory:
 
 ```bash
-touch ~/hecate-agents/philosophy/REVIEWER.md
+touch ~/hecate-corpus/philosophy/REVIEWER.md
 ```
 
 2. Add content following the role structure:
@@ -228,7 +228,7 @@ Check the path in your config:
 
 ```bash
 cat ~/.config/hecate-tui/config.toml | grep personality_file
-ls -la ~/hecate-agents/PERSONALITY.md
+ls -la ~/hecate-corpus/PERSONALITY.md
 ```
 
 ### Role Not Found
@@ -236,7 +236,7 @@ ls -la ~/hecate-agents/PERSONALITY.md
 Ensure the file exists with the correct name:
 
 ```bash
-ls -la ~/hecate-agents/philosophy/
+ls -la ~/hecate-corpus/philosophy/
 # Should see: DNA.md, ANP.md, TNI.md, DNO.md
 ```
 

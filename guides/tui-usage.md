@@ -185,8 +185,8 @@ Configuration is stored in `~/.config/hecate-tui/config.toml`.
 socket_path = "/run/hecate/daemon.sock"
 
 [personality]
-personality_file = "~/hecate-agents/PERSONALITY.md"
-roles_dir = "~/hecate-agents/philosophy"
+personality_file = "~/hecate-corpus/PERSONALITY.md"
+roles_dir = "~/hecate-corpus/philosophy"
 active_role = "dna"
 
 [ui]

@@ -55,7 +55,7 @@ Hecate is not decentralized for ideology. It's decentralized because it's the ri
 |-----------|-------------|---|
 | [**hecate-daemon**](https://codeberg.org/hecate-social/hecate-daemon) | Erlang/OTP runtime — identity, event sourcing, LLM routing, mesh connectivity | [ghcr.io](https://ghcr.io/hecate-social/hecate-daemon) |
 | [**hecate-web**](https://codeberg.org/hecate-social/hecate-web) | Native desktop app — studios for LLM, node management, DevOps (Tauri/SvelteKit) | [Releases](https://codeberg.org/hecate-social/hecate-web/releases) |
-| [**hecate-agents**](https://codeberg.org/hecate-social/hecate-agents) | Philosophy, skills, and guardrails — the agent's personality and knowledge base | |
+| [**hecate-corpus**](https://codeberg.org/hecate-social/hecate-corpus) | Philosophy, skills, and guardrails — the agent's personality and knowledge base | |
 | [**hecate-install**](https://codeberg.org/hecate-social/hecate-install) | One-command installer + NixOS flake for bootable media | |
 | [**hecate-gitops**](https://codeberg.org/hecate-social/hecate-gitops) | Per-node Quadlet templates + reconciler for systemd+podman deployment | |
 

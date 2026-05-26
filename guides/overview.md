@@ -110,7 +110,7 @@ Your data stays yours:
 |-----------|------------|---------|
 | [**hecate-daemon**](https://github.com/hecate-social/hecate-daemon) | Erlang/OTP | Runtime — identity, event sourcing, LLM routing, mesh client |
 | [**hecate-web**](https://github.com/hecate-social/hecate-web) | Tauri / SvelteKit | Desktop app — studios for LLM, DevOps, node management |
-| [**hecate-agents**](https://github.com/hecate-social/hecate-agents) | Markdown | Personality, roles, philosophy, skills |
+| [**hecate-corpus**](https://github.com/hecate-social/hecate-corpus) | Markdown | Personality, roles, philosophy, skills |
 | [**hecate-install**](https://github.com/hecate-social/hecate-install) | Bash / Nix | Installer + NixOS flake for bootable media |
 | [**hecate-gitops**](https://github.com/hecate-social/hecate-gitops) | Quadlet | Per-node systemd + podman deployment |
 

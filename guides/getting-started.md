@@ -97,7 +97,7 @@ Or use the desktop app's Settings page to initiate pairing with one click.
 Clone the agents knowledge base:
 
 ```bash
-git clone https://github.com/hecate-social/hecate-agents.git ~/.hecate/hecate-agents
+git clone https://github.com/hecate-social/hecate-corpus.git ~/.hecate/hecate-corpus
 ```
 
 This provides philosophy documents, skills, and guardrails that shape how AI assistants interact with your Hecate codebase.

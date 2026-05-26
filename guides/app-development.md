@@ -24,7 +24,7 @@ Each part runs as a separate container managed by systemd+podman. The reconciler
 │   ├── sqlite/
 │   ├── reckon-db/
 │   ├── sockets/api.sock    # Martha daemon Unix socket
-│   └── hecate-agents/      # Cloned knowledge base
+│   └── hecate-corpus/      # Cloned knowledge base
 └── gitops/
     ├── system/             # Core daemon Quadlet files
     └── apps/               # Plugin Quadlet files
