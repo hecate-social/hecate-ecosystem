@@ -32,7 +32,7 @@ fi
 : "${CODEBERG_TO_GITHUB_TOKEN:?CODEBERG_TO_GITHUB_TOKEN not set}"
 : "${GITHUB_TOKEN:?GITHUB_TOKEN not set}"
 
-WORKROOT="${WORKROOT:-$HOME/work/codeberg.org}"
+WORKROOT="${WORKROOT:-$HOME/work/github.com}"
 
 # ---- repos table ------------------------------------------------------
 # Format: <cb_org> <repo_name> <description>
