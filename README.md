@@ -8,7 +8,7 @@
   <p><em>A local-first development platform for building distributed applications on the Macula mesh network.</em></p>
 
   [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
-  [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-support-yellow.svg)](https://buymeacoffee.com/rlefever)
+  [![GitHub Sponsors](https://img.shields.io/badge/GitHub%20Sponsors-support-ea4aaa.svg?logo=githubsponsors&logoColor=white)](https://github.com/sponsors/rgfaber)
 </div>
 
 ---
@@ -141,7 +141,7 @@ Hecate composes three independent ecosystems:
 ## Community
 
 - **GitHub**: [hecate-social](https://github.com/hecate-social)
-- **Support**: [Buy Me a Coffee](https://buymeacoffee.com/rlefever)
+- **Support**: [GitHub Sponsors](https://github.com/sponsors/rgfaber)
 
 ## License
 
