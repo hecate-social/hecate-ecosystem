@@ -299,6 +299,12 @@ apps/guide_divisions/src/
 
 ## Deployment
 
+> ⚠ **OBSOLETE (confirmed 2026-09-05).** This whole section describes
+> `hecate-daemon`'s parked, abandoned local-browser-UI deployment plan
+> (`~/.hecate/gitops/`, Quadlet, the reconciler) -- see
+> [deployment.md](deployment.md)'s own banner for the full context and
+> where the fleet's real deployment mechanism actually lives.
+
 Plugin containers are deployed via Quadlet `.container` files in `~/.hecate/gitops/apps/`:
 
 ```ini

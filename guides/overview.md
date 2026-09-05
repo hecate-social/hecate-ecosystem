@@ -112,7 +112,7 @@ Your data stays yours:
 | [**hecate-web**](https://github.com/hecate-social/hecate-web) | Tauri / SvelteKit | Desktop app — studios for LLM, DevOps, node management |
 | [**hecate-corpus**](https://github.com/hecate-social/hecate-corpus) | Markdown | Personality, roles, philosophy, skills |
 | [**hecate-install**](https://github.com/hecate-social/hecate-install) | Bash / Nix | Installer + NixOS flake for bootable media |
-| [**hecate-gitops**](https://github.com/hecate-social/hecate-gitops) | Quadlet | Per-node systemd + podman deployment |
+| ~~hecate-gitops~~ | Quadlet | ⚠ Archived, never wired up (verified 2026-09-05). Real fleet deployment is `macula-io/macula-demo/infrastructure`'s `reconcile.manifest` + docker-compose via `hecate-reconcile.timer` (docker + watchtower); Podman + Quadlet is real only on the separate `msi00.lab` box. |
 
 ## Use Cases
 

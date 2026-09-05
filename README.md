@@ -57,7 +57,7 @@ Hecate is not decentralized for ideology. It's decentralized because it's the ri
 | [**hecate-web**](https://github.com/hecate-social/hecate-web) | Native desktop app — studios for LLM, node management, DevOps (Tauri/SvelteKit) | [Releases](https://github.com/hecate-social/hecate-web/releases) |
 | [**hecate-corpus**](https://github.com/hecate-social/hecate-corpus) | Philosophy, skills, and guardrails — the agent's personality and knowledge base | |
 | [**hecate-install**](https://github.com/hecate-social/hecate-install) | One-command installer + NixOS flake for bootable media | |
-| [**hecate-gitops**](https://github.com/hecate-social/hecate-gitops) | Per-node Quadlet templates + reconciler for systemd+podman deployment | |
+| [**hecate-gitops**](https://github.com/hecate-social/hecate-gitops) | ⚠ Archived, never actually wired up (verified 2026-09-05: last push 2026-05-25) — parked leftover of an abandoned local-browser-UI plan, not the fleet's real deployment mechanism. That's `macula-io/macula-demo/infrastructure`'s per-node `reconcile.manifest` + docker-compose, applied by `hecate-reconcile.timer` (docker + watchtower on the beam fleet; Podman + Quadlet is real, but only on the separate `msi00.lab` box). | |
 
 **Plugin apps** extend the platform:
 

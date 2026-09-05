@@ -250,26 +250,38 @@ Each event can have two emitters:
 localhost:11434   daemon.sock      terminal
 ```
 
-### Kubernetes (DaemonSet)
+### Fleet (docker + watchtower, GitOps-declared)
+
+⚠ Verified 2026-09-05, correcting this section: k3s and FluxCD were
+decommissioned 2026-02-18, and `hecate-gitops` (the Quadlet/reconciler
+repo previously described here) is archived and was never actually
+wired up to anything. The real, live mechanism on the beam fleet
+(beam00-03) is:
 
 ```
-┌─────────────────────────────────────────────┐
-│  Node                                        │
-│  ┌──────────┐   ┌──────────┐                │
-│  │  Ollama  │◄──│  Hecate  │                │
-│  │   Pod    │   │ DaemonSet│                │
-│  └──────────┘   └────┬─────┘                │
-│                      │                       │
-│            /run/hecate/daemon.sock          │
-│                      │                       │
-│                 ┌────┴─────┐                │
-│                 │   TUI    │                │
-│                 │ (user)   │                │
-│                 └──────────┘                │
-└─────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────┐
+│  Node (e.g. beam00.lab)                                  │
+│  ┌──────────┐   ┌──────────┐   ┌────────────────────┐   │
+│  │  Ollama  │◄──│  hecate  │   │ hecate-reconcile    │   │
+│  │(if local)│   │ service  │   │ .timer (poll ~2min) │   │
+│  └──────────┘   │(docker)  │◄──┤ git pull + docker   │   │
+│                 └────┬─────┘   │ compose up -d       │   │
+│                      │         └────────────────────┘   │
+│            (per-service unix socket or                   │
+│             host-networked mesh port)                    │
+└─────────────────────────────────────────────────────────┘
 ```
 
-The daemon runs as a DaemonSet so every node gets one instance. Deployment is managed via GitOps (Flux) through the [hecate-gitops](https://github.com/hecate-social/hecate-gitops) repository.
+CI pushes `:latest` + a semver tag to `ghcr.io`; **watchtower**
+separately auto-pulls a new `:latest` digest for services already
+declared. **Config** (which services run, their compose files) is
+git-declared per node in `macula-io/macula-demo/infrastructure/<node>/
+reconcile.manifest`, applied by `hecate-reconcile.timer` running
+`git pull --ff-only` then `docker compose up -d` for every manifest
+line. Podman + Quadlet + `podman auto-update` is real, but only on the
+separate `msi00.lab` box (not part of the beam fleet, and watchtower is
+deliberately never run there — it would fight systemd/Quadlet for
+control of the same container).
 
 ## Next Steps
 

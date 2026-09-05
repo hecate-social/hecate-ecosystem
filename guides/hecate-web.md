@@ -219,4 +219,4 @@ Users can override model selection per-phase and pin preferences to localStorage
 | **hecate-daemon** | Backend -- all data and logic lives here |
 | **hecate-tui** | Sibling frontend -- same daemon, different UI |
 | **hecate-corpus** | Personality files loaded by Tauri's Rust backend |
-| **hecate-gitops** | Deploys the daemon (Web runs locally, not deployed) |
+| ~~hecate-gitops~~ | ⚠ Archived, never wired up (confirmed 2026-09-05) -- this row's claim ("deploys the daemon") describes the abandoned local-browser-UI deployment plan, not a working mechanism. See [deployment.md](deployment.md)'s own banner. |

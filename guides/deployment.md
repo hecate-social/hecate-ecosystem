@@ -1,5 +1,22 @@
 # Deployment Guide
 
+> ⚠ **OBSOLETE (confirmed 2026-09-05, dated 2026-09-01 in hecate-corpus's
+> own `philosophy/INTEGRATION_TRANSPORTS.md`).** Everything below —
+> `~/.hecate/gitops/`, the Quadlet `.container` files, the reconciler,
+> `podman auto-update` — describes `hecate-daemon`'s parked, abandoned
+> local-browser-UI deployment plan, not a working install path. It was
+> never a git repository the reconciler could actually pull from; the
+> whole mechanism is declared obsolete alongside `hecate-daemon` and
+> `hecate-gitops` themselves. If you're looking for how the fleet
+> actually deploys hecate-* SERVICES today (a different thing from this
+> file's per-device/edge target), see `macula-io/macula-demo/infrastructure`'s
+> per-node `reconcile.manifest` + docker-compose, applied by
+> `hecate-reconcile.timer` (docker + watchtower, beam00-03). Podman +
+> Quadlet + `podman auto-update` is real, but only on the separate
+> `msi00.lab` box. `hecate-daemon`'s own current status is unresolved as
+> of this note — do not treat the rest of this file as a working guide
+> either way.
+
 Hecate runs as **rootless Podman containers** managed by **systemd user services**. No Kubernetes, no Docker, no root at runtime.
 
 ## Overview
