@@ -299,41 +299,16 @@ apps/guide_divisions/src/
 
 ## Deployment
 
-> ⚠ **OBSOLETE (confirmed 2026-09-05).** This whole section describes
-> `hecate-daemon`'s parked, abandoned local-browser-UI deployment plan
-> (`~/.hecate/gitops/`, Quadlet, the reconciler) -- see
-> [deployment.md](deployment.md)'s own banner for the full context and
-> where the fleet's real deployment mechanism actually lives.
-
-Plugin containers are deployed via Quadlet `.container` files in `~/.hecate/gitops/apps/`:
-
-```ini
-# ~/.hecate/gitops/apps/hecate-marthad.container
-[Unit]
-Description=Hecate Martha Daemon
-
-[Container]
-Image=ghcr.io/hecate-social/hecate-marthad:latest
-AutoUpdate=registry
-Network=host
-
-Volume=%h/.hecate/hecate-marthad:/home/hecate/.hecate/hecate-marthad:Z
-Volume=%h/.hecate/secrets:/home/hecate/.hecate/secrets:ro,Z
-
-Environment=HOME=%h
-Environment=HECATE_HOSTNAME=%H
-Environment=HECATE_USER=%u
-
-[Service]
-Restart=always
-
-[Install]
-WantedBy=default.target
-```
-
-The reconciler watches `~/.hecate/gitops/` and symlinks Quadlet files to systemd. Drop a `.container` file, and the service starts automatically.
-
-CI/CD pushes `:latest` + semver tags to ghcr.io. `AutoUpdate=registry` means `podman auto-update` pulls new images automatically.
+> ⚠ **OBSOLETE (confirmed 2026-09-05).** `hecate-daemon` — the plugin
+> host this section's Quadlet example deployed plugin containers
+> alongside — is archived and deleted from local disk, not just
+> uncertain. There is no live plugin-deployment mechanism to describe in
+> its place: plugin apps were `hecate-daemon`'s own extension model, and
+> that model no longer has a daemon to extend. See
+> [deployment.md](deployment.md) for the fuller context and where the
+> fleet's real service-deployment mechanism actually lives, if what
+> you're looking for is deploying a `hecate-*` SERVICE rather than a
+> daemon plugin (a different thing this guide never covered).
 
 ## Testing
 
